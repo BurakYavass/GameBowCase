@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeArea : MonoBehaviour
 {
     [SerializeField] private Image fillImage;
+    [SerializeField] private TextMeshProUGUI UpgradeRequire;
 
     private bool _collidePlayer;
     
@@ -23,6 +25,7 @@ public class UpgradeArea : MonoBehaviour
         {
             Debug.Log("UpgradeArea");
             _collidePlayer = true; 
+            GameEventHandler.current.grapeUpgradeTriggerEnter();
             fillImage.fillAmount += 1.0f  * Time.deltaTime;
         }
     }
@@ -33,5 +36,14 @@ public class UpgradeArea : MonoBehaviour
         {
             
         }
+    }
+
+    enum MyEnum
+    {
+        UpgradeOne,
+        UpgradeTwo,
+        UpgradeThree,
+        UpgradeFour,
+        UpgradeFive,
     }
 }
