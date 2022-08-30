@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera _camera;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Joystick joystick;
-    public float speed = 2f;
     
-    private float _curentMoveMultiplier;
-    [SerializeField] private float _acceleration;
-  
-    [SerializeField]public float turnSpeed;
+    private float _currentMoveMultiplier;
+    
+    [SerializeField]public float speed = 2f;
+    [SerializeField]private float turnSpeed;
+    [SerializeField]private float _acceleration;
+
+    public bool walking = false;
+    private bool once = false;
 
     void Update()
     {
@@ -23,7 +26,21 @@ public class PlayerController : MonoBehaviour
     {
         var inputVector = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
 
-        var cameraTransform = _camera.transform;
+        if (joystick.Horizontal != 0f || joystick.Vertical != 0f)
+        {
+            if (!once)
+            {
+                walking = true;
+                once = true;
+            }
+        }
+        else
+        {
+            walking = false;
+            once = false;
+        }
+
+        var cameraTransform = virtualCamera.transform;
         var forward = cameraTransform.forward;
         var cameraForwardHorizontal =
             new Vector3(forward.x, 0f, forward.z).normalized;
@@ -36,9 +53,9 @@ public class PlayerController : MonoBehaviour
 
         var dot = Mathf.Clamp(Vector3.Dot(transform.forward, inputVector),0,1);
 
-        _curentMoveMultiplier = Mathf.Lerp(_curentMoveMultiplier, dot, _acceleration * Time.fixedDeltaTime);
+        _currentMoveMultiplier = Mathf.Lerp(_currentMoveMultiplier, dot, _acceleration * Time.fixedDeltaTime);
         
-        var position = transform.position + transform.forward.normalized * (speed * _curentMoveMultiplier * Time.fixedDeltaTime);
+        var position = transform.position + transform.forward.normalized * (speed * _currentMoveMultiplier * Time.fixedDeltaTime);
 
         transform.position = position;
 
