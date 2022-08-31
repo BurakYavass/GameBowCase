@@ -11,14 +11,19 @@ public class UpgradeArea : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
+
     [SerializeField] private Image fillImage;
     [SerializeField] public TextMeshProUGUI upgradeRequire;
-    [SerializeField] private float requireMoney = 50.0f;
 
+    [SerializeField] private float requireMoney = 50.0f;
+    
+    [Header("Object Animation")]
+    [SerializeField] private Animation objectAnimation;
+
+    [Header("Selected Object")]
     public UpgradeObject upgradeObject;
 
     private bool once = false;
-    private bool filling = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +45,14 @@ public class UpgradeArea : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void Upgrade(UpgradeObject @object)
+    private void Upgrade(UpgradeObject state)
     {
-        upgradeObject = @object;
+        upgradeObject = state;
         
-        switch (@object)
+        switch (state)
         {
             case UpgradeObject.UpgradeDesk:
-                upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
+                upgradeRequire.text = (requireMoney = requireMoney * 1).ToString("0");
                 break;
             case UpgradeObject.UpgradeTree:
                 upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
@@ -70,37 +75,110 @@ public class UpgradeArea : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && gameManager.playerGold >= requireMoney)
+        if (other.CompareTag("Player"))
         {
-            var gold = Mathf.Clamp(requireMoney, 0, 300);
-            requireMoney = gold;
-            requireMoney -= 10.0f * Time.deltaTime;
-            upgradeRequire.text = requireMoney.ToString("0");
-
-            if (fillImage.fillAmount < 1)
+            // Desk State
+            if (upgradeObject == UpgradeObject.UpgradeDesk && gameManager.playerGold >= requireMoney)
             {
-                fillImage.DOPlay();
-                if (!once)
+                if (fillImage.fillAmount < 1.0f)
                 {
-                    //fillImage.fillAmount += .1f * Time.deltaTime;
-                    fillImage.DOFillAmount(1, 5);
-                    once = true;
+                    var gold = Mathf.Clamp(requireMoney, 0, 300);
+                    requireMoney = gold;
+                    requireMoney -= 10.0f * Time.deltaTime;
+                    upgradeRequire.text = requireMoney.ToString("0");
+                    
+                    fillImage.DOPlay();
+                    if (!once)
+                    {
+                        fillImage.DOFillAmount(1, 5);
+                        once = true;
+                    }
+                    GameEventHandler.current.GrapeUpgradeTriggerEnter();
                 }
-                GameEventHandler.current.GrapeUpgradeTriggerEnter();
-            }
-            else if (fillImage.fillAmount == 1)
-            {
-                filling = true;
-                activatedGameObject.SetActive(true);
-                if (once)
+                else if (fillImage.fillAmount >= .9f)
                 {
-                    activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce);
-                    //activatedGameObject.transform.DOScale(1.0f, 1).SetEase(Ease.OutBounce);
-                    once = false;
-                }
+                    activatedGameObject.SetActive(true);
+                    if (once)
+                    {
+                        activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce);
+                        once = false;
+                    }
                 
-                deactivatedObject.SetActive(false);
+                    deactivatedObject.SetActive(false);
+                }
+                Debug.Log("Desk");
             }
+            
+            // Tree State
+            else if (upgradeObject == UpgradeObject.UpgradeTree && gameManager.playerGold >= requireMoney)
+            {
+                if (fillImage.fillAmount < 1)
+                {
+                    var gold = Mathf.Clamp(requireMoney, 0, 300);
+                    requireMoney = gold;
+                    requireMoney -= 10.0f * Time.deltaTime;
+                    upgradeRequire.text = requireMoney.ToString("0");
+                    
+                    fillImage.DOPlay();
+                    if (!once)
+                    {
+                        //fillImage.fillAmount += .1f * Time.deltaTime;
+                        fillImage.DOFillAmount(1, 2);
+                        once = true;
+                    }
+                    GameEventHandler.current.GrapeUpgradeTriggerEnter();
+                }
+                else if (fillImage.fillAmount == 1)
+                {
+                    activatedGameObject.SetActive(true);
+                    if (once)
+                    {
+                        if (objectAnimation != null)
+                            objectAnimation.Play();
+                        
+                        once = false;
+                    }
+                
+                    deactivatedObject.SetActive(false);
+                }
+                Debug.Log("Tree");
+            }
+            
+            // Smash State
+            else if (upgradeObject == UpgradeObject.UpgradeSmash && gameManager.playerGold >= requireMoney)
+            {
+                if (fillImage.fillAmount < 1)
+                {
+                    var gold = Mathf.Clamp(requireMoney, 0, 300);
+                    requireMoney = gold;
+                    requireMoney -= 10.0f * Time.deltaTime;
+                    upgradeRequire.text = requireMoney.ToString("0");
+                    
+                    fillImage.DOPlay();
+                    if (!once)
+                    {
+                        //fillImage.fillAmount += .1f * Time.deltaTime;
+                        fillImage.DOFillAmount(1, 10);
+                        once = true;
+                    }
+                    GameEventHandler.current.GrapeUpgradeTriggerEnter();
+                }
+                else if (fillImage.fillAmount == 1)
+                {
+                    activatedGameObject.SetActive(true);
+                    if (once)
+                    {
+                        if (objectAnimation != null)
+                            objectAnimation.Play();
+                        
+                        once = false;
+                    }
+                
+                    deactivatedObject.SetActive(false);
+                }
+                Debug.Log("Smash");
+            }
+            
         }
     }
     
