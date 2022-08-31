@@ -8,6 +8,7 @@ public class UpgradeArea : MonoBehaviour
 {
     [SerializeField] private Image fillImage;
     [SerializeField] private TextMeshProUGUI upgradeRequire;
+    [SerializeField] private float requireMoney = 50.0f;
 
     public UpgradeState upgradeState;
 
@@ -18,7 +19,31 @@ public class UpgradeArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Upgrade(UpgradeState.UpgradeOne);
+        if (upgradeState == UpgradeState.UpgradeOne)
+        {
+            Upgrade(UpgradeState.UpgradeOne);
+        }
+        else if (upgradeState == UpgradeState.UpgradeTwo)
+        {
+            Upgrade(UpgradeState.UpgradeTwo);
+        }
+        else if (upgradeState == UpgradeState.UpgradeThree)
+        {
+            Upgrade(UpgradeState.UpgradeThree);
+        }
+        else if (upgradeState == UpgradeState.UpgradeFour)
+        {
+            Upgrade(UpgradeState.UpgradeFour);
+        }
+        else if (upgradeState == UpgradeState.UpgradeFive)
+        {
+            Upgrade(UpgradeState.UpgradeFive);
+        }
+        else if (upgradeState == UpgradeState.UpgradeMax)
+        {
+            Upgrade(UpgradeState.UpgradeMax);
+        }
+        
         DOTween.Init();
     }
 
@@ -29,19 +54,19 @@ public class UpgradeArea : MonoBehaviour
         switch (state)
         {
             case UpgradeState.UpgradeOne:
-                upgradeRequire.text = 50.ToString();
+                upgradeRequire.text = requireMoney.ToString("0");
                 break;
             case UpgradeState.UpgradeTwo:
-                upgradeRequire.text = 100.ToString();
+                upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
                 break;
             case UpgradeState.UpgradeThree:
-                upgradeRequire.text = 150.ToString();
+                upgradeRequire.text = (requireMoney = requireMoney * 3).ToString("0");
                 break;
             case UpgradeState.UpgradeFour:
-                upgradeRequire.text = 200.ToString();
+                upgradeRequire.text = (requireMoney = requireMoney * 4).ToString("0");
                 break;
             case UpgradeState.UpgradeFive:
-                upgradeRequire.text = 250.ToString();
+                upgradeRequire.text = (requireMoney = requireMoney * 5).ToString("0");
                 break;
             case UpgradeState.UpgradeMax:
                 upgradeRequire.text = "MAX";
@@ -55,31 +80,22 @@ public class UpgradeArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _collidePlayer = true;
+            var gold = Mathf.Clamp(requireMoney, 0, 300);
+            requireMoney = gold;
+            requireMoney -= 10.0f * Time.deltaTime;
+            upgradeRequire.text = requireMoney.ToString("0");
 
             if (fillImage.fillAmount < 1)
             {
-                if (upgradeState == UpgradeState.UpgradeOne)
-                { 
-                    var upgradetextint = Int32.Parse(upgradeRequire.text);
-
-                    upgradetextint -= 2 * 2;
-                    
-                    upgradetextint = Mathf.Clamp(upgradetextint, 0, 250);
-                    
-                    upgradeRequire.text = upgradetextint.ToString("D");
-                }
-
-                //fillImage.fillAmount += 1.0f * Time.deltaTime;
                 fillImage.DOPlay();
-                
                 if (!once)
                 {
-                    fillImage.DOFillAmount(1, 10);
+                    //fillImage.fillAmount += 1.0f * Time.deltaTime;
+                    fillImage.DOFillAmount(1, 5);
                     once = true;
                 }
-                
-                GameEventHandler.current.grapeUpgradeTriggerEnter();
+
+                GameEventHandler.current.GrapeUpgradeTriggerEnter();
             }
         }
     }
@@ -90,10 +106,6 @@ public class UpgradeArea : MonoBehaviour
         {
             fillImage.DOPause();
         }
-    }
-
-    private void Update()
-    {
     }
 
     public enum UpgradeState

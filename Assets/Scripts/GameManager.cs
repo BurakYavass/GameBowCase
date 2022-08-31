@@ -14,18 +14,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DOTween.Init();
-        GameEventHandler.current.ongrapeUpgradeTriggerEnter += playerGrapeUpgrade;
+        GameEventHandler.current.OngrapeUpgradeTriggerEnter += playerGrapeUpgrade;
     }
 
     private void playerGrapeUpgrade()
     {
-        playerGold -= 10;
+        var gold = Mathf.Clamp(playerGold, 0, 300);
+        playerGold = gold;
+        playerGold -= 10.0f * Time.deltaTime;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
 }

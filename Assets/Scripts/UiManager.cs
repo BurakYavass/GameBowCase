@@ -17,6 +17,6 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        goldText.text = gameManager.playerGold.ToString();
+        goldText.text = gameManager.playerGold.ToString("0");
     }
 }

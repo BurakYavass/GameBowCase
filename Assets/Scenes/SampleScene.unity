@@ -737,9 +737,33 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6809153991122943446, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
+      propertyPath: upgradeState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7727740771640036453, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727740771640036453, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727740771640036453, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727740771640036453, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727740771640036453, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
+      propertyPath: m_characterSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727740771640036453, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8063379188349200220, guid: 15c223790b1e0dc47a2240b19ebea6ee, type: 3}
       propertyPath: m_Name

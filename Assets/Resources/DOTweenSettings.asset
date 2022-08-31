@@ -27,7 +27,7 @@ MonoBehaviour:
   defaultAutoPlay: 3
   defaultUpdateType: 0
   defaultTimeScaleIndependent: 0
-  defaultEaseType: 6
+  defaultEaseType: 1
   defaultEaseOvershootOrAmplitude: 1.70158
   defaultEasePeriod: 0
   defaultAutoKill: 1
@@ -38,7 +38,7 @@ MonoBehaviour:
   storeSettingsLocation: 0
   modules:
     showPanel: 0
-    audioEnabled: 1
+    audioEnabled: 0
     physicsEnabled: 1
     physics2DEnabled: 1
     spriteEnabled: 1
