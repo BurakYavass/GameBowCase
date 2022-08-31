@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -6,15 +8,15 @@ using UnityEngine.UI;
 
 public class UpgradeArea : MonoBehaviour
 {
+    [SerializeField] private GameObject activeGameObject;
     [SerializeField] private Image fillImage;
-    [SerializeField] private TextMeshProUGUI upgradeRequire;
+    [SerializeField] public TextMeshProUGUI upgradeRequire;
     [SerializeField] private float requireMoney = 50.0f;
 
     public UpgradeState upgradeState;
 
-    private bool _collidePlayer;
-
     private bool once = false;
+    private bool filling = false;
 
     // Start is called before the first frame update
     void Start()
@@ -90,15 +92,21 @@ public class UpgradeArea : MonoBehaviour
                 fillImage.DOPlay();
                 if (!once)
                 {
-                    //fillImage.fillAmount += 1.0f * Time.deltaTime;
+                    //StartCoroutine(PayResourcesDuringBuild(100, 5.0f));
+                    //fillImage.fillAmount += .1f * Time.deltaTime;
                     fillImage.DOFillAmount(1, 5);
                     once = true;
                 }
-
                 GameEventHandler.current.GrapeUpgradeTriggerEnter();
+            }
+            else if (fillImage.fillAmount == 1)
+            {
+                filling = true;
+                activeGameObject.SetActive(true);
             }
         }
     }
+    
 
     private void OnTriggerExit(Collider other)
     {
@@ -117,4 +125,27 @@ public class UpgradeArea : MonoBehaviour
         UpgradeFive,
         UpgradeMax,
     }
+    
+    
+    // IEnumerator PayResourcesDuringBuild(int payAmount, float buildTime)
+    // {
+    //     int currentAmount = 0;
+    //     int subtract = 0;
+    //     float currentLerpTime = 0f;
+    //     int alreadySubtracted = 0;
+    //     while (payAmount != currentAmount)
+    //     {
+    //         currentLerpTime += Time.deltaTime;
+    //         if (currentLerpTime > buildTime)
+    //         {
+    //             currentLerpTime = buildTime;
+    //         }
+    //         float t = currentLerpTime / buildTime;
+    //         currentAmount = (int)Mathf.Lerp(0, payAmount, t);
+    //         subtract = currentAmount - alreadySubtracted;
+    //         totalResources -= subtract;
+    //         alreadySubtracted += subtract;
+    //         yield return null;
+    //     }
+    // }
 }
