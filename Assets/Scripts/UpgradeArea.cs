@@ -8,7 +8,9 @@ using UnityEngine.UI;
 
 public class UpgradeArea : MonoBehaviour
 {
-    [SerializeField] private GameObject activeGameObject;
+    private GameManager gameManager;
+    [SerializeField] private GameObject activatedGameObject;
+    [SerializeField] private GameObject deactivatedObject;
     [SerializeField] private Image fillImage;
     [SerializeField] public TextMeshProUGUI upgradeRequire;
     [SerializeField] private float requireMoney = 50.0f;
@@ -47,6 +49,7 @@ public class UpgradeArea : MonoBehaviour
         }
         
         DOTween.Init();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Upgrade(UpgradeState state)
@@ -77,10 +80,18 @@ public class UpgradeArea : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(upgradeState), upgradeState, null);
         }
     }
-    
+
+    private void Update()
+    {
+        if (gameManager.playerGold < requireMoney)
+        {
+            upgradeRequire.color = Color.red;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && gameManager.playerGold >= requireMoney)
         {
             var gold = Mathf.Clamp(requireMoney, 0, 300);
             requireMoney = gold;
@@ -92,7 +103,6 @@ public class UpgradeArea : MonoBehaviour
                 fillImage.DOPlay();
                 if (!once)
                 {
-                    //StartCoroutine(PayResourcesDuringBuild(100, 5.0f));
                     //fillImage.fillAmount += .1f * Time.deltaTime;
                     fillImage.DOFillAmount(1, 5);
                     once = true;
@@ -102,7 +112,9 @@ public class UpgradeArea : MonoBehaviour
             else if (fillImage.fillAmount == 1)
             {
                 filling = true;
-                activeGameObject.SetActive(true);
+                activatedGameObject.SetActive(true);
+                
+                deactivatedObject.SetActive(false);
             }
         }
     }
@@ -127,6 +139,7 @@ public class UpgradeArea : MonoBehaviour
     }
     
     
+    //StartCoroutine(PayResourcesDuringBuild(100, 5.0f));
     // IEnumerator PayResourcesDuringBuild(int payAmount, float buildTime)
     // {
     //     int currentAmount = 0;

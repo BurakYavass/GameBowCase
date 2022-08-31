@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 5957206264558058918}
   - component: {fileID: 2979733167315932126}
   m_Layer: 0
-  m_Name: SmashArea
+  m_Name: SmashOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeGameObject: {fileID: 3282466579058068096}
   fillImage: {fileID: 3908770605981437769}
   upgradeRequire: {fileID: 8424650950891651942}
   requireMoney: 50
@@ -475,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.7}
+  m_AnchoredPosition: {x: 0, y: 0.61}
   m_SizeDelta: {x: 6, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7016818380938339642

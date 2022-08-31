@@ -1,20 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using DG.Tweening.Core;
-using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private UiManager uiManager;
-    [SerializeField] private PlayerController playerController;
+    //[SerializeField] private UiManager uiManager;
+    //[SerializeField] private PlayerController playerController;
 
+    [Header("Desk Upgrade Area List")]
     public List<UpgradeArea> DeskUpgrades = new List<UpgradeArea>(7);
 
     public float playerGold = 100.0f;
-    // Start is called before the first frame update
+    
     void Start()
     {
         DOTween.Init();
@@ -23,13 +20,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerGold < 50.0f)
-        {
-            for (int i = 0; i < DeskUpgrades.Capacity; i++)
-            {
-                DeskUpgrades[i].upgradeRequire.DOColor(Color.red, 1);
-            }
-        }
+        // if (playerGold < 49.9f)
+        // {
+        //     for (int i = 0; i < DeskUpgrades.Capacity; i++)
+        //     {
+        //         //DeskUpgrades[i].upgradeRequire.DOColor(Color.red, 1);
+        //         DeskUpgrades[i].upgradeRequire.color = Color.red;
+        //     }
+        // }
     }
 
     private void playerGrapeUpgrade()
