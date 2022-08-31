@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using DG.Tweening.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,37 +57,38 @@ public class UpgradeArea : MonoBehaviour
         {
             _collidePlayer = true;
 
-            
-
             if (fillImage.fillAmount < 1)
             {
                 if (upgradeState == UpgradeState.UpgradeOne)
                 { 
-                    var upgradetextint = 50.0f;
+                    var upgradetextint = Int32.Parse(upgradeRequire.text);
 
-                    upgradetextint = Mathf.Lerp(50.0f, 0, 50);
+                    upgradetextint -= 2 * 2;
                     
+                    upgradetextint = Mathf.Clamp(upgradetextint, 0, 250);
                     
-                    upgradeRequire.text = upgradetextint.ToString();
+                    upgradeRequire.text = upgradetextint.ToString("D");
                 }
+
+                //fillImage.fillAmount += 1.0f * Time.deltaTime;
+                fillImage.DOPlay();
                 
                 if (!once)
                 {
-                    fillImage.DOFillAmount(1, 5);
+                    fillImage.DOFillAmount(1, 10);
                     once = true;
                 }
                 
-                //var clamp = Mathf.Clamp(Int32.Parse(upgradeRequire.text), 0,500);
-                //upgradeRequire.text = clamp.ToString();
-
-                //var upgradetextint = float.Parse(upgradeRequire.text);
-
-                //upgradetextint -= 1.0f * Time.deltaTime;
-                //upgradeRequire.text = upgradetextint.ToString();
-
-
-                //GameEventHandler.current.grapeUpgradeTriggerEnter();
+                GameEventHandler.current.grapeUpgradeTriggerEnter();
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            fillImage.DOPause();
         }
     }
 

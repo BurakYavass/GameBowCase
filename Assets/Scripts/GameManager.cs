@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using DG.Tweening.Core;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,10 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UiManager uiManager;
     [SerializeField] private PlayerController playerController;
 
-    public int playerGold = 100;
+    public float playerGold = 100.0f;
     // Start is called before the first frame update
     void Start()
     {
+        DOTween.Init();
         GameEventHandler.current.ongrapeUpgradeTriggerEnter += playerGrapeUpgrade;
     }
 
