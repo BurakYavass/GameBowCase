@@ -300,11 +300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeGameObject: {fileID: 3282466579058068096}
+  activatedGameObject: {fileID: 0}
+  deactivatedObject: {fileID: 0}
   fillImage: {fileID: 3908770605981437769}
   upgradeRequire: {fileID: 8424650950891651942}
   requireMoney: 50
-  upgradeState: 0
+  upgradeObject: 2
 --- !u!1 &6684215058719767308
 GameObject:
   m_ObjectHideFlags: 0

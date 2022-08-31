@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 7675184072715956307}
   - component: {fileID: 5266459911081878916}
   - component: {fileID: 8458605152463176182}
+  - component: {fileID: 7600568774791754014}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -222,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 5492589036165015161}
   m_LocalRotation: {x: 0.9860436, y: 0.16648756, z: 0.000000029026447, w: 0.00000003942914}
   m_LocalPosition: {x: -1.78, y: 5.46, z: 0.22}
-  m_LocalScale: {x: -95.98264, y: -95.98266, z: -95.98265}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2587327729938337965}
   - {fileID: 2368240088732807124}
@@ -279,3 +280,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!111 &7600568774791754014
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492589036165015161}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 36c266d963a123345a660079e32a172f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 36c266d963a123345a660079e32a172f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

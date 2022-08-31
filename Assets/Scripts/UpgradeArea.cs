@@ -15,7 +15,7 @@ public class UpgradeArea : MonoBehaviour
     [SerializeField] public TextMeshProUGUI upgradeRequire;
     [SerializeField] private float requireMoney = 50.0f;
 
-    public UpgradeState upgradeState;
+    public UpgradeObject upgradeObject;
 
     private bool once = false;
     private bool filling = false;
@@ -23,61 +23,40 @@ public class UpgradeArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (upgradeState == UpgradeState.UpgradeOne)
+        if (upgradeObject == UpgradeObject.UpgradeDesk)
         {
-            Upgrade(UpgradeState.UpgradeOne);
+            Upgrade(UpgradeObject.UpgradeDesk);
         }
-        else if (upgradeState == UpgradeState.UpgradeTwo)
+        else if (upgradeObject == UpgradeObject.UpgradeTree)
         {
-            Upgrade(UpgradeState.UpgradeTwo);
+            Upgrade(UpgradeObject.UpgradeTree);
         }
-        else if (upgradeState == UpgradeState.UpgradeThree)
+        else if (upgradeObject == UpgradeObject.UpgradeSmash)
         {
-            Upgrade(UpgradeState.UpgradeThree);
+            Upgrade(UpgradeObject.UpgradeSmash);
         }
-        else if (upgradeState == UpgradeState.UpgradeFour)
-        {
-            Upgrade(UpgradeState.UpgradeFour);
-        }
-        else if (upgradeState == UpgradeState.UpgradeFive)
-        {
-            Upgrade(UpgradeState.UpgradeFive);
-        }
-        else if (upgradeState == UpgradeState.UpgradeMax)
-        {
-            Upgrade(UpgradeState.UpgradeMax);
-        }
-        
+
         DOTween.Init();
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void Upgrade(UpgradeState state)
+    private void Upgrade(UpgradeObject @object)
     {
-        upgradeState = state;
+        upgradeObject = @object;
         
-        switch (state)
+        switch (@object)
         {
-            case UpgradeState.UpgradeOne:
-                upgradeRequire.text = requireMoney.ToString("0");
-                break;
-            case UpgradeState.UpgradeTwo:
+            case UpgradeObject.UpgradeDesk:
                 upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
                 break;
-            case UpgradeState.UpgradeThree:
+            case UpgradeObject.UpgradeTree:
+                upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
+                break;
+            case UpgradeObject.UpgradeSmash:
                 upgradeRequire.text = (requireMoney = requireMoney * 3).ToString("0");
                 break;
-            case UpgradeState.UpgradeFour:
-                upgradeRequire.text = (requireMoney = requireMoney * 4).ToString("0");
-                break;
-            case UpgradeState.UpgradeFive:
-                upgradeRequire.text = (requireMoney = requireMoney * 5).ToString("0");
-                break;
-            case UpgradeState.UpgradeMax:
-                upgradeRequire.text = "MAX";
-                break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(upgradeState), upgradeState, null);
+                throw new ArgumentOutOfRangeException(nameof(upgradeObject), upgradeObject, null);
         }
     }
 
@@ -113,6 +92,12 @@ public class UpgradeArea : MonoBehaviour
             {
                 filling = true;
                 activatedGameObject.SetActive(true);
+                if (once)
+                {
+                    activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce);
+                    //activatedGameObject.transform.DOScale(1.0f, 1).SetEase(Ease.OutBounce);
+                    once = false;
+                }
                 
                 deactivatedObject.SetActive(false);
             }
@@ -128,14 +113,11 @@ public class UpgradeArea : MonoBehaviour
         }
     }
 
-    public enum UpgradeState
+    public enum UpgradeObject
     {
-        UpgradeOne,
-        UpgradeTwo,
-        UpgradeThree,
-        UpgradeFour,
-        UpgradeFive,
-        UpgradeMax,
+        UpgradeTree,
+        UpgradeDesk,
+        UpgradeSmash,
     }
     
     
