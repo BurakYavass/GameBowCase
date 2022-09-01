@@ -11,6 +11,8 @@ public class UpgradeArea : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
+    
+    [SerializeField] private GrapeSmashArea grapeSmashArea;
 
     [SerializeField] private Image fillImage;
     [SerializeField] public TextMeshProUGUI upgradeRequire;
@@ -189,11 +191,13 @@ public class UpgradeArea : MonoBehaviour
                 }
                 else if (fillImage.fillAmount >= .9f)
                 {
+                    gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
                     activatedGameObject.SetActive(true);
                     if (once && objectAnimation != null)
                     {
-                        gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
-                        objectAnimation.Play();
+                        activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
+                                                        .OnComplete((() => grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject)));
+                        //objectAnimation.Play();
                         once = false;
                     }
                     deactivatedObject.SetActive(false);

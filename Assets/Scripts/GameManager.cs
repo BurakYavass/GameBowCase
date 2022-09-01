@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void playerGrapeUpgrade()
     {
-        var gold = Mathf.Clamp(playerGold, 0, 300);
+        var gold = Mathf.Clamp(playerGold, 0, 5000);
         playerGold = gold;
         playerGold -= 10 * Time.deltaTime;
         once = true;
