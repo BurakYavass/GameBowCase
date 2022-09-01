@@ -12,13 +12,13 @@ public class GameEventHandler : MonoBehaviour
         current = this;
     }
     
-    public event Action OngrapeUpgradeTriggerEnter;
+    public event Action OnUpgradeTriggerEnter;
 
-    public void GrapeUpgradeTriggerEnter()
+    public void UpgradeTriggerEnter()
     {
-        if (OngrapeUpgradeTriggerEnter != null)
+        if (OnUpgradeTriggerEnter != null)
         {
-            OngrapeUpgradeTriggerEnter();
+            OnUpgradeTriggerEnter();
         }
     }
 }

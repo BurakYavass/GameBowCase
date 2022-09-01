@@ -108,7 +108,7 @@ public class UpgradeArea : MonoBehaviour
                         fillImage.DOFillAmount(1, duration);
                         once = true;
                     }
-                    GameEventHandler.current.GrapeUpgradeTriggerEnter();
+                    GameEventHandler.current.UpgradeTriggerEnter();
                 }
                 else if (fillImage.fillAmount >= .9f)
                 {
@@ -144,7 +144,7 @@ public class UpgradeArea : MonoBehaviour
                         fillImage.DOFillAmount(1, duration);
                         once = true;
                     }
-                    GameEventHandler.current.GrapeUpgradeTriggerEnter();
+                    GameEventHandler.current.UpgradeTriggerEnter();
                 }
                 else if (fillImage.fillAmount >= .9f)
                 {
@@ -155,6 +155,10 @@ public class UpgradeArea : MonoBehaviour
                         gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
                         once = false;
                     }
+                    var treeGrape = GetComponent<GrapeSpawner>();
+                    if (treeGrape != null)
+                        treeGrape.active = true;
+
                     deactivatedObject.SetActive(false);
                 }
             }
@@ -181,7 +185,7 @@ public class UpgradeArea : MonoBehaviour
                         fillImage.DOFillAmount(1, duration);
                         once = true;
                     }
-                    GameEventHandler.current.GrapeUpgradeTriggerEnter();
+                    GameEventHandler.current.UpgradeTriggerEnter();
                 }
                 else if (fillImage.fillAmount >= .9f)
                 {

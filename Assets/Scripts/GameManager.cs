@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DOTween.Init();
-        GameEventHandler.current.OngrapeUpgradeTriggerEnter += playerGrapeUpgrade;
+        GameEventHandler.current.OnUpgradeTriggerEnter += playerGrapeUpgrade;
     }
     private void playerGrapeUpgrade()
     {
