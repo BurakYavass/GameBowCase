@@ -146,6 +146,7 @@ MonoBehaviour:
   fillImage: {fileID: 8306870623070095757}
   upgradeRequire: {fileID: 7350990453716887082}
   requireMoney: 50
+  objectAnimation: {fileID: 0}
   upgradeObject: 1
 --- !u!1 &7222440897017807420
 GameObject:

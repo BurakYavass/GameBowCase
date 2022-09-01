@@ -911,10 +911,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desk (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 6369705976303837367, guid: 1ba55dc9dcd061f488a52c8ec41db4d1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba55dc9dcd061f488a52c8ec41db4d1, type: 3}
 --- !u!1001 &575250060

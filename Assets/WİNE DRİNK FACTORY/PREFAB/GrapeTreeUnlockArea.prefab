@@ -145,7 +145,7 @@ MonoBehaviour:
   deactivatedObject: {fileID: 1753728986187143905}
   fillImage: {fileID: 3238386337779841338}
   upgradeRequire: {fileID: 4158255361623971485}
-  requireMoney: 10
+  requireMoney: 30
   objectAnimation: {fileID: 2630088344908001278}
   upgradeObject: 0
 --- !u!1001 &5549937145415835360
