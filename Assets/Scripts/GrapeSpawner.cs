@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GrapeSpawner : MonoBehaviour
 {
     public List<GameObject> Grapes = new List<GameObject>(2);
-
+    [SerializeField] private GameObject basketPrefab;
+    [SerializeField] private Transform basketSpawnPoint;
+    
+    private Transform playerTransform;
+    
     public float grapeSpawnTime = 10.0f;
 
     public bool active = false;
@@ -16,6 +21,8 @@ public class GrapeSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GrapeCounter());
+        playerTransform = GameObject.FindWithTag("Player").transform;
+        basketSpawnPoint = GameObject.FindWithTag("BasketSpawn").transform;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +32,11 @@ public class GrapeSpawner : MonoBehaviour
         
         if (other.CompareTag("Player") && gatherable)
         {
+            GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
+
+            var playerPosition = playerTransform.transform.position;
+            basket.transform.DOJump(playerPosition, 10, 1, 1.5f);
+            //GameEventHandler.current.PlayerGathering(basket);
             
             StartCoroutine(GrapeCounter());
             
@@ -35,6 +47,7 @@ public class GrapeSpawner : MonoBehaviour
             gatherable = false;
         }
     }
+    
 
     IEnumerator GrapeCounter()
     {

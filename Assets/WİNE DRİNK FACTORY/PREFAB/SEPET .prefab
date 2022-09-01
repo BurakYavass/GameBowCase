@@ -500,9 +500,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8513868504410679625}
+  - component: {fileID: 5118289033983168545}
   m_Layer: 0
   m_Name: 'SEPET '
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,3 +528,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5118289033983168545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037746880120402931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5267615, y: 2.2160864, z: 3.9960456}
+  m_Center: {x: 0.09025552, y: 1.2640789, z: -0.21826744}

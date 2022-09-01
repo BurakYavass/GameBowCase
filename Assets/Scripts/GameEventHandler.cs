@@ -14,11 +14,21 @@ public class GameEventHandler : MonoBehaviour
     
     public event Action OnUpgradeTriggerEnter;
 
+    public event Action OnPlayerGathering;
+
+    public void PlayerGathering()
+    {
+        if (OnPlayerGathering != null)
+        {
+            OnPlayerGathering.Invoke();
+        }
+    }
+
     public void UpgradeTriggerEnter()
     {
         if (OnUpgradeTriggerEnter != null)
         {
-            OnUpgradeTriggerEnter();
+            OnUpgradeTriggerEnter.Invoke();
         }
     }
 }
