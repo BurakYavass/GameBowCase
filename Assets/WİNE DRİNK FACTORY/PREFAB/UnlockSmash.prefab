@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.487728, y: 1.6626439, z: 10.118038}
-  m_Center: {x: 0.2438679, y: 0.72132224, z: 0.14525366}
+  m_Size: {x: 10.487728, y: 1.7435074, z: 10.118038}
+  m_Center: {x: 0.2438679, y: 0.7617536, z: 0.1452536}
 --- !u!114 &6752381944960415333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   fillImage: {fileID: 4817122501581890782}
   upgradeRequire: {fileID: 6313417119731665785}
   requireMoney: 50
-  objectAnimation: {fileID: 2445366822356293790}
+  objectAnimation: {fileID: 0}
   upgradeObject: 2
 --- !u!1 &6372773765997721749
 GameObject:
@@ -230,11 +230,6 @@ GameObject:
 --- !u!4 &2815310985223027709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 366874340406919932, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
-  m_PrefabInstance: {fileID: 2451814345107060993}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &2445366822356293790 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 281800445830275487, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
   m_PrefabInstance: {fileID: 2451814345107060993}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2534825368309219946

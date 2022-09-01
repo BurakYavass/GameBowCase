@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class PlayerGrapeStackList : MonoBehaviour
 {
-    public List<Transform> basketList;
+    public List<Transform> basketList = new List<Transform>();
     [SerializeField] private Transform stackPoint;
+    [SerializeField] private Transform dropPoint;
+    private int stackCounter = 0;
 
     [SerializeField] private int grapeMaxStack = 5;
     [SerializeField] private float stackSpeed;
@@ -17,14 +19,22 @@ public class PlayerGrapeStackList : MonoBehaviour
 
     void Start()
     {
-        GameEventHandler.current.OnPlayerGathering += OnPlayerGathering;
+        GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
         DOTween.Init();
         basketList.Add(stackPoint);
     }
 
-    private void OnPlayerGathering()
+    private void OnPlayerGrapeDropping()
     {
-        //basketList.Add(basket);
+        stackCounter += 1;
+        if (basketList.Count > 1)
+        {
+            // basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1).
+            //             OnComplete((() => basketList.RemoveAt(stackCounter)));
+            basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1);
+            basketList.RemoveAt(stackCounter);
+            stackCounter -= 1;
+        }
     }
     
     void Update()

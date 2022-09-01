@@ -6,14 +6,6 @@ using UnityEngine;
 public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private PlayerGrapeStackList grapeStackList;
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Basket") && !grapeStackList.grapeStackMax)
-    //     {
-    //         other.gameObject.GetComponent<Collider>().isTrigger = false;
-    //         grapeStackList.basketList.Add(other.gameObject.transform);
-    //     }
-    // }
 
     private void OnCollisionEnter(Collision collision)
     {

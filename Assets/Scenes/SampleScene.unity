@@ -782,18 +782,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7349446897268057073}
     m_Modifications:
-    - target: {fileID: 2815310985223027709, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2815310985223027709, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2815310985223027709, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2864080209761254775, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -838,42 +826,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3334680207727516279, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_Name
       value: UnlockSmash (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6752381944960415333, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: grapeSmashArea
       value: 
       objectReference: {fileID: 6910671397887582767}
-    - target: {fileID: 6752381944960415333, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: objectAnimation
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6752381944960415333, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: activatedGameObject
-      value: 
-      objectReference: {fileID: 1054746382}
-    - target: {fileID: 7851047181848276071, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_Size.y
-      value: 1.7435074
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851047181848276071, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_Center.y
-      value: 0.7617536
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851047181848276071, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_Center.z
-      value: 0.1452536
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465af70938726e547949bf59390e6a64, type: 3}
 --- !u!4 &539267377 stripped
@@ -1813,11 +1773,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1054746382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3334680207727516279, guid: 465af70938726e547949bf59390e6a64, type: 3}
-  m_PrefabInstance: {fileID: 539267376}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1082626390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
@@ -1960,6 +1915,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1289681303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289681304}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1289681304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289681303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0234, y: -0.0153, z: 0.089}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7349446897268057073}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1291969428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2040,6 +2025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basketList: []
   stackPoint: {fileID: 755884490}
+  dropPoint: {fileID: 1289681304}
   grapeMaxStack: 5
   stackSpeed: 2
   stackHeight: 1.25
@@ -2137,12 +2123,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: speed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 564772405}
+    - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: turnSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: _acceleration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: virtualCamera
       value: 
@@ -5970,6 +5964,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrapeSmashPoint:
   - {fileID: 606348533}
+  playerGrapeStackList: {fileID: 1304231538}
+  smashBowlController: {fileID: 0}
 --- !u!23 &6964293715096932667
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6223,6 +6219,7 @@ Transform:
   - {fileID: 1427561866367466010}
   - {fileID: 539267377}
   - {fileID: 1785199482}
+  - {fileID: 1289681304}
   m_Father: {fileID: 3215993119990678563}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     //
     // [Header("Desk Upgrade Area List")]
     // public List<UpgradeArea> DeskUpgrades = new List<UpgradeArea>(7);
-    
-    //[SerializeField] private List<GameObject> PlayerStack
 
 
     public float playerGold = 100f;
@@ -19,6 +17,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        Application.targetFrameRate = 60;
         DOTween.Init();
         GameEventHandler.current.OnUpgradeTriggerEnter += playerGrapeUpgrade;
         //GameEventHandler.current.OnPlayerGathering += OnPlayerGathering;

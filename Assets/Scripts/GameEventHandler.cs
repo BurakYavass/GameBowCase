@@ -14,7 +14,7 @@ public class GameEventHandler : MonoBehaviour
     
     public event Action OnUpgradeTriggerEnter;
 
-    public event Action OnPlayerGathering;
+    public event Action OnPlayerGrapeDropping;
 
     public event Action PlayerGrapeStackMax;
 
@@ -26,11 +26,11 @@ public class GameEventHandler : MonoBehaviour
         }
     }
 
-    public void PlayerGathering()
+    public void PlayerGrapeDropping()
     {
-        if (OnPlayerGathering != null)
+        if (OnPlayerGrapeDropping != null)
         {
-            OnPlayerGathering.Invoke();
+            OnPlayerGrapeDropping.Invoke();
         }
     }
 
