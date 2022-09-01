@@ -6,23 +6,47 @@ using UnityEngine;
 
 public class GrapeSpawner : MonoBehaviour
 {
+    private bool once = false;
+    private bool playerMax = false;
+    public bool active = false;
+    public bool gatherable = false;
+    [SerializeField] private bool defaultTree;
+    
     public List<GameObject> Grapes = new List<GameObject>(2);
     [SerializeField] private GameObject basketPrefab;
-    [SerializeField] private Transform basketSpawnPoint;
     
-    private Transform playerTransform;
-    
+    private Transform basketSpawnPoint;
+    private GameObject playerObject;
+
     public float grapeSpawnTime = 10.0f;
 
-    public bool active = false;
-
-    public bool gatherable = false;
+    private void Awake()
+    {
+        playerObject = GameObject.FindWithTag("Player");
+        basketSpawnPoint = GameObject.FindWithTag("BasketSpawn").transform;
+    }
 
     private void Start()
     {
-        StartCoroutine(GrapeCounter());
-        playerTransform = GameObject.FindWithTag("Player").transform;
-        basketSpawnPoint = GameObject.FindWithTag("BasketSpawn").transform;
+        GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
+        if (!defaultTree && !once)
+        {
+            StartCoroutine(GrapeCounter());
+            once = true;
+        }
+        
+    }
+
+    private void GatherableChanger()
+    {
+        if (playerMax)
+        {
+            playerMax = false;
+        }
+        else if(!playerMax)
+        {
+            playerMax = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,11 +54,11 @@ public class GrapeSpawner : MonoBehaviour
         if (!active)
             return;
         
-        if (other.CompareTag("Player") && gatherable)
+        if (other.CompareTag("Player") && gatherable && !playerMax)
         {
             GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
-            var playerPosition = playerTransform.transform.position;
+            var playerPosition = playerObject.transform.position;
             basket.transform.DOJump(playerPosition, 10, 1, 1.5f);
             //GameEventHandler.current.PlayerGathering(basket);
             
@@ -54,8 +78,8 @@ public class GrapeSpawner : MonoBehaviour
         yield return new WaitForSeconds(grapeSpawnTime);
         foreach (var vaGrape in Grapes)
         {
-            vaGrape.SetActive(true);
             gatherable = true;
+            vaGrape.SetActive(true);
         }
         yield return null;
     }

@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class PlayerGrapeStackList : MonoBehaviour
 {
-    public List<GameObject> basketList;
+    public List<Transform> basketList;
     [SerializeField] private Transform stackPoint;
 
     [SerializeField] private int grapeMaxStack = 5;
     [SerializeField] private float stackSpeed;
     [SerializeField] private float stackHeight;
 
+    private bool once = false;
     public bool grapeStackMax = false;
 
     void Start()
     {
         GameEventHandler.current.OnPlayerGathering += OnPlayerGathering;
         DOTween.Init();
-        basketList.Add(stackPoint.gameObject);
+        basketList.Add(stackPoint);
     }
 
     private void OnPlayerGathering()
@@ -30,7 +31,21 @@ public class PlayerGrapeStackList : MonoBehaviour
     {
         if (basketList.Count >= grapeMaxStack)
         {
-            grapeStackMax = true;
+            if (!once)
+            {
+                grapeStackMax = true;
+                GameEventHandler.current.GrapeStackMax();
+                once = true;
+            }
+        }
+        else if (basketList.Count < grapeMaxStack)
+        {
+            if (once)
+            {
+                grapeStackMax = false;
+                GameEventHandler.current.GrapeStackMax();
+                once = false;
+            }
         }
         
         if (basketList.Count > 1)

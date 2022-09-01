@@ -493,14 +493,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97839b10afe98a34fb8a1d8375fab2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
+  gatherable: 1
+  defaultTree: 1
   Grapes:
   - {fileID: 1782511273}
   - {fileID: 41339791}
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
-  basketSpawnPoint: {fileID: 10195062}
   grapeSpawnTime: 10
-  active: 1
-  gatherable: 1
 --- !u!65 &231569403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -824,6 +824,10 @@ PrefabInstance:
     - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_Name
       value: UnlockSmash (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7851047181848276071, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_Size.y
@@ -1366,7 +1370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755884489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.34, z: 0.54}
+  m_LocalPosition: {x: 0.064, y: 0.84, z: 0.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 415279975}
@@ -1989,8 +1993,8 @@ MonoBehaviour:
   basketList: []
   stackPoint: {fileID: 755884490}
   grapeMaxStack: 5
-  stackSpeed: 0
-  stackHeight: 0
+  stackSpeed: 2
+  stackHeight: 1.25
   grapeStackMax: 0
 --- !u!65 &1377075588
 BoxCollider:
@@ -2092,6 +2096,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1979320107}
     - target: {fileID: 415279978, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: m_Radius
+      value: 0.66953754
+      objectReference: {fileID: 0}
+    - target: {fileID: 415279978, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: m_Center.z
+      value: 0.17337863
+      objectReference: {fileID: 0}
+    - target: {fileID: 415279978, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
@@ -2149,7 +2161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519637453954273660, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: m_Constraints
-      value: 80
+      value: 84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
@@ -2830,6 +2842,10 @@ PrefabInstance:
     - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_Name
       value: UnlockSmash (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465af70938726e547949bf59390e6a64, type: 3}
@@ -5383,10 +5399,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 8771707648757708837}
     m_Modifications:
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 415279975}
-    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: basketSpawnPoint
       value: 
       objectReference: {fileID: 10195062}
@@ -5664,7 +5676,6 @@ GameObject:
   - component: {fileID: 8771707648757708837}
   - component: {fileID: 4363629874609645857}
   - component: {fileID: 6582656892169862259}
-  - component: {fileID: 6210976560139714652}
   m_Layer: 0
   m_Name: GRAPE_TREE_AREA
   m_TagString: Untagged
@@ -5672,19 +5683,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &6210976560139714652
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6210976560139714651}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0920447, y: 0.06029998, z: 0.043021638}
-  m_Center: {x: 0, y: -0.015872348, z: 0}
 --- !u!4 &6257137885727770615
 Transform:
   m_ObjectHideFlags: 0
@@ -5886,7 +5884,7 @@ GameObject:
   - component: {fileID: 6754856918484419589}
   - component: {fileID: 6910671397887582766}
   m_Layer: 0
-  m_Name: GRAPE_SMASH_AREA
+  m_Name: GRAPE_SMASH_TRIGGER_AREA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5903,8 +5901,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.061363127, y: 0.060299978, z: 0.043021638}
-  m_Center: {x: 0.015340783, y: -0.015872348, z: 0}
+  m_Size: {x: 0.023428533, y: 0.060299978, z: 0.06399391}
+  m_Center: {x: 0.058046583, y: -0.015872352, z: 0.010486154}
 --- !u!23 &6964293715096932667
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6022,6 +6020,10 @@ PrefabInstance:
     - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_Name
       value: UnlockSmash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752589293709167631, guid: 465af70938726e547949bf59390e6a64, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7851047181848276071, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_Size.y

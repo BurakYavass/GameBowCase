@@ -16,6 +16,16 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action OnPlayerGathering;
 
+    public event Action PlayerGrapeStackMax;
+
+    public void GrapeStackMax()
+    {
+        if (PlayerGrapeStackMax != null)
+        {
+            PlayerGrapeStackMax.Invoke();
+        }
+    }
+
     public void PlayerGathering()
     {
         if (OnPlayerGathering != null)

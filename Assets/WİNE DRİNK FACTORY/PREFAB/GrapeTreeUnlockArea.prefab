@@ -166,8 +166,7 @@ MonoBehaviour:
   - {fileID: 8228577968040124481}
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
   basketSpawnPoint: {fileID: 0}
-  playerTransform: {fileID: 0}
-  grapeSpawnTime: 10
+  grapeSpawnTime: 20
   active: 0
   gatherable: 0
 --- !u!1001 &5549937145415835360
