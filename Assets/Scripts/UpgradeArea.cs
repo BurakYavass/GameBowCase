@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UpgradeArea : ObjectID
 {
+    public event Action Activated;
     private GameManager gameManager;
     private ObjectID _objectID;
     [SerializeField] private GameObject activatedGameObject;
@@ -17,12 +18,16 @@ public class UpgradeArea : ObjectID
     [SerializeField] public TextMeshProUGUI upgradeRequire;
 
     [SerializeField] private float requireMoney = 10;
+    private int TotalMoney = 10;
+    private float previousMoney;
     
     [Header("Object Animation")]
     [SerializeField] private Animation objectAnimation;
 
     [Header("Selected Object")]
     public UpgradeObject upgradeObject;
+
+    private Tween requireMoneyTween;
 
     private bool once = false;
 
@@ -54,12 +59,15 @@ public class UpgradeArea : ObjectID
         {
             case UpgradeObject.UpgradeDesk:
                 upgradeRequire.text = (requireMoney = requireMoney * 1).ToString("0");
+                TotalMoney = (int)requireMoney;
                 break;
             case UpgradeObject.UpgradeTree:
                 upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
+                TotalMoney = (int)requireMoney;
                 break;
             case UpgradeObject.UpgradeSmash:
                 upgradeRequire.text = (requireMoney = requireMoney * 2).ToString("0");
+                TotalMoney = (int)requireMoney;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(upgradeObject), upgradeObject, null);
@@ -68,11 +76,11 @@ public class UpgradeArea : ObjectID
 
     private void Update()
     {
-        if (gameManager.playerGold < requireMoney- 0.9f)
+        if (gameManager.playerGold < (int)requireMoney)
         {
             upgradeRequire.color = Color.red;
         }
-        else if(gameManager.playerGold >= requireMoney)
+        else
         {
             upgradeRequire.color = Color.white;
         }
@@ -83,138 +91,56 @@ public class UpgradeArea : ObjectID
         if (_objectID == null)
             _objectID = other.gameObject.GetComponent<ObjectID>();
         
-        if(_objectID.Type == ObjectType.Player && gameManager.playerGold >= requireMoney)
+        if(_objectID.Type == ObjectType.Player && gameManager.playerGold >= (int)requireMoney)
         {
-            // Upgrade alani uzerinde yazan sayiyi duzenliyoruz
-            var gold = Mathf.Clamp(requireMoney, 0, 300);
-            requireMoney = gold;
-            requireMoney -= 10.0f * Time.deltaTime;
-            upgradeRequire.text = requireMoney.ToString("0");
-            
-            // Desk State
-            if (upgradeObject == UpgradeObject.UpgradeDesk)
-            {
-                if (fillImage.fillAmount < 1.0f)
-                {
-                    fillImage.DOPlay();
-                    if (!once)
-                    {
-                        var counter = requireMoney;
-                        var duration = 1.0f;
-                        if (counter < 10)
-                        {
-                            duration = counter;
-                        }
-                        else if (counter > 10)
-                        {
-                            duration = counter / 10;
-                        }
-                        fillImage.DOFillAmount(1, duration);
-                        once = true;
-                    }
-                    GameEventHandler.current.UpgradeTriggerEnter();
-                }
-                else if (fillImage.fillAmount >= .9f)
-                {
-                    activatedGameObject.SetActive(true);
-                    if (once)
-                    {
-                        if (objectAnimation != null)
-                            objectAnimation.Play();
-                        else
-                            activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce);
-                        
-                        gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
-                        once = false;
-                    }
-                    deactivatedObject.SetActive(false);
-                }
-            }
-            
-            // Tree State
-            else if (upgradeObject == UpgradeObject.UpgradeTree)
-            {
-                if (fillImage.fillAmount < 1)
-                {
-                    fillImage.DOPlay();
-                    if (!once)
-                    {
-                        var counter = requireMoney;
-                        var duration = 1.0f;
-                        if (counter < 10)
-                        {
-                            duration = counter;
-                        }
-                        else if (counter > 10)
-                        {
-                            duration = counter / 10;
-                        }
-                        fillImage.DOFillAmount(1, duration);
-                        once = true;
-                    }
-                    GameEventHandler.current.UpgradeTriggerEnter();
-                }
-                else if (fillImage.fillAmount >= .9f)
-                {
-                    activatedGameObject.SetActive(true);
-                    if (once)
-                    {
-                        if (objectAnimation != null)
-                            objectAnimation.Play();
-                        else
-                            gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
-                        once = false;
-                    }
-                    var treeGrape = GetComponent<GrapeSpawner>();
-                    if (treeGrape != null)
-                        treeGrape.active = true;
-
-                    deactivatedObject.SetActive(false);
-                }
-            }
-            
-            // Smash State
-            else if (upgradeObject == UpgradeObject.UpgradeSmash)
-            {
-                if (fillImage.fillAmount < 1)
-                {
-                    fillImage.DOPlay();
-                    if (!once)
-                    {
-                        var counter = requireMoney;
-                        var duration = 1.0f;
-                        if (counter < 10)
-                        {
-                            duration = counter;
-                        }
-                        else if (counter > 10)
-                        {
-                            duration = counter / 10;
-                        }
-                        
-                        fillImage.DOFillAmount(1, duration);
-                        once = true;
-                    }
-                    GameEventHandler.current.UpgradeTriggerEnter();
-                }
-                else if (fillImage.fillAmount >= .9f)
-                {
-                    gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
-                    activatedGameObject.SetActive(true);
-                    if (once)
-                    {
-                        if (objectAnimation != null)
-                            objectAnimation.Play();
-                        else
-                            activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
-                                                        .OnComplete((() => grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>())));
-                        
-                        once = false;
-                    }
-                    deactivatedObject.SetActive(false);
-                }
-            }
+            MoneyDecrease();
         }
+    }
+
+    private void MoneyDecrease()
+    {
+        fillImage.DOPlay();
+        requireMoneyTween.Play();
+        
+        if (!once)
+        {
+            once = true;
+            previousMoney = requireMoney;
+            requireMoneyTween = DOTween.To((() => requireMoney), x => requireMoney = x, 0, GameManager.UpgradeDuration)
+                .OnUpdate((() =>
+                {
+                    var money = (int) previousMoney - (int) requireMoney;
+                    if (money > 0)
+                    {
+                        previousMoney = requireMoney;
+                        GameEventHandler.current.UpgradeTriggerEnter(money);
+                    }
+                }))
+                .OnComplete((() =>
+                {
+                    if (objectAnimation != null)
+                        objectAnimation.Play();
+                    else
+                    {
+                        activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
+                            .OnComplete(() =>
+                            {
+                                if (upgradeObject == UpgradeObject.UpgradeSmash)
+                                {
+                                    grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
+                                }
+                            });
+                    }
+                    activatedGameObject.SetActive(true);
+                    Activated?.Invoke();
+                    deactivatedObject.SetActive(false);
+
+                }));
+                        
+            fillImage.DOFillAmount(1, GameManager.UpgradeDuration);
+        }
+        upgradeRequire.text = Mathf.FloorToInt(requireMoney).ToString("0") ;
+        
     }
     
     private void OnTriggerExit(Collider other)
@@ -225,6 +151,8 @@ public class UpgradeArea : ObjectID
         if (_objectID.Type == ObjectType.Player)
         {
             fillImage.DOPause();
+            requireMoneyTween.Pause();
+            GameEventHandler.current.UpgradeTriggerExit();
         }
     }
 

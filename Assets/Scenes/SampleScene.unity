@@ -501,6 +501,7 @@ MonoBehaviour:
   active: 1
   gatherable: 1
   defaultTree: 1
+  upgradeArea: {fileID: 0}
   Grapes:
   - {fileID: 1782511273}
   - {fileID: 41339791}
@@ -848,6 +849,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8771707648757708837}
     m_Modifications:
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 1720266115}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: GrapeTreeUnlockArea (3)
@@ -1517,6 +1522,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba55dc9dcd061f488a52c8ec41db4d1, type: 3}
+--- !u!114 &888750663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 5549937145846429977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &915335037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1595,6 +1611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8771707648757708837}
     m_Modifications:
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 1088704392}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: GrapeTreeUnlockArea (4)
@@ -1784,6 +1804,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
   m_PrefabInstance: {fileID: 958909573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1088704392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 958909573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1117571450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
@@ -1921,6 +1952,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288621324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 1644379379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1289681303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +2737,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8771707648757708837}
     m_Modifications:
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 1288621324}
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: basketSpawnPoint
       value: 
       objectReference: {fileID: 10195062}
@@ -2835,6 +2881,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3724340043395701818, guid: 1ba55dc9dcd061f488a52c8ec41db4d1, type: 3}
   m_PrefabInstance: {fileID: 573468785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1720266115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 555272644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1782511273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2870389615500255503, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
@@ -3000,6 +3057,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba55dc9dcd061f488a52c8ec41db4d1, type: 3}
+--- !u!114 &1848273541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 2031585181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1907958046
 GameObject:
   m_ObjectHideFlags: 3
@@ -3283,6 +3351,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8771707648757708837}
     m_Modifications:
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 1848273541}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: playerTransform
       value: 
@@ -5595,6 +5667,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8771707648757708837}
     m_Modifications:
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 888750663}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: basketSpawnPoint
       value: 

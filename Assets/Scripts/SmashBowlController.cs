@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class SmashBowlController : MonoBehaviour
 {
-    [SerializeField] private float workTime = 5f;
     [SerializeField] private Animator grapeSmashGirl;
+    [SerializeField] private int grapeNeeded = 4;
+    [SerializeField] private float workTime = 5f;
+    [SerializeField] private int grapeCounter = 0;
+    
     public bool active = false;
     public bool working = false;
     private bool once = false;
     
-    private int grapeNeeded = 4;
-    public int grapeCounter = 0;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,11 @@ public class SmashBowlController : MonoBehaviour
         {
             active = true;
         }
+    }
+
+    public void PlayerGrapeDropping(int value)
+    {
+        grapeCounter = Mathf.Clamp(grapeCounter + value, 0, grapeNeeded);
     }
 
     // Update is called once per frame
@@ -44,6 +51,7 @@ public class SmashBowlController : MonoBehaviour
         working = false;
         once = false;
         grapeCounter = 0;
+        GameEventHandler.current.BarrelGenerator();
         yield return null;
     }
 }

@@ -10,31 +10,41 @@ public class GameManager : MonoBehaviour
     // [Header("Desk Upgrade Area List")]
     // public List<UpgradeArea> DeskUpgrades = new List<UpgradeArea>(7);
 
+    public int playerGold = 100;
 
-    public float playerGold = 100f;
+    public static readonly float UpgradeDuration = 2.0f;
+    
+    private Tween moneyTween;
 
     private bool once = false;
-    
+
     void Start()
     {
         Application.targetFrameRate = 60;
         DOTween.Init();
-        GameEventHandler.current.OnUpgradeTriggerEnter += playerGrapeUpgrade;
+        GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
+        //GameEventHandler.current.OnUpgradeTriggerExit += PlayerUpgradeExit;
         //GameEventHandler.current.OnPlayerGathering += OnPlayerGathering;
     }
 
-    // private void OnPlayerGathering()
+    // private void PlayerUpgradeExit()
     // {
-    //     throw new System.NotImplementedException();
+    //     moneyTween.Kill();
     // }
 
-    private void playerGrapeUpgrade()
-    {
-        var gold = Mathf.Clamp(playerGold, 0, 5000);
-        playerGold = gold;
-        playerGold -= 10 * Time.deltaTime;
-        once = true;
 
+    private void PlayerMoneyDecrease(int value)
+    {
+        // moneyTween.Play();
+        playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
+        
+        // if (!once)
+        // {
+        //     once = true;
+        //     moneyTween = DOTween.To(() => playerGold, x => playerGold = x, gold, UpgradeDuration).OnComplete((() => once = false));
+        //
+        // }
+            
     }
 
 }

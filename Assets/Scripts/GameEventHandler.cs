@@ -11,34 +11,39 @@ public class GameEventHandler : MonoBehaviour
     {
         current = this;
     }
-    
-    public event Action OnUpgradeTriggerEnter;
+    public event Action<int> OnUpgradeTriggerEnter;
 
-    public event Action OnPlayerGrapeDropping;
+    public event Action OnUpgradeTriggerExit;
+
+    public event Action<int> OnPlayerGrapeDropping;
+    
 
     public event Action PlayerGrapeStackMax;
 
+    public event Action BarrelGenerate;
+
+    public void BarrelGenerator()
+    {
+        BarrelGenerate?.Invoke();
+    }
+
     public void GrapeStackMax()
     {
-        if (PlayerGrapeStackMax != null)
-        {
-            PlayerGrapeStackMax.Invoke();
-        }
+        PlayerGrapeStackMax?.Invoke();
     }
 
-    public void PlayerGrapeDropping()
+    public void PlayerGrapeDropping(int value)
     {
-        if (OnPlayerGrapeDropping != null)
-        {
-            OnPlayerGrapeDropping.Invoke();
-        }
+        OnPlayerGrapeDropping?.Invoke(value);
     }
 
-    public void UpgradeTriggerEnter()
+    public void UpgradeTriggerEnter(int value)
     {
-        if (OnUpgradeTriggerEnter != null)
-        {
-            OnUpgradeTriggerEnter.Invoke();
-        }
+        OnUpgradeTriggerEnter?.Invoke(value);
+    }
+
+    public void UpgradeTriggerExit()
+    {
+        OnUpgradeTriggerExit?.Invoke();
     }
 }

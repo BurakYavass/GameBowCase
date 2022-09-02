@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -24,16 +25,16 @@ public class PlayerGrapeStackList : MonoBehaviour
         basketList.Add(stackPoint);
     }
 
-    private void OnPlayerGrapeDropping()
+    private void OnPlayerGrapeDropping(int value)
     {
-        stackCounter += 1;
+        stackCounter += value;
         if (basketList.Count > 1)
         {
             // basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1).
             //             OnComplete((() => basketList.RemoveAt(stackCounter)));
             basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1);
             basketList.RemoveAt(stackCounter);
-            stackCounter -= 1;
+            stackCounter -= value;
         }
     }
     

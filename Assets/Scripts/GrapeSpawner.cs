@@ -10,7 +10,9 @@ public class GrapeSpawner : MonoBehaviour
     private bool playerMax = false;
     public bool active = false;
     public bool gatherable = false;
+    private bool growing = false;
     [SerializeField] private bool defaultTree;
+    [SerializeField] private UpgradeArea upgradeArea;
     
     public List<GameObject> Grapes = new List<GameObject>(2);
     [SerializeField] private GameObject basketPrefab;
@@ -19,7 +21,7 @@ public class GrapeSpawner : MonoBehaviour
     private GameObject playerObject;
 
     public float grapeSpawnTime = 10.0f;
-
+    
     private void Awake()
     {
         playerObject = GameObject.FindWithTag("Player");
@@ -29,11 +31,38 @@ public class GrapeSpawner : MonoBehaviour
     private void Start()
     {
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
-        if (!defaultTree && !once)
+        GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
+        if (upgradeArea)
+            upgradeArea.Activated += OnActivate;
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.current.PlayerGrapeStackMax -= GatherableChanger;
+        GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
+        if (upgradeArea)
+            upgradeArea.Activated -= OnActivate;
+    }
+
+    private void OnActivate()
+    {
+        active = true;
+    }
+
+    private void Update()
+    {
+        if (active)
         {
-            StartCoroutine(GrapeCounter());
-            once = true;
+            if (!defaultTree && !growing && !once)
+            {
+                StartCoroutine(GrapeCounter());
+                once = true;
+            }
         }
+    }
+
+    private void RemoveClone(int obj)
+    {
         
     }
 
@@ -60,9 +89,9 @@ public class GrapeSpawner : MonoBehaviour
 
             var playerPosition = playerObject.transform.position;
             basket.transform.DOJump(playerPosition, 10, 1, 1.5f);
-            //GameEventHandler.current.PlayerGathering(basket);
-            
-            StartCoroutine(GrapeCounter());
+
+            if (!growing)
+                StartCoroutine(GrapeCounter());
             
             foreach (var grape in Grapes)
             {
@@ -75,12 +104,16 @@ public class GrapeSpawner : MonoBehaviour
 
     IEnumerator GrapeCounter()
     {
+        growing = true;
         yield return new WaitForSeconds(grapeSpawnTime);
         foreach (var vaGrape in Grapes)
         {
             gatherable = true;
             vaGrape.SetActive(true);
+            vaGrape.transform.DOShakeScale(0.5f, 2).SetEase(Ease.OutBounce);
         }
+
+        growing = false;
         yield return null;
     }
 }

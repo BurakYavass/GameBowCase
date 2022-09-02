@@ -11,6 +11,8 @@ public class GrapeSmashArea : ObjectID
     [SerializeField] private PlayerGrapeStackList playerGrapeStackList;
     private SmashBowlController smashBowlController;
 
+    private bool allIsWorking = false;
+
     private void OnTriggerStay(Collider other)
     {
         if (_objectID == null)
@@ -18,23 +20,41 @@ public class GrapeSmashArea : ObjectID
         
         if (_objectID.Type == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
         {
-            // foreach (var smashPoint in GrapeSmashPoint)
-            // {
-            //     if (smashPoint.gameObject.activeInHierarchy && !smashPoint.working)
-            //     {
-            //         //smashPoint.GetComponent<SmashBowlController>();
-            //         smashPoint.grapeCounter += 1;
-            //     }
-            // }
+            for (int i = 0; i < GrapeSmashPoint.Count; i++)
+            {
+                if (GrapeSmashPoint[i].active && !GrapeSmashPoint[i].working)
+                {
+                    GameEventHandler.current.PlayerGrapeDropping(1);
+                    GrapeSmashPoint[i].PlayerGrapeDropping(1);
+                    break;
+                }
+            }
 
-            // for (int i = 0; i < GrapeSmashPoint.Count; i++)
+            // if (GrapeSmashPoint[0].active && !GrapeSmashPoint[0].working)
             // {
-            //     if (GrapeSmashPoint[i].gameObject.activeInHierarchy && !GrapeSmashPoint[i].working)
-            //     {
-            //         GrapeSmashPoint[1].grapeCounter += 1;
-            //     }
+            //     GameEventHandler.current.PlayerGrapeDropping(1);
             // }
-            GameEventHandler.current.PlayerGrapeDropping();
+            // else if(GrapeSmashPoint[1].active && !GrapeSmashPoint[1].working)
+            // {
+            //     GameEventHandler.current.PlayerGrapeDropping(1);
+            // }
+            // else if (GrapeSmashPoint[2].active && !GrapeSmashPoint[2].working)
+            // {
+            //     GameEventHandler.current.PlayerGrapeDropping(1);
+            // }
+            // else if (GrapeSmashPoint[3].active && !GrapeSmashPoint[3].working)
+            // {
+            //     GameEventHandler.current.PlayerGrapeDropping(1);
+            // }
+            // else
+            // {
+            //     allIsWorking = true;
+            // }
+            //
+            // foreach (var point in GrapeSmashPoint)
+            // {
+            //     
+            // }
         }
         
     }
