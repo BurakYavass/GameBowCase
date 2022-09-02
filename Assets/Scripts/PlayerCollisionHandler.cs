@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollisionHandler : MonoBehaviour
+public class PlayerCollisionHandler : ObjectID
 {
     [SerializeField] private PlayerGrapeStackList grapeStackList;
+    private ObjectType _objectID;
 
     private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Basket") && !grapeStackList.grapeStackMax)
+    {   
+        _objectID = collision.gameObject.GetComponent<ObjectType>();
+        
+        if (_objectID == ObjectType.Basket && !grapeStackList.grapeStackMax)
         {
             collision.collider.isTrigger = true;
             grapeStackList.basketList.Add(collision.gameObject.transform);

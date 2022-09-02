@@ -501,6 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8513868504410679625}
   - component: {fileID: 5118289033983168545}
+  - component: {fileID: 4593192019164947195}
   m_Layer: 0
   m_Name: 'SEPET '
   m_TagString: Basket
@@ -541,3 +542,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.384234, y: 2.5591507, z: 5.7132854}
   m_Center: {x: 0.106132194, y: 1.4356109, z: -0.123211846}
+--- !u!114 &4593192019164947195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037746880120402931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39efe013e94554c4a870a0f1efb2994c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 4

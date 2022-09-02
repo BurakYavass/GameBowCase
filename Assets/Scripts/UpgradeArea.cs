@@ -1,14 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeArea : MonoBehaviour
+public class UpgradeArea : ObjectID
 {
     private GameManager gameManager;
+    private ObjectType _objectID;
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
     
@@ -81,7 +80,9 @@ public class UpgradeArea : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && gameManager.playerGold >= requireMoney)
+        _objectID = other.gameObject.GetComponent<ObjectType>();
+        
+        if (_objectID == ObjectType.Player && gameManager.playerGold >= requireMoney)
         {
             // Upgrade alani uzerinde yazan sayiyi duzenliyoruz
             var gold = Mathf.Clamp(requireMoney, 0, 300);
@@ -117,7 +118,11 @@ public class UpgradeArea : MonoBehaviour
                     activatedGameObject.SetActive(true);
                     if (once)
                     {
-                        activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce);
+                        if (objectAnimation != null)
+                            objectAnimation.Play();
+                        else
+                            activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce);
+                        
                         gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
                         once = false;
                     }
@@ -151,10 +156,12 @@ public class UpgradeArea : MonoBehaviour
                 else if (fillImage.fillAmount >= .9f)
                 {
                     activatedGameObject.SetActive(true);
-                    if (once && objectAnimation != null)
+                    if (once)
                     {
-                        objectAnimation.Play();
-                        gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
+                        if (objectAnimation != null)
+                            objectAnimation.Play();
+                        else
+                            gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
                         once = false;
                     }
                     var treeGrape = GetComponent<GrapeSpawner>();
@@ -193,11 +200,14 @@ public class UpgradeArea : MonoBehaviour
                 {
                     gameManager.playerGold = Mathf.FloorToInt(gameManager.playerGold += 0.5f);
                     activatedGameObject.SetActive(true);
-                    if (once && objectAnimation != null)
+                    if (once)
                     {
-                        activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
-                                                        .OnComplete((() => grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject)));
-                        //objectAnimation.Play();
+                        if (objectAnimation != null)
+                            objectAnimation.Play();
+                        else
+                            activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
+                                                        .OnComplete((() => grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>())));
+                        
                         once = false;
                     }
                     deactivatedObject.SetActive(false);
@@ -208,7 +218,9 @@ public class UpgradeArea : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        _objectID = other.gameObject.GetComponent<ObjectType>();
+        
+        if (_objectID == ObjectType.Player)
         {
             fillImage.DOPause();
         }

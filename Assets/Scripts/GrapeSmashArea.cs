@@ -3,24 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapeSmashArea : MonoBehaviour
+public class GrapeSmashArea : ObjectID
 {
-    public List<GameObject> GrapeSmashPoint = new List<GameObject>();
+    public List<SmashBowlController> GrapeSmashPoint;
+    private ObjectType _objectID;
 
     [SerializeField] private PlayerGrapeStackList playerGrapeStackList;
-    [SerializeField] private SmashBowlController smashBowlController;
+    private SmashBowlController smashBowlController;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && playerGrapeStackList.basketList.Count >1)
+        _objectID = other.gameObject.GetComponent<ObjectType>();
+        
+        if (_objectID == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
         {
-            foreach (var smashPoint in GrapeSmashPoint)
+            // foreach (var smashPoint in GrapeSmashPoint)
+            // {
+            //     if (smashPoint.gameObject.activeInHierarchy && !smashPoint.working)
+            //     {
+            //         //smashPoint.GetComponent<SmashBowlController>();
+            //         smashPoint.grapeCounter += 1;
+            //     }
+            // }
+
+            for (int i = 0; i < GrapeSmashPoint.Count; i++)
             {
-                if (smashPoint.activeInHierarchy)
+                if (GrapeSmashPoint[i].gameObject.activeInHierarchy && !GrapeSmashPoint[i].working)
                 {
-                    //smashPoint.GetComponent<SmashBowlController>();
-                    smashBowlController = smashPoint.GetComponent<SmashBowlController>();
-                    smashBowlController.grapeCounter += 1;
+                    GrapeSmashPoint[1].grapeCounter += 1;
                 }
             }
             GameEventHandler.current.PlayerGrapeDropping();
