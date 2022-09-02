@@ -6,16 +6,17 @@ using UnityEngine;
 public class GrapeSmashArea : ObjectID
 {
     public List<SmashBowlController> GrapeSmashPoint;
-    private ObjectType _objectID;
+    private ObjectID _objectID;
 
     [SerializeField] private PlayerGrapeStackList playerGrapeStackList;
     private SmashBowlController smashBowlController;
 
     private void OnTriggerStay(Collider other)
     {
-        _objectID = other.gameObject.GetComponent<ObjectType>();
+        if (_objectID == null)
+            _objectID = other.gameObject.GetComponent<ObjectID>();
         
-        if (_objectID == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
+        if (_objectID.Type == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
         {
             // foreach (var smashPoint in GrapeSmashPoint)
             // {
@@ -26,13 +27,13 @@ public class GrapeSmashArea : ObjectID
             //     }
             // }
 
-            for (int i = 0; i < GrapeSmashPoint.Count; i++)
-            {
-                if (GrapeSmashPoint[i].gameObject.activeInHierarchy && !GrapeSmashPoint[i].working)
-                {
-                    GrapeSmashPoint[1].grapeCounter += 1;
-                }
-            }
+            // for (int i = 0; i < GrapeSmashPoint.Count; i++)
+            // {
+            //     if (GrapeSmashPoint[i].gameObject.activeInHierarchy && !GrapeSmashPoint[i].working)
+            //     {
+            //         GrapeSmashPoint[1].grapeCounter += 1;
+            //     }
+            // }
             GameEventHandler.current.PlayerGrapeDropping();
         }
         

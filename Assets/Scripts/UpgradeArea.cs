@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UpgradeArea : ObjectID
 {
     private GameManager gameManager;
-    private ObjectType _objectID;
+    private ObjectID _objectID;
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
     
@@ -80,9 +80,10 @@ public class UpgradeArea : ObjectID
 
     private void OnTriggerStay(Collider other)
     {
-        _objectID = other.gameObject.GetComponent<ObjectType>();
+        if (_objectID == null)
+            _objectID = other.gameObject.GetComponent<ObjectID>();
         
-        if (_objectID == ObjectType.Player && gameManager.playerGold >= requireMoney)
+        if(_objectID.Type == ObjectType.Player && gameManager.playerGold >= requireMoney)
         {
             // Upgrade alani uzerinde yazan sayiyi duzenliyoruz
             var gold = Mathf.Clamp(requireMoney, 0, 300);
@@ -218,9 +219,10 @@ public class UpgradeArea : ObjectID
     
     private void OnTriggerExit(Collider other)
     {
-        _objectID = other.gameObject.GetComponent<ObjectType>();
+        if (_objectID == null)
+            _objectID = other.gameObject.GetComponent<ObjectID>();
         
-        if (_objectID == ObjectType.Player)
+        if (_objectID.Type == ObjectType.Player)
         {
             fillImage.DOPause();
         }
