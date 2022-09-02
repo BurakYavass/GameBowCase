@@ -32,7 +32,7 @@ public class PlayerGrapeStackList : MonoBehaviour
         {
             // basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1).
             //             OnComplete((() => basketList.RemoveAt(stackCounter)));
-            basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1);
+            basketList[stackCounter].DOJump(dropPoint.transform.position, 7, 1, .7f);
             basketList.RemoveAt(stackCounter);
             stackCounter -= value;
         }

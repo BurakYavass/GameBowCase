@@ -88,7 +88,7 @@ public class GrapeSpawner : MonoBehaviour
             GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
             var playerPosition = playerObject.transform.position;
-            basket.transform.DOJump(playerPosition, 10, 1, 1.5f);
+            basket.transform.DOJump(playerPosition, 10, 1, 0.7f);
 
             if (!growing)
                 StartCoroutine(GrapeCounter());
@@ -110,7 +110,8 @@ public class GrapeSpawner : MonoBehaviour
         {
             gatherable = true;
             vaGrape.SetActive(true);
-            vaGrape.transform.DOShakeScale(0.5f, 2).SetEase(Ease.OutBounce);
+            vaGrape.transform.DOShakeScale(0.5f).SetEase(Ease.OutBounce);
+            yield return new WaitForSeconds(0.5f);
         }
 
         growing = false;
