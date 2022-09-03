@@ -79,7 +79,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3612184666671916266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -260,6 +260,7 @@ MonoBehaviour:
   deactivatedObject: {fileID: 40735298533961919}
   grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 6502759140382686263}
+  notEnoughImage: {fileID: 4189590004030816437}
   upgradeRequire: {fileID: 5727005269314147216}
   requireMoney: 50
   objectAnimation: {fileID: 0}
@@ -405,6 +406,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8408292339797367111, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
   m_PrefabInstance: {fileID: 4308301789586987651}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4189590004030816437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+  m_PrefabInstance: {fileID: 4308301789586987651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6502759140382686263 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7058364761627174580, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}

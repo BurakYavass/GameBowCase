@@ -95,6 +95,7 @@ MonoBehaviour:
   deactivatedObject: {fileID: 4535458097504215291}
   grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 4817122501581890782}
+  notEnoughImage: {fileID: 2505059612579043420}
   upgradeRequire: {fileID: 6313417119731665785}
   requireMoney: 50
   objectAnimation: {fileID: 0}
@@ -147,7 +148,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6372773765997721749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -279,6 +280,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 7.44
       objectReference: {fileID: 0}
+    - target: {fileID: 4959939605092210571, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959939605092210571, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7.44
+      objectReference: {fileID: 0}
     - target: {fileID: 7058364761627174580, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
       propertyPath: m_FillAmount
       value: 0
@@ -406,6 +415,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8408292339797367111, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
   m_PrefabInstance: {fileID: 2534825368309219946}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2505059612579043420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+  m_PrefabInstance: {fileID: 2534825368309219946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4817122501581890782 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7058364761627174580, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
