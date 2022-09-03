@@ -12,6 +12,7 @@ public class UpgradeArea : ObjectID
     private GameManager _gameManager;
     private ObjectID _otherId;
     private Tween _requireMoneyTween;
+
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
     
@@ -22,14 +23,13 @@ public class UpgradeArea : ObjectID
     [SerializeField] public TextMeshProUGUI upgradeRequire;
 
     [SerializeField] private float requireMoney = 10;
-    //private int totalMoney = 10;
-    private float _previousMoney;
-    
+
     [Header("Object Animation")]
     [SerializeField] private Animation objectAnimation;
-
     
+    private float _previousMoney;
     
+    private bool _warningAnim = false;
     private bool _once = false;
 
     // Start is called before the first frame update
@@ -46,6 +46,11 @@ public class UpgradeArea : ObjectID
         else if (upgradeObject == UpgradeObject.UpgradeSmash)
         {
             Upgrade(UpgradeObject.UpgradeSmash);
+        }
+
+        if (Type == ObjectType.Desk)
+        {
+            upgradeRequire.text = (requireMoney  *= 1).ToString("0");
         }
 
         DOTween.Init();
@@ -75,45 +80,32 @@ public class UpgradeArea : ObjectID
         }
     }
 
-    private void Update()
-    {
-        if(_gameManager.playerGold == 0)
-        {
-            fillImage.DOPause();
-            _requireMoneyTween.Pause();
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (_otherId == null)
             _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if(_otherId.Type == ObjectType.Player)
+        if(_otherId.Type == ObjectType.Player && _gameManager.playerGold > 0.1f)
         {
             MoneyDecrease_ObjectControl();
         }
-    }
-
-    private void OnTriggerEnter(Collider player)
-    {
-        if (_otherId == null)
-            _otherId = player.gameObject.GetComponent<ObjectID>();
-        
-        if(_otherId.Type == ObjectType.Player)
+        else if (_otherId.Type == ObjectType.Player &&_gameManager.playerGold == 0)
         {
-            if (_gameManager.playerGold == 0)
+            fillImage.DOPause();
+            _requireMoneyTween.Pause();
+            notEnoughImage.enabled = true;
+            if (!_warningAnim)
             {
-                notEnoughImage.DORestart();
-                notEnoughImage.enabled = true;
-                notEnoughImage.DOColor(Color.white, 1f);
+                _warningAnim = true;
+                notEnoughImage.DOColor(Color.white, .2f)
+                    .OnComplete((() => notEnoughImage.DOColor(Color.red, 0.2f)));
             }
         }
     }
 
     private void MoneyDecrease_ObjectControl()
     {
-        if (_gameManager.playerGold > 1.5f)
+        if (_gameManager.playerGold > 0.1f)
         {
             fillImage.DOPlay();
             _requireMoneyTween.Play();
@@ -172,8 +164,9 @@ public class UpgradeArea : ObjectID
         {
             fillImage.DOPause();
             _requireMoneyTween.Pause();
-            notEnoughImage.DOKill();
             notEnoughImage.enabled = false;
+            _warningAnim = false;
+            notEnoughImage.DOKill();
             GameEventHandler.current.UpgradeTriggerExit();
         }
     }

@@ -491,12 +491,13 @@ MonoBehaviour:
   active: 1
   gatherable: 1
   defaultTree: 1
-  playerPoint: {fileID: 601345624}
+  grapeSpawnTime: 10
   Grapes:
   - {fileID: 1782511273}
   - {fileID: 41339791}
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
-  grapeSpawnTime: 10
+  playerPoint: {fileID: 601345624}
+  basketSpawnPoint: {fileID: 10195062}
 --- !u!65 &231569403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1495,32 +1496,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 601345624}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: upgradeArea
+      propertyPath: basketSpawnPoint
       value: 
-      objectReference: {fileID: 1088704392}
+      objectReference: {fileID: 10195062}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: GrapeTreeUnlockArea (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 94.83871
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 25.12117
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 37.015717
       objectReference: {fileID: 0}
     - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1698,17 +1683,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
   m_PrefabInstance: {fileID: 958909573}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1088704392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-  m_PrefabInstance: {fileID: 958909573}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1117571450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
@@ -2959,17 +2933,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2864080209761254775, guid: 465af70938726e547949bf59390e6a64, type: 3}
   m_PrefabInstance: {fileID: 1785199481}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1848273541 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-  m_PrefabInstance: {fileID: 2031585181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1907958046
 GameObject:
   m_ObjectHideFlags: 3
@@ -3319,18 +3282,6 @@ PrefabInstance:
       propertyPath: playerPoint
       value: 
       objectReference: {fileID: 601345624}
-    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: upgradeArea
-      value: 
-      objectReference: {fileID: 1848273541}
-    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 415279975}
-    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: basketSpawnPoint
-      value: 
-      objectReference: {fileID: 10195062}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: GrapeTreeUnlockArea (1)
@@ -3338,18 +3289,6 @@ PrefabInstance:
     - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 94.83871
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 25.12117
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 37.015717
       objectReference: {fileID: 0}
     - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_LocalPosition.x

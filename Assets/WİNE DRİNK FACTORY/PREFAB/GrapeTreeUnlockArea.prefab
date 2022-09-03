@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+  upgradeObject: 0
   activatedGameObject: {fileID: 5729864250572040985}
   deactivatedObject: {fileID: 6538025683818945671}
   grapeSmashArea: {fileID: 0}
@@ -151,7 +152,6 @@ MonoBehaviour:
   upgradeRequire: {fileID: 4158255361623971485}
   requireMoney: 30
   objectAnimation: {fileID: 2630088344908001278}
-  upgradeObject: 0
 --- !u!114 &1298706252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,12 +167,13 @@ MonoBehaviour:
   active: 0
   gatherable: 0
   defaultTree: 0
-  playerPoint: {fileID: 0}
+  grapeSpawnTime: 10
   Grapes:
   - {fileID: 7696926952344354799}
   - {fileID: 8228577968040124481}
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
-  grapeSpawnTime: 10
+  playerPoint: {fileID: 0}
+  basketSpawnPoint: {fileID: 0}
 --- !u!1 &6538025683818945671
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +331,14 @@ PrefabInstance:
       value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 4184438651409845172, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959939605092210571, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959939605092210571, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
       propertyPath: m_SizeDelta.y
       value: 5.5
       objectReference: {fileID: 0}

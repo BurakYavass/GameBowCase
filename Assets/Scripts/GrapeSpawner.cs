@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -12,22 +11,14 @@ public class GrapeSpawner : MonoBehaviour
     public bool gatherable = false;
     private bool growing = false;
     [SerializeField] private bool defaultTree;
-    //private UpgradeArea upgradeArea;
-    [SerializeField] private Transform playerPoint;
-    
+
+    public float grapeSpawnTime = 10.0f;
     public List<GameObject> Grapes = new List<GameObject>(2);
     [SerializeField] private GameObject basketPrefab;
     
-    private Transform basketSpawnPoint;
+    [SerializeField] private Transform playerPoint;
+    [SerializeField] private Transform basketSpawnPoint;
     
-
-    public float grapeSpawnTime = 10.0f;
-    
-    private void Awake()
-    {
-        basketSpawnPoint = GameObject.FindWithTag("BasketSpawn").transform;
-    }
-
     private void Start()
     {
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
