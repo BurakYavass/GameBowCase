@@ -537,7 +537,6 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   joystick: {fileID: 0}
   speed: 4
-  turnSpeed: 1.5
   _acceleration: 3
   walking: 0
 --- !u!114 &415279977
@@ -566,6 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13cb597e612cfd4da045d930d9560f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  grapeStackList: {fileID: 0}
 --- !u!1 &1865036524626325409
 GameObject:
   m_ObjectHideFlags: 0

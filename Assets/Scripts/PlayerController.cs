@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private float _currentMoveMultiplier;
     
     [SerializeField]public float speed = 2f;
-    [SerializeField]private float turnSpeed;
+    //[SerializeField]private float turnSpeed;
     [SerializeField]private float _acceleration;
 
     public bool walking = false;
@@ -63,9 +63,9 @@ public class PlayerController : MonoBehaviour
         {
             var newRotation = Quaternion.LookRotation(movementVector, Vector3.up);
         
-            var rotation = Quaternion.Lerp(transform.rotation, newRotation, turnSpeed * Time.fixedDeltaTime);
+            //var rotation = Quaternion.Lerp(transform.rotation, newRotation, turnSpeed * Time.fixedDeltaTime);
             
-            transform.rotation = rotation;
+            transform.rotation = newRotation;
         }
     }
     
