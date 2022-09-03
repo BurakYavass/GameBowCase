@@ -11,7 +11,7 @@ public class GameEventHandler : MonoBehaviour
     {
         current = this;
     }
-    public event Action<int> OnUpgradeTriggerEnter;
+    public event Action<float> OnUpgradeTriggerEnter;
 
     public event Action OnUpgradeTriggerExit;
 
@@ -45,7 +45,7 @@ public class GameEventHandler : MonoBehaviour
         OnPlayerGrapeDropping?.Invoke(value);
     }
 
-    public void UpgradeTriggerEnter(int value)
+    public void UpgradeTriggerEnter(float value)
     {
         OnUpgradeTriggerEnter?.Invoke(value);
     }

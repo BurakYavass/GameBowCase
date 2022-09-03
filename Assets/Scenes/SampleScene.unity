@@ -147,11 +147,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10195061}
   m_LocalRotation: {x: -0.00000008940697, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5450516, y: 3.8840225, z: 0.30908585}
-  m_LocalScale: {x: 239.53052, y: 20.229282, z: 245.21748}
+  m_LocalPosition: {x: -0.55, y: 5.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 612293566}
-  m_RootOrder: 6
+  m_Father: {fileID: 869091258}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &11204002
 PrefabInstance:
@@ -840,6 +840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 612293566}
     m_Modifications:
+    - target: {fileID: 1193631081, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: playerPoint
       value: 
@@ -1050,7 +1054,6 @@ Transform:
   - {fileID: 1117571450}
   - {fileID: 947968048}
   - {fileID: 1082626390}
-  - {fileID: 10195062}
   - {fileID: 8771707648757708837}
   m_Father: {fileID: 3215993119990678563}
   m_RootOrder: 0
@@ -1491,6 +1494,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 612293566}
     m_Modifications:
+    - target: {fileID: 1193631081, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: playerPoint
       value: 
@@ -2679,6 +2686,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 612293566}
     m_Modifications:
+    - target: {fileID: 1193631081, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: playerPoint
       value: 
@@ -3278,6 +3289,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 612293566}
     m_Modifications:
+    - target: {fileID: 1193631081, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: playerPoint
       value: 
@@ -3328,6 +3343,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729864250572040985, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5882,6 +5901,14 @@ PrefabInstance:
       propertyPath: playerPoint
       value: 
       objectReference: {fileID: 601345624}
+    - target: {fileID: 5542548101870355896, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542548101870355896, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: 'GrapeTreeUnlockArea '
@@ -6836,7 +6863,7 @@ Transform:
   m_LocalScale: {x: 239.53052, y: 245.21747, z: 20.229277}
   m_Children: []
   m_Father: {fileID: 612293566}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &8843685699043105779
 CanvasRenderer:
