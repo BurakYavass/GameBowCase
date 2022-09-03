@@ -85,7 +85,7 @@ public class UpgradeArea : ObjectID
             _requireMoneyTween = DOTween.To((() => requireMoney), x => requireMoney = x, 0, GameManager.UpgradeDuration)
             .OnUpdate((() =>
             {
-                //var money = (int) _previousMoney - (int) requireMoney;
+                // ekranın sağ üstünde para akıcak
                 var money =  _previousMoney - requireMoney;
                 if (money > 0)
                 {
@@ -95,12 +95,11 @@ public class UpgradeArea : ObjectID
             }))
             .OnComplete(() =>
             {
-                //deactivatedObject.transform.DOShakeScale(.5f,0.5f)
-                deactivatedObject.transform.DOPunchScale(new Vector3(0.5f,0.5f,0.5f),0.5f).SetEase(Ease.InBounce)
+                deactivatedObject.transform.DOPunchScale(new Vector3(0.5f,2,0.5f),0.5f).SetEase(Ease.InElastic)
                     .OnComplete(() =>
                     {
-                        deactivatedObject.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
-                        deactivatedObject.SetActive(false);
+                        deactivatedObject.transform.DOScale(new Vector3(0, 0, 0), 0.5f)
+                                                        .OnComplete((() =>deactivatedObject.SetActive(false) ));
                         activatedGameObject.SetActive(true);
                         GameEventHandler.current.ObjectActivator();
                         if (objectAnimation != null)
@@ -117,6 +116,7 @@ public class UpgradeArea : ObjectID
                                     }
                                 });
                         } 
+                        
                     });
             });
                     
