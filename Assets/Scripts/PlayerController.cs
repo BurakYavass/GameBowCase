@@ -53,9 +53,9 @@ public class PlayerController : MonoBehaviour
 
         var dot = Mathf.Clamp(Vector3.Dot(transform.forward, inputVector),0,1);
 
-        _currentMoveMultiplier = Mathf.Lerp(_currentMoveMultiplier, dot, _acceleration * Time.fixedDeltaTime);
+        //_currentMoveMultiplier = Mathf.Lerp(_currentMoveMultiplier, dot, _acceleration * Time.fixedDeltaTime);
         
-        var position = transform.position + transform.forward.normalized * (speed * _currentMoveMultiplier * Time.fixedDeltaTime);
+        var position = transform.position + transform.forward.normalized * (speed * dot * Time.fixedDeltaTime);
 
         transform.position = position;
 
