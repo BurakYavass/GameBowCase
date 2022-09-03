@@ -585,8 +585,8 @@ MonoBehaviour:
   stackPoint: {fileID: 2600322425423916562}
   dropPoint: {fileID: 0}
   grapeMaxStack: 5
-  stackSpeed: 5
-  stackHeight: 2
+  stackSpeed: 1
+  stackHeight: 1.2
   grapeStackMax: 0
 --- !u!1 &1865036524626325409
 GameObject:
