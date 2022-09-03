@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerCollisionHandler : ObjectID
 {
     [SerializeField] private PlayerGrapeStackList grapeStackList;
-    private ObjectID _objectID;
+    private ObjectID otherId;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_objectID == null)
-            _objectID = collision.gameObject.GetComponent<ObjectID>();
+        if (otherId == null)
+                otherId = collision.gameObject.GetComponent<ObjectID>();
         
-        if (_objectID.Type == ObjectType.Basket && !grapeStackList.grapeStackMax)
+        if (otherId.Type == ObjectType.Basket && !grapeStackList.grapeStackMax)
         {
             collision.collider.isTrigger = true;
             grapeStackList.basketList.Add(collision.gameObject.transform);

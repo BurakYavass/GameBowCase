@@ -8,7 +8,7 @@ public class UpgradeArea : ObjectID
 {
     public event Action Activated;
     private GameManager gameManager;
-    private ObjectID _objectID;
+    private ObjectID _otherId;
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
     
@@ -88,10 +88,10 @@ public class UpgradeArea : ObjectID
 
     private void OnTriggerStay(Collider other)
     {
-        if (_objectID == null)
-            _objectID = other.gameObject.GetComponent<ObjectID>();
+        if (_otherId == null)
+            _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if(_objectID.Type == ObjectType.Player && gameManager.playerGold >= (int)requireMoney)
+        if(_otherId.Type == ObjectType.Player && gameManager.playerGold >= (int)requireMoney)
         {
             MoneyDecrease_ObjectControl();
         }
@@ -119,7 +119,7 @@ public class UpgradeArea : ObjectID
                 .OnComplete((() =>
                 {
                     deactivatedObject.transform.DOShakeScale(.5f,0.5f)
-                        .OnUpdate((() => deactivatedObject.transform.DOScale(Vector3.zero, 0.5f)))
+                        .OnComplete((() => deactivatedObject.transform.DOScale(Vector3.zero, 0.5f)))
                         .OnComplete((() =>
                         {
                         ;
@@ -131,7 +131,7 @@ public class UpgradeArea : ObjectID
                             activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
                                 .OnComplete(() =>
                                 {
-                                    if (_objectID.Type == ObjectType.GrapeSmash)
+                                    if (_otherId.Type == ObjectType.GrapeSmash)
                                     {
                                         grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
                                     }
@@ -150,10 +150,10 @@ public class UpgradeArea : ObjectID
     
     private void OnTriggerExit(Collider other)
     {
-        if (_objectID == null)
-            _objectID = other.gameObject.GetComponent<ObjectID>();
+        if (_otherId == null)
+            _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if (_objectID.Type == ObjectType.Player)
+        if (_otherId.Type == ObjectType.Player)
         {
             fillImage.DOPause();
             requireMoneyTween.Pause();

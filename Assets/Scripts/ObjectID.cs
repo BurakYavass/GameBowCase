@@ -7,7 +7,7 @@ public class ObjectID : MonoBehaviour
     {
         Player,
         Grape,
-        SmashArea,
+        SmashTrigger,
         Desk,
         Basket,
         GrapeSmash,
