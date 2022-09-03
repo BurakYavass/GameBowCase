@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using UnityEngine;
 
 public class PlayerGrapeStackList : MonoBehaviour
@@ -32,7 +33,7 @@ public class PlayerGrapeStackList : MonoBehaviour
         {
             // basketList[stackCounter].DOJump(dropPoint.transform.position, 5, 1, 1).
             //             OnComplete((() => basketList.RemoveAt(stackCounter)));
-            basketList[stackCounter].DOJump(dropPoint.transform.position, 7, 1, .7f);
+            basketList[stackCounter].DOJump(dropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash);
             basketList.RemoveAt(stackCounter);
             stackCounter -= value;
         }

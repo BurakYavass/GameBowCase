@@ -12,19 +12,20 @@ public class GrapeSpawner : MonoBehaviour
     public bool gatherable = false;
     private bool growing = false;
     [SerializeField] private bool defaultTree;
-    [SerializeField] private UpgradeArea upgradeArea;
+    private UpgradeArea upgradeArea;
+    [SerializeField] private Transform playerPoint;
     
     public List<GameObject> Grapes = new List<GameObject>(2);
     [SerializeField] private GameObject basketPrefab;
     
     private Transform basketSpawnPoint;
-    private GameObject playerObject;
+    
 
     public float grapeSpawnTime = 10.0f;
     
     private void Awake()
     {
-        playerObject = GameObject.FindWithTag("Player");
+        //playerObject = GameObject.FindWithTag("Player");
         basketSpawnPoint = GameObject.FindWithTag("BasketSpawn").transform;
     }
 
@@ -87,8 +88,8 @@ public class GrapeSpawner : MonoBehaviour
         {
             GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
-            var playerPosition = playerObject.transform.position;
-            basket.transform.DOJump(playerPosition, 10, 1, 0.7f);
+            var playerStackPoint = playerPoint.position;
+            basket.transform.DOJump(playerStackPoint, 5, 1, 0.25f).SetEase(Ease.OutFlash);
 
             if (!growing)
                 StartCoroutine(GrapeCounter());
