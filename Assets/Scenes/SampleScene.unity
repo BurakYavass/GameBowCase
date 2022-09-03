@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d10666dfd49b584182ccf5adea5104f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGold: 100
+  playerGold: 500
 --- !u!4 &501006716
 Transform:
   m_ObjectHideFlags: 0

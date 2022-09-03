@@ -96,7 +96,7 @@ public class UpgradeArea : ObjectID
             .OnComplete(() =>
             {
                 //deactivatedObject.transform.DOShakeScale(.5f,0.5f)
-                deactivatedObject.transform.DOPunchScale(new Vector3(1.1f,1.1f,1.1f),0.5f).SetEase(Ease.InBounce)
+                deactivatedObject.transform.DOPunchScale(new Vector3(0.5f,0.5f,0.5f),0.5f).SetEase(Ease.InBounce)
                     .OnComplete(() =>
                     {
                         deactivatedObject.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
@@ -122,7 +122,8 @@ public class UpgradeArea : ObjectID
                     
         fillImage.DOFillAmount(1, GameManager.UpgradeDuration); 
         }
-        upgradeRequire.text = Mathf.FloorToInt(requireMoney).ToString("0") ;
+        //upgradeRequire.text = Mathf.FloorToInt(requireMoney).ToString("0") ;
+        upgradeRequire.text = requireMoney.ToString("0") ;
     }
     
     private void OnTriggerExit(Collider other)
