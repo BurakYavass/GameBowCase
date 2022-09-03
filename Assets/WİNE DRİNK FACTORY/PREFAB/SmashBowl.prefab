@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f451944ef3165a4198e04af025db43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workTime: 60
   grapeSmashGirl: {fileID: 776577104435549147}
+  grapeNeeded: 4
+  workTime: 20
+  grapeCounter: 0
   active: 0
   working: 0
-  grapeCounter: 0
 --- !u!1 &5793878872407601930
 GameObject:
   m_ObjectHideFlags: 0

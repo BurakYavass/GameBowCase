@@ -10,5 +10,6 @@ public class ObjectID : MonoBehaviour
         SmashArea,
         Desk,
         Basket,
+        GrapeSmash,
     }
 }

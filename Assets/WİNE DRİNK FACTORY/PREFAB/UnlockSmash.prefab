@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 5
   activatedGameObject: {fileID: 3334680207727516279}
   deactivatedObject: {fileID: 6372773765997721749}
   grapeSmashArea: {fileID: 0}
@@ -66,7 +67,6 @@ MonoBehaviour:
   upgradeRequire: {fileID: 6313417119731665785}
   requireMoney: 50
   objectAnimation: {fileID: 0}
-  upgradeObject: 2
 --- !u!1 &6372773765997721749
 GameObject:
   m_ObjectHideFlags: 0

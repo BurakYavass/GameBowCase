@@ -12,7 +12,7 @@ public class GrapeSpawner : MonoBehaviour
     public bool gatherable = false;
     private bool growing = false;
     [SerializeField] private bool defaultTree;
-    private UpgradeArea upgradeArea;
+    //private UpgradeArea upgradeArea;
     [SerializeField] private Transform playerPoint;
     
     public List<GameObject> Grapes = new List<GameObject>(2);
@@ -25,7 +25,6 @@ public class GrapeSpawner : MonoBehaviour
     
     private void Awake()
     {
-        //playerObject = GameObject.FindWithTag("Player");
         basketSpawnPoint = GameObject.FindWithTag("BasketSpawn").transform;
     }
 
@@ -33,16 +32,14 @@ public class GrapeSpawner : MonoBehaviour
     {
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
         GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
-        if (upgradeArea)
-            upgradeArea.Activated += OnActivate;
+        GameEventHandler.current.OnObjectActive += OnActivate;
     }
 
     private void OnDestroy()
     {
         GameEventHandler.current.PlayerGrapeStackMax -= GatherableChanger;
         GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
-        if (upgradeArea)
-            upgradeArea.Activated -= OnActivate;
+        GameEventHandler.current.OnObjectActive -= OnActivate;
     }
 
     private void OnActivate()

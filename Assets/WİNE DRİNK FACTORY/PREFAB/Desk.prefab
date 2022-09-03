@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7452789844942373246}
   - component: {fileID: 4786610993198409434}
   - component: {fileID: 9075565137798609561}
+  - component: {fileID: 6412158028557868084}
   m_Layer: 0
   m_Name: DeskOutline
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970484254169108816}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -5.704625, y: 0, z: -2.7400002}
+  m_LocalScale: {x: 100, y: 30.343754, z: 37.015736}
   m_Children:
   - {fileID: 7350990454396434046}
-  m_Father: {fileID: 3724340043395701818}
-  m_RootOrder: 1
+  m_Father: {fileID: 2881562425959202411}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!33 &4786610993198409434
 MeshFilter:
@@ -82,6 +83,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6412158028557868084
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970484254169108816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07420312, y: 0.3921241, z: 0.02}
+  m_Center: {x: -0.027101552, y: 0.18382643, z: 0}
+--- !u!1 &3019987511007511813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2881562425959202411}
+  m_Layer: 0
+  m_Name: DeskPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2881562425959202411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019987511007511813}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -0.027400002, y: 0.188, z: 0}
+  m_LocalScale: {x: 0.032955714, y: 0.027015539, z: 0.01}
+  m_Children:
+  - {fileID: 7452789844942373246}
+  m_Father: {fileID: 3724340043395701818}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6369705976303837367
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,10 +136,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3724340043395701818}
-  - component: {fileID: 8518840725820550581}
   - component: {fileID: 348330999062139046}
+  - component: {fileID: 3803618671634550616}
   m_Layer: 0
-  m_Name: DeskArea
+  m_Name: Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,27 +153,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369705976303837367}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -7.41, y: 0.35250968, z: 3.4}
+  m_LocalPosition: {x: -7.6746254, y: 0.35250968, z: 3.4}
   m_LocalScale: {x: 100, y: 30.343754, z: 37.015736}
   m_Children:
   - {fileID: 6187409102560204081}
-  - {fileID: 7452789844942373246}
+  - {fileID: 2881562425959202411}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
---- !u!65 &8518840725820550581
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369705976303837367}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07420312, y: 0.39212397, z: 0.028367227}
-  m_Center: {x: -0.02710155, y: 0.18382636, z: -0.0041836216}
 --- !u!114 &348330999062139046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,13 +173,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 3
   activatedGameObject: {fileID: 7222440897017807420}
-  deactivatedObject: {fileID: 1970484254169108816}
+  deactivatedObject: {fileID: 3019987511007511813}
+  grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 8306870623070095757}
   upgradeRequire: {fileID: 7350990453716887082}
   requireMoney: 50
   objectAnimation: {fileID: 0}
   upgradeObject: 1
+--- !u!65 &3803618671634550616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369705976303837367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07420312, y: 0.3921241, z: 0.02}
+  m_Center: {x: -0.027101552, y: 0.18382643, z: 0}
 --- !u!1 &7222440897017807420
 GameObject:
   m_ObjectHideFlags: 0

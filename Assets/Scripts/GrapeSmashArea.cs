@@ -11,8 +11,6 @@ public class GrapeSmashArea : ObjectID
     [SerializeField] private PlayerGrapeStackList playerGrapeStackList;
     private SmashBowlController smashBowlController;
 
-    private bool allIsWorking = false;
-
     private void OnTriggerStay(Collider other)
     {
         if (_objectID == null)
@@ -29,32 +27,6 @@ public class GrapeSmashArea : ObjectID
                     break;
                 }
             }
-
-            // if (GrapeSmashPoint[0].active && !GrapeSmashPoint[0].working)
-            // {
-            //     GameEventHandler.current.PlayerGrapeDropping(1);
-            // }
-            // else if(GrapeSmashPoint[1].active && !GrapeSmashPoint[1].working)
-            // {
-            //     GameEventHandler.current.PlayerGrapeDropping(1);
-            // }
-            // else if (GrapeSmashPoint[2].active && !GrapeSmashPoint[2].working)
-            // {
-            //     GameEventHandler.current.PlayerGrapeDropping(1);
-            // }
-            // else if (GrapeSmashPoint[3].active && !GrapeSmashPoint[3].working)
-            // {
-            //     GameEventHandler.current.PlayerGrapeDropping(1);
-            // }
-            // else
-            // {
-            //     allIsWorking = true;
-            // }
-            //
-            // foreach (var point in GrapeSmashPoint)
-            // {
-            //     
-            // }
         }
         
     }

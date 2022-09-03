@@ -23,14 +23,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         DOTween.Init();
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
-        //GameEventHandler.current.OnUpgradeTriggerExit += PlayerUpgradeExit;
-        //GameEventHandler.current.OnPlayerGathering += OnPlayerGathering;
     }
-
-    // private void PlayerUpgradeExit()
-    // {
-    //     moneyTween.Kill();
-    // }
 
 
     private void PlayerMoneyDecrease(int value)

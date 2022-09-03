@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 1
   activatedGameObject: {fileID: 5729864250572040985}
   deactivatedObject: {fileID: 1753728986187143905}
   grapeSmashArea: {fileID: 0}

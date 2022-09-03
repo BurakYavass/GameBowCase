@@ -93,11 +93,11 @@ public class UpgradeArea : ObjectID
         
         if(_objectID.Type == ObjectType.Player && gameManager.playerGold >= (int)requireMoney)
         {
-            MoneyDecrease();
+            MoneyDecrease_ObjectControl();
         }
     }
 
-    private void MoneyDecrease()
+    private void MoneyDecrease_ObjectControl()
     {
         fillImage.DOPlay();
         requireMoneyTween.Play();
@@ -118,23 +118,28 @@ public class UpgradeArea : ObjectID
                 }))
                 .OnComplete((() =>
                 {
-                    if (objectAnimation != null)
-                        objectAnimation.Play();
-                    else
-                    {
-                        activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
-                            .OnComplete(() =>
-                            {
-                                if (upgradeObject == UpgradeObject.UpgradeSmash)
+                    deactivatedObject.transform.DOShakeScale(.5f,0.5f)
+                        .OnUpdate((() => deactivatedObject.transform.DOScale(Vector3.zero, 0.5f)))
+                        .OnComplete((() =>
+                        {
+                        ;
+                        activatedGameObject.SetActive(true);
+                        if (objectAnimation != null)
+                            objectAnimation.Play();
+                        else
+                        {
+                            activatedGameObject.transform.DOShakeScale(.5f).SetEase(Ease.OutBounce)
+                                .OnComplete(() =>
                                 {
-                                    grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
-                                }
-                            });
-                    }
-                    activatedGameObject.SetActive(true);
-                    Activated?.Invoke();
-                    deactivatedObject.SetActive(false);
-
+                                    if (_objectID.Type == ObjectType.GrapeSmash)
+                                    {
+                                        grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
+                                    }
+                                });
+                        }
+                        GameEventHandler.current.ObjectActivator();
+                        deactivatedObject.SetActive(false);
+                    }));
                 }));
                         
             fillImage.DOFillAmount(1, GameManager.UpgradeDuration);
