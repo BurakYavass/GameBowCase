@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d10666dfd49b584182ccf5adea5104f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGold: 500
+  playerGold: 100
 --- !u!4 &501006716
 Transform:
   m_ObjectHideFlags: 0
@@ -5500,6 +5500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmashBowl
       objectReference: {fileID: 0}
+    - target: {fileID: 3476963269924900370, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
 --- !u!4 &5233387954948967702
@@ -6282,26 +6286,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7349446897268057073}
     m_Modifications:
-    - target: {fileID: 111072313894260110, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 111072313894260110, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 111072313894260110, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 111072313894260110, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 111072313894260110, guid: 465af70938726e547949bf59390e6a64, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
     - target: {fileID: 2864080209761254775, guid: 465af70938726e547949bf59390e6a64, type: 3}
       propertyPath: m_RootOrder
       value: 2

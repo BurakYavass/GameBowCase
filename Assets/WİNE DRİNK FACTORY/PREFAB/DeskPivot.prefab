@@ -241,8 +241,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.715343, y: 1.9209024, z: 5.65755}
-  m_Center: {x: -0.3287201, y: 0.46045142, z: -0.03461647}
+  m_Size: {x: 10.715343, y: 2.8285446, z: 5.65755}
+  m_Center: {x: -0.3287201, y: 1.9101467, z: -0.03461647}
 --- !u!114 &1761420120130835301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +303,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5626190886162035908}
     m_Modifications:
+    - target: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141691283451471261, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8408292339797367104, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
       propertyPath: m_Name
       value: UpgradeCanvasYeni
@@ -412,7 +424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4308301789586987651}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

@@ -109,12 +109,11 @@ public class GrapeSpawner : MonoBehaviour
         yield return new WaitForSeconds(grapeSpawnTime);
         foreach (var vaGrape in Grapes)
         {
-            gatherable = true;
             vaGrape.SetActive(true);
             vaGrape.transform.DOShakeScale(0.5f).SetEase(Ease.OutBounce);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
-
+        gatherable = true;
         growing = false;
         yield return null;
     }

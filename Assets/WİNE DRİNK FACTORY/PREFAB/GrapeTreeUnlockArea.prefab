@@ -147,6 +147,7 @@ MonoBehaviour:
   deactivatedObject: {fileID: 6538025683818945671}
   grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 3238386337779841338}
+  notEnoughImage: {fileID: 5542548101870355896}
   upgradeRequire: {fileID: 4158255361623971485}
   requireMoney: 30
   objectAnimation: {fileID: 2630088344908001278}
@@ -316,6 +317,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5236486114796855005}
     m_Modifications:
+    - target: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4184438651409845172, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
       propertyPath: m_SizeDelta.x
       value: 5.5
@@ -511,6 +520,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8408292339797367111, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
   m_PrefabInstance: {fileID: 5549937146169941902}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5542548101870355896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 139119350589938230, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
+  m_PrefabInstance: {fileID: 5549937146169941902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3238386337779841338 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7058364761627174580, guid: d1cf4df71a3c1fb48bfdd079264792c3, type: 3}
