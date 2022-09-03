@@ -89,7 +89,10 @@ public class GrapeSpawner : MonoBehaviour
             basket.transform.DOJump(playerStackPoint, 5, 1, 0.25f).SetEase(Ease.OutFlash);
 
             if (!growing)
+            {
+                StopCoroutine(GrapeCounter());
                 StartCoroutine(GrapeCounter());
+            }
             
             foreach (var grape in Grapes)
             {

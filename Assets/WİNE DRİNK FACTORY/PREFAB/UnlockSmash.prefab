@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4535458097504215291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4898555152506926457}
+  m_Layer: 0
+  m_Name: OutlinePivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4898555152506926457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535458097504215291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 111072313894260110}
+  m_Father: {fileID: 2864080209761254775}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4752589293709167631
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,7 @@ Transform:
   m_LocalScale: {x: 0.0027715757, y: 0.03281763, z: 0.0027073}
   m_Children:
   - {fileID: 2815310985223027709}
-  - {fileID: 111072313894260110}
+  - {fileID: 4898555152506926457}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,12 +92,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 5
   activatedGameObject: {fileID: 3334680207727516279}
-  deactivatedObject: {fileID: 6372773765997721749}
+  deactivatedObject: {fileID: 4535458097504215291}
   grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 4817122501581890782}
   upgradeRequire: {fileID: 6313417119731665785}
   requireMoney: 50
   objectAnimation: {fileID: 0}
+  upgradeObject: 2
 --- !u!1 &6372773765997721749
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,13 +124,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6372773765997721749}
-  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: 12.683073, y: 0.38058233, z: 6.269951}
-  m_LocalScale: {x: 100, y: 30.34375, z: 37.015724}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 12.683075, y: 0.38058224, z: 6.2699485}
+  m_LocalScale: {x: 100.000015, y: 30.34376, z: 37.015728}
   m_Children:
   - {fileID: 6313417119337470765}
-  m_Father: {fileID: 2864080209761254775}
-  m_RootOrder: 1
+  m_Father: {fileID: 4898555152506926457}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4473626736168169096
 MeshFilter:

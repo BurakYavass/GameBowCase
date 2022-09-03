@@ -6,17 +6,17 @@ using UnityEngine;
 public class GrapeSmashArea : ObjectID
 {
     public List<SmashBowlController> GrapeSmashPoint;
-    private ObjectID _objectID;
+    private ObjectID _otherId;
 
     [SerializeField] private PlayerGrapeStackList playerGrapeStackList;
     private SmashBowlController smashBowlController;
 
     private void OnTriggerStay(Collider other)
     {
-        if (_objectID == null)
-            _objectID = other.gameObject.GetComponent<ObjectID>();
+        if (_otherId == null)
+            _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if (_objectID.Type == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
+        if (_otherId.Type == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
         {
             for (int i = 0; i < GrapeSmashPoint.Count; i++)
             {
