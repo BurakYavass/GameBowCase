@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UpgradeArea : ObjectID
 {
     private GameManager _gameManager;
-    private ObjectID _otherId;
+    private PlayerController _otherId;
     private Tween _requireMoneyTween;
 
     public event Action Activator;
@@ -55,13 +55,13 @@ public class UpgradeArea : ObjectID
     private void OnTriggerStay(Collider other)
     {
         if (_otherId == null)
-            _otherId = other.gameObject.GetComponent<ObjectID>();
+            _otherId = other.gameObject.GetComponent<PlayerController>();
         //var gold = _gameManager.playerGold - requireMoney;
-        if(_otherId.Type == ObjectType.Player && _gameManager.playerGold > 0 )
+        if(_otherId != null && _otherId.Type == ObjectType.Player && _gameManager.playerGold > 0 )
         {
             MoneyDecrease_ObjectControl();
         }
-        else if (_otherId.Type == ObjectType.Player &&_gameManager.playerGold == 0)
+        else if (_otherId != null && _otherId.Type == ObjectType.Player &&_gameManager.playerGold == 0)
         {
             fillImage.DOPause();
             _requireMoneyTween.Pause();
@@ -135,9 +135,9 @@ public class UpgradeArea : ObjectID
     private void OnTriggerExit(Collider other)
     {
         if (_otherId == null)
-            _otherId = other.gameObject.GetComponent<ObjectID>();
+            _otherId = other.gameObject.GetComponent<PlayerController>();
         
-        if (_otherId.Type == ObjectType.Player)
+        if (_otherId != null && _otherId.Type == ObjectType.Player)
         {
             fillImage.DOPause();
             _requireMoneyTween.Pause();

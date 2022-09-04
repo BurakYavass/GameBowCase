@@ -3,7 +3,7 @@ using Cinemachine;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : ObjectID
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Joystick joystick;

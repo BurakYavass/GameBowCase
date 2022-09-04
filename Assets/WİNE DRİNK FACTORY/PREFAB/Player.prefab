@@ -439,11 +439,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1784277065439038333}
   - component: {fileID: 2254544147008695448}
+  - component: {fileID: 583776639}
   - component: {fileID: 415279976}
   - component: {fileID: 415279977}
   - component: {fileID: 415279979}
   - component: {fileID: 7045081117773183166}
-  - component: {fileID: 583776639}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -493,6 +493,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!143 &583776639
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407610337971048903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3
+  m_Radius: 0.63
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.41, z: 0.21}
 --- !u!114 &415279976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +525,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 0}
   joystick: {fileID: 0}
-  _characterController: {fileID: 583776639}
   speed: 17
   turnSpeed: 12
   walking: 0
@@ -557,24 +574,6 @@ MonoBehaviour:
   stackSpeed: 1
   stackHeight: 1.2
   grapeStackMax: 0
---- !u!143 &583776639
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407610337971048903}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 3
-  m_Radius: 0.63
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.41, z: 0.21}
 --- !u!1 &1865036524626325409
 GameObject:
   m_ObjectHideFlags: 0

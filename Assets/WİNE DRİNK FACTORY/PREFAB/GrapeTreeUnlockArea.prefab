@@ -159,8 +159,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.074177906, y: 0.2733386, z: 0.035677735}
-  m_Center: {x: -0.027088944, y: 0.12443369, z: 0.007838869}
+  m_Size: {x: 0.074177906, y: 0.2733386, z: 0.0512649}
+  m_Center: {x: -0.027088944, y: 0.124433696, z: 0.01563244}
 --- !u!114 &5549937144320752874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
   playerPoint: {fileID: 0}
   basketSpawnPoint: {fileID: 1193631081}
-  _playerGrapeStackList: {fileID: 0}
+  upgradeArea: {fileID: 5549937144320752874}
 --- !u!1 &6538025683818945671
 GameObject:
   m_ObjectHideFlags: 0

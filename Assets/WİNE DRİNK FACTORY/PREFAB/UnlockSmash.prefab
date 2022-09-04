@@ -76,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.487728, y: 1.7435074, z: 10.118038}
-  m_Center: {x: 0.2438679, y: 0.7617536, z: 0.1452536}
+  m_Size: {x: 10.487728, y: 2.3557794, z: 10.118038}
+  m_Center: {x: 0.2438679, y: 1.0678908, z: 0.1452532}
 --- !u!114 &6752381944960415333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   upgradeRequire: {fileID: 6313417119731665785}
   requireMoney: 50
   objectAnimation: {fileID: 0}
-  upgradeObject: 2
 --- !u!1 &6372773765997721749
 GameObject:
   m_ObjectHideFlags: 0
