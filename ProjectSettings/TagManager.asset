@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BasketSpawn
   - Basket
+  - Barrel
   layers:
   - Default
   - TransparentFX

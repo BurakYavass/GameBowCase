@@ -2575,6 +2575,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1383c6425a5d2b1468d15833b1030901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 6
+  Barrels:
+  - {fileID: 6190361492026276322}
+  - {fileID: 69886816}
+  - {fileID: 2038832109}
+  - {fileID: 163577849}
+  - {fileID: 1428153373}
+  - {fileID: 451928864}
+  barrelsMax: 0
 --- !u!65 &1202612408
 BoxCollider:
   m_ObjectHideFlags: 0

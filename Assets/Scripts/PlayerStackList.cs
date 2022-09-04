@@ -20,34 +20,50 @@ public class PlayerStackList : ObjectID
     private bool tweenbool = false;
     public bool grapeStackMax = false;
 
-    private Transform find;
-    private int findIndex;
+    //private Transform find;
+    //private int findIndex;
 
     void Start()
     {
         GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
+        GameEventHandler.current.OnPlayerBarrelDropping += PlayerBarrelDropping;
         DOTween.Init();
         stackList.Add(stackPoint);
     }
-
+    
     private void OnDestroy()
     {
         GameEventHandler.current.OnPlayerGrapeDropping -= OnPlayerGrapeDropping;
+        GameEventHandler.current.OnPlayerBarrelDropping -= PlayerBarrelDropping;
+    }
+    private void PlayerBarrelDropping()
+    {
+        var findIndex = stackList.FindIndex(x => x.CompareTag("Barrel"));
+        if (stackList.Count > 0 && findIndex !=0)
+        {
+            if (!tweenbool)
+            {
+                tweenbool = true;
+                stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
+                    .OnComplete((() =>
+                    {
+                        //stackList[findIndex].gameObject.SetActive(false);
+                        stackList.RemoveAt(findIndex);
+                    }))
+                    .OnUpdate((() => tweenbool = false));
+            }
+        }
     }
 
     private void OnPlayerGrapeDropping(int value)
     {
-        find = stackList.FirstOrDefault((x => x.CompareTag("Basket")));
+        var findIndex = stackList.FindIndex(x => x.CompareTag("Basket"));
         stackCounter += value;
-        if (stackList.Count > 0 && find)
+        if (stackList.Count > 0 && findIndex != 0)
         {
-            //find = stackList.Find(x => x.name == Basket);
             if (!tweenbool)
             {
                 tweenbool = true;
-                findIndex = stackList.FindIndex(x => x.CompareTag("Basket"));
-                //find = stackList.Find((x => x.CompareTag("Basket")));
-                
                 stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                      .OnComplete((() =>
                      {
@@ -57,8 +73,6 @@ public class PlayerStackList : ObjectID
                         .OnUpdate((() => tweenbool = false));
                 stackCounter -= value;
             }
-            
-            // stackCounter -= value;
         }
     }
 
@@ -87,13 +101,13 @@ public class PlayerStackList : ObjectID
         {
             for (int i = 1; i < stackList.Count; i++)
             {
-                var downGameObject = stackList[i-1];
-                var currentBasket = stackList[i];
-                var xPosition = Mathf.Lerp(currentBasket.transform.position.x, downGameObject.transform.position.x,
-                    stackSpeed);
-                currentBasket.transform.rotation = downGameObject.transform.rotation;
-                currentBasket.transform.position = new Vector3(xPosition,
-                    downGameObject.transform.position.y + stackHeight, downGameObject.transform.position.z);
+                var downGameObject = stackList[i-1].transform;
+                var currentObject = stackList[i].transform;
+                // var xPosition = Mathf.Lerp(currentBasket.transform.position.x, downGameObject.transform.position.x,
+                //     stackSpeed);
+                currentObject.rotation = currentObject.rotation;
+                currentObject.transform.position = new Vector3(downGameObject.position.x,
+                    downGameObject.position.y + stackHeight, downGameObject.position.z);
 
             }
         }
