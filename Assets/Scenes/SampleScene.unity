@@ -509,8 +509,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.483375, y: 1.161038, z: 5.6369467}
-  m_Center: {x: -0.14979552, y: 0.63282794, z: -0.046281468}
+  m_Size: {x: 5.483375, y: 1.5931098, z: 5.6369467}
+  m_Center: {x: -0.14979553, y: 0.84886384, z: -0.046281576}
 --- !u!1001 &259948708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2138,18 +2138,6 @@ PrefabInstance:
       propertyPath: dropPoint
       value: 
       objectReference: {fileID: 1289681304}
-    - target: {fileID: 7045081117773183166, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
-      propertyPath: stackSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7045081117773183166, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
-      propertyPath: stackHeight
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7519637453954273660, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
 --- !u!1 &1486771391
@@ -2990,9 +2978,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 50, z: -30}
-  m_XDamping: 0
-  m_YDamping: 0
-  m_ZDamping: 0
+  m_XDamping: 0.5
+  m_YDamping: 0.5
+  m_ZDamping: 0.5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -3297,6 +3285,10 @@ PrefabInstance:
       propertyPath: playerPoint
       value: 
       objectReference: {fileID: 601345624}
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: _playerGrapeStackList
+      value: 
+      objectReference: {fileID: 966443001}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: GrapeTreeUnlockArea (1)
@@ -5901,14 +5893,10 @@ PrefabInstance:
       propertyPath: playerPoint
       value: 
       objectReference: {fileID: 601345624}
-    - target: {fileID: 5542548101870355896, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5542548101870355896, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: _playerGrapeStackList
+      value: 
+      objectReference: {fileID: 966443001}
     - target: {fileID: 5549937144320752872, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: m_Name
       value: 'GrapeTreeUnlockArea '

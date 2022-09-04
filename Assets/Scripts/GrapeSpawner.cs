@@ -17,13 +17,16 @@ public class GrapeSpawner : MonoBehaviour
     [SerializeField] private GameObject basketPrefab;
     
     [SerializeField] private Transform playerPoint;
-    [SerializeField] private Transform basketSpawnPoint;
-    
+    [SerializeField] private Transform basketSpawnPoint; 
+    private PlayerGrapeStackList _playerGrapeStackList;
+    private ObjectID _otherId;
+
     private void Start()
     {
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
         GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
         GameEventHandler.current.OnObjectActive += OnActivate;
+        _playerGrapeStackList = playerPoint.GetComponentInParent<PlayerGrapeStackList>();
     }
 
     private void OnDestroy()
@@ -71,14 +74,17 @@ public class GrapeSpawner : MonoBehaviour
     {
         if (!active)
             return;
+        if (_otherId == null)
+            _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if (other.CompareTag("Player") && gatherable && !playerMax)
+        if (_otherId.Type == ObjectID.ObjectType.Player && gatherable && !playerMax)
         {
             GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
             var playerStackPoint = playerPoint.position;
             basket.transform.DOJump(playerStackPoint, 5, 1, 0.25f).SetEase(Ease.OutFlash);
-
+            
+            _playerGrapeStackList.basketList.Add(basket.transform);
             if (!growing)
             {
                 StopCoroutine(GrapeCounter());

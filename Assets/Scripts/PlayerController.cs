@@ -7,12 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Joystick joystick;
-    
-    private float _currentMoveMultiplier;
+
+    //private float _currentMoveMultiplier;
     
     [SerializeField]public float speed = 2f;
-    //[SerializeField]private float turnSpeed;
-    [SerializeField]private float _acceleration;
+    [SerializeField]private float turnSpeed;
+    //[SerializeField]private float _acceleration;
 
     public bool walking = false;
     private bool once = false;
@@ -51,21 +51,21 @@ public class PlayerController : MonoBehaviour
 
         var movementVector = inputVector.x * cameraRightHorizontal + inputVector.z * cameraForwardHorizontal;
 
-        var dot = Mathf.Clamp(Vector3.Dot(transform.forward, inputVector),0,1);
+        //var dot = Mathf.Clamp(Vector3.Dot(transform.forward, inputVector),0,1);
 
         //_currentMoveMultiplier = Mathf.Lerp(_currentMoveMultiplier, dot, _acceleration * Time.fixedDeltaTime);
         
-        var position = transform.position + transform.forward.normalized * (speed * dot * Time.fixedDeltaTime);
+        //var position = transform.position + transform.forward.normalized * (speed * dot * Time.fixedDeltaTime);
 
-        transform.position = position;
+        transform.position += movementVector.normalized * (speed * Time.deltaTime);
 
         if (inputVector.magnitude > 0)
         {
             var newRotation = Quaternion.LookRotation(movementVector, Vector3.up);
         
-            //var rotation = Quaternion.Lerp(transform.rotation, newRotation, turnSpeed * Time.fixedDeltaTime);
+            var rotation = Quaternion.Lerp(transform.rotation, newRotation, turnSpeed * Time.fixedDeltaTime);
             
-            transform.rotation = newRotation;
+            transform.rotation = rotation;
         }
     }
     

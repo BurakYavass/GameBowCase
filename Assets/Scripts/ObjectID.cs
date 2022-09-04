@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ObjectID : MonoBehaviour
 {
-    public ObjectType Type;
     public enum ObjectType
     {
         Player,
@@ -12,4 +11,5 @@ public class ObjectID : MonoBehaviour
         Basket,
         GrapeSmash,
     }
+    public ObjectType Type;
 }

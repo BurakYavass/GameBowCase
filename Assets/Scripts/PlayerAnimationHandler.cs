@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,15 @@ using UnityEngine;
 public class PlayerAnimationHandler : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
-    [SerializeField] private PlayerController playerController;
-   
-    // Update is called once per frame
+    private PlayerController playerController;
+    private PlayerGrapeStackList _grapeStackList;
+
+    private void Awake()
+    {
+        _grapeStackList = GetComponentInParent<PlayerGrapeStackList>();
+        playerController = GetComponentInParent<PlayerController>();
+    }
+
     void Update()
     {
         if (playerController.walking)
@@ -18,5 +25,15 @@ public class PlayerAnimationHandler : MonoBehaviour
         {
             playerAnimator.SetBool("walking", false);
         }
+
+        if (_grapeStackList.basketList != null)
+            if (_grapeStackList.basketList.Count > 1)
+            {
+                playerAnimator.SetBool("carry", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("carry", false);
+            }
     }
 }
