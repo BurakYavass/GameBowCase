@@ -5,7 +5,7 @@ using DG.Tweening;
 using DG.Tweening.Core.Easing;
 using UnityEngine;
 
-public class PlayerGrapeStackList : MonoBehaviour
+public class PlayerStackList : MonoBehaviour
 {
     public List<Transform> basketList = new List<Transform>();
     [SerializeField] private Transform stackPoint;
@@ -24,6 +24,11 @@ public class PlayerGrapeStackList : MonoBehaviour
         GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
         DOTween.Init();
         basketList.Add(stackPoint);
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.current.OnPlayerGrapeDropping -= OnPlayerGrapeDropping;
     }
 
     private void OnPlayerGrapeDropping(int value)

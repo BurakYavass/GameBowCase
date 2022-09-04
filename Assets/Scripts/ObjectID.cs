@@ -10,6 +10,7 @@ public class ObjectID : MonoBehaviour
         Desk,
         Basket,
         GrapeSmash,
+        BarrelArea,
     }
     public ObjectType Type;
 }

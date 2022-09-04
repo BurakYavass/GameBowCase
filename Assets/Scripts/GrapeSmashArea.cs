@@ -8,15 +8,18 @@ public class GrapeSmashArea : ObjectID
     public List<SmashBowlController> GrapeSmashPoint;
     private ObjectID _otherId;
 
-    [SerializeField] private PlayerGrapeStackList playerGrapeStackList;
+    [SerializeField] private PlayerStackList playerStackList;
     private SmashBowlController smashBowlController;
 
     private void OnTriggerStay(Collider other)
     {
-        if (_otherId == null)
+        if (!_otherId || !playerStackList)
+        {
             _otherId = other.gameObject.GetComponent<ObjectID>();
-        
-        if (_otherId.Type == ObjectType.Player && playerGrapeStackList.basketList.Count >1)
+            playerStackList = other.gameObject.GetComponent<PlayerStackList>();
+        }
+
+        if (_otherId.Type == ObjectType.Player && playerStackList.basketList.Count >1)
         {
             for (int i = 0; i < GrapeSmashPoint.Count; i++)
             {

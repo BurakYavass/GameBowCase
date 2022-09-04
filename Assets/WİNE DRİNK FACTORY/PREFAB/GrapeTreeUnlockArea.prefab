@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97839b10afe98a34fb8a1d8375fab2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 1
   active: 0
   gatherable: 0
   defaultTree: 0

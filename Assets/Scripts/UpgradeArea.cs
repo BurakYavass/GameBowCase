@@ -119,11 +119,9 @@ public class UpgradeArea : ObjectID
                                             grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
                                         }
                                     });
-                            } 
-                        
+                            }
                         });
                 }
-
             });
                     
         fillImage.DOFillAmount(1, GameManager.UpgradeDuration); 

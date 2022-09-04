@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class GrapeSpawner : MonoBehaviour
+public class GrapeSpawner : ObjectID
 {
     private bool once = false;
     private bool playerMax = false;
@@ -20,7 +20,7 @@ public class GrapeSpawner : MonoBehaviour
     [SerializeField] private Transform playerPoint;
     [SerializeField] private Transform basketSpawnPoint;
     [SerializeField] private UpgradeArea upgradeArea;
-    private PlayerGrapeStackList _playerGrapeStackList;
+    private PlayerStackList _playerGrapeStackList;
     private ObjectID _otherId;
 
     private void Start()
@@ -28,7 +28,7 @@ public class GrapeSpawner : MonoBehaviour
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
         GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
         //GameEventHandler.current.OnObjectActive += OnActivate;
-        _playerGrapeStackList = playerPoint.GetComponentInParent<PlayerGrapeStackList>();
+        _playerGrapeStackList = playerPoint.GetComponentInParent<PlayerStackList>();
         if (upgradeArea)
             upgradeArea.Activator += OnActivate;
     }
@@ -86,12 +86,12 @@ public class GrapeSpawner : MonoBehaviour
         
         if (_otherId.Type == ObjectID.ObjectType.Player && gatherable && !playerMax)
         {
-            GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
+            basketPrefab = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
             var playerStackPoint = _playerGrapeStackList.basketList[_playerGrapeStackList.basketList.Count -1];
-            basket.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
+            basketPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
             
-            _playerGrapeStackList.basketList.Add(basket.transform);
+            _playerGrapeStackList.basketList.Add(basketPrefab.transform);
             if (!growing)
             {
                 StopCoroutine(GrapeCounter());
