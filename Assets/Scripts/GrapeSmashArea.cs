@@ -1,32 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GrapeSmashArea : ObjectID
 {
-    public List<SmashBowlController> GrapeSmashPoint;
+    public List<SmashBowlController> grapeSmashPoint;
     private ObjectID _otherId;
 
-    [SerializeField] private PlayerStackList playerStackList;
-    private SmashBowlController smashBowlController;
+    private PlayerStackList _playerStackList;
+    //private SmashBowlController _smashBowlController;
+
+    private bool _find;
 
     private void OnTriggerStay(Collider other)
     {
-        if (!_otherId || !playerStackList)
+        if (!_otherId || !_playerStackList)
         {
             _otherId = other.gameObject.GetComponent<ObjectID>();
-            playerStackList = other.gameObject.GetComponent<PlayerStackList>();
+            _playerStackList = other.gameObject.GetComponent<PlayerStackList>();
         }
 
-        if (_otherId.Type == ObjectType.Player && playerStackList.stackList.Count >1)
+        _find = _playerStackList.stackList.FirstOrDefault((x => x.CompareTag("Basket")));
+       
+        if (_otherId.Type == ObjectType.Player && _find)
         {
-            for (int i = 0; i < GrapeSmashPoint.Count; i++)
+            for (int i = 0; i < grapeSmashPoint.Count; i++)
             {
-                if (GrapeSmashPoint[i].active && !GrapeSmashPoint[i].working)
+                if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working)
                 {
                     GameEventHandler.current.PlayerGrapeDropping(1);
-                    GrapeSmashPoint[i].PlayerGrapeDropping(1);
+                    grapeSmashPoint[i].PlayerGrapeDropping(1);
                     break;
                 }
             }

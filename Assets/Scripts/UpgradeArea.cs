@@ -116,7 +116,7 @@ public class UpgradeArea : ObjectID
                                     .OnComplete(() => {
                                         if (Type == ObjectType.GrapeSmash)
                                         {
-                                            grapeSmashArea.GrapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
+                                            grapeSmashArea.grapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
                                         }
                                     });
                             }

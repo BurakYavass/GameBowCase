@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using DG.Tweening.Core.Easing;
 using UnityEngine;
 
 public class PlayerStackList : ObjectID
@@ -21,7 +20,7 @@ public class PlayerStackList : ObjectID
     private bool tweenbool = false;
     public bool grapeStackMax = false;
 
-    private Transform find;
+    private bool find;
     private int findIndex;
 
     void Start()
@@ -38,17 +37,15 @@ public class PlayerStackList : ObjectID
 
     private void OnPlayerGrapeDropping(int value)
     {
+        find = stackList.FirstOrDefault((x => x.CompareTag("Basket")));
         stackCounter += value;
-        if (stackList.Count > 1)
+        if (stackList.Count > 1 && find)
         {
             //find = stackList.Find(x => x.name == Basket);
-            findIndex = stackList.FindIndex(x => x.CompareTag("Basket"));
-            //findIndex = stackList.FirstOrDefault((x => x.CompareTag("Basket")));
-            
             if (!tweenbool)
             {
                 tweenbool = true;
-                
+                findIndex = stackList.FindIndex(x => x.CompareTag("Basket"));
                 stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash).OnComplete((() =>
                 {
                     stackList.RemoveAt(findIndex);
