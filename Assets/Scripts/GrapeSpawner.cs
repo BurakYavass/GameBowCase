@@ -88,8 +88,8 @@ public class GrapeSpawner : MonoBehaviour
         {
             GameObject basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
-            var playerStackPoint = playerPoint.position;
-            basket.transform.DOJump(playerStackPoint, 5, 1, 0.25f).SetEase(Ease.OutFlash);
+            var playerStackPoint = _playerGrapeStackList.basketList[_playerGrapeStackList.basketList.Count -1];
+            basket.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
             
             _playerGrapeStackList.basketList.Add(basket.transform);
             if (!growing)

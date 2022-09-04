@@ -2154,6 +2154,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2254544147008695448, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254544147008695448, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600322425423916562, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.67
+      objectReference: {fileID: 0}
     - target: {fileID: 7045081117773183166, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: dropPoint
       value: 

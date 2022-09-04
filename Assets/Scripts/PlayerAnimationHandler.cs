@@ -17,23 +17,31 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void Update()
     {
-        if (playerController.walking)
-        {
-            playerAnimator.SetBool("walking", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("walking", false);
-        }
-
         if (_grapeStackList.basketList != null)
-            if (_grapeStackList.basketList.Count > 1)
+            if (_grapeStackList.basketList.Count > 1 && !playerController.walking)
+            {
+                playerAnimator.SetBool("carry", false);
+                playerAnimator.SetBool("carryidle",true);
+                playerAnimator.SetBool("walking", false);
+                
+            }
+            else if(_grapeStackList.basketList.Count > 1 && playerController.walking)
             {
                 playerAnimator.SetBool("carry", true);
+                playerAnimator.SetBool("carryidle",false);
             }
             else
             {
                 playerAnimator.SetBool("carry", false);
+                playerAnimator.SetBool("carryidle",false);
+                if (playerController.walking)
+                {
+                    playerAnimator.SetBool("walking", true);
+                }
+                else
+                {
+                    playerAnimator.SetBool("walking", false);
+                }
             }
     }
 }
