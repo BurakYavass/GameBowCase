@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class BarrelArea : ObjectID
@@ -9,30 +10,59 @@ public class BarrelArea : ObjectID
     [SerializeField] private GameObject barrelPrefab;
     [SerializeField] private Transform barrelSpawnPoint;
     [SerializeField] private float stackDistance;
-    
-    
+
+    private ObjectID _otherId;
+    [SerializeField] private PlayerStackList _playerGrapeStackList;
+
+    private bool once = false;
+
+
     void Start()
     {
         GameEventHandler.current.BarrelGenerate += CreateBarrel;
-        GameEventHandler.current.OnCollectBarrel += OnCollectBarrel;
     }
 
     private void OnDestroy()
     {
         GameEventHandler.current.BarrelGenerate -= CreateBarrel;
-        GameEventHandler.current.OnCollectBarrel -= OnCollectBarrel;
+    }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log("ontrigger");
+        if (!_otherId || !_playerGrapeStackList)
+        {
+            _otherId = other.GetComponent<ObjectID>();
+            _playerGrapeStackList = other.GetComponent<PlayerStackList>();
+        }
+            
+        if (_otherId.Type == ObjectType.Player)
+        {
+            if (!once)
+            {
+                OnCollectBarrel();
+            }
+            
+        }
     }
     
     private void OnCollectBarrel()
     {
-        Debug.Log("barrel collect event");
         for (int i = 0; i < barrelPoint.Count; i++)
         {
-            Debug.Log("barrel collect for");
-            if (barrelPoint.Count >0)
+            if (barrelPoint.Count >=0)
             {
-                Debug.Log("barrel collect if");
-                barrelPoint.RemoveAt(barrelPoint.Count-1);
+                once = true;
+                var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];
+                barrelPoint[barrelPoint.Count - 1].transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f)
+                                                                .SetEase(Ease.OutFlash)
+                                                                    .OnComplete((() =>
+                                                                    {
+                                                                        once = false;
+                                                                        barrelPoint.RemoveAt(barrelPoint.Count - 1);
+                                                                        _playerGrapeStackList.stackList.Add(barrelPrefab.transform);
+                                                                    }));
+                
                 break;
             }
         }

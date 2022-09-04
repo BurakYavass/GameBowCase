@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 5118289033983168545}
   - component: {fileID: 4593192019164947195}
   m_Layer: 0
-  m_Name: 'SEPET '
+  m_Name: Basket
   m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

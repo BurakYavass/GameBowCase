@@ -504,7 +504,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3.28
+  m_Height: 2.86
   m_Radius: 0.66
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -556,6 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   stackList: {fileID: 7045081117773183166}
+  _characterController: {fileID: 583776639}
 --- !u!114 &7045081117773183166
 MonoBehaviour:
   m_ObjectHideFlags: 0

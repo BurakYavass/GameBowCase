@@ -84,14 +84,14 @@ public class GrapeSpawner : ObjectID
         if (_otherId == null)
             _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if (_otherId.Type == ObjectID.ObjectType.Player && gatherable && !playerMax)
+        if (_otherId.Type == ObjectType.Player && gatherable && !playerMax)
         {
             basketPrefab = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
-            var playerStackPoint = _playerGrapeStackList.basketList[_playerGrapeStackList.basketList.Count -1];
+            var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];
             basketPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
             
-            _playerGrapeStackList.basketList.Add(basketPrefab.transform);
+            _playerGrapeStackList.stackList.Add(basketPrefab.transform);
             if (!growing)
             {
                 StopCoroutine(GrapeCounter());

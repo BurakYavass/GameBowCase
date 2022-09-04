@@ -19,7 +19,7 @@ public class GrapeSmashArea : ObjectID
             playerStackList = other.gameObject.GetComponent<PlayerStackList>();
         }
 
-        if (_otherId.Type == ObjectType.Player && playerStackList.basketList.Count >1)
+        if (_otherId.Type == ObjectType.Player && playerStackList.stackList.Count >1)
         {
             for (int i = 0; i < GrapeSmashPoint.Count; i++)
             {

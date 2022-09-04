@@ -22,13 +22,6 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action BarrelGenerate;
 
-    public event Action OnCollectBarrel;
-
-    public void BarrelCollect()
-    {
-        OnCollectBarrel?.Invoke();
-    }
-    
     public void BarrelGenerator()
     {
         BarrelGenerate?.Invoke();
