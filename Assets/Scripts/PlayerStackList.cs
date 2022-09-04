@@ -20,7 +20,7 @@ public class PlayerStackList : ObjectID
     private bool tweenbool = false;
     public bool grapeStackMax = false;
 
-    private bool find;
+    private Transform find;
     private int findIndex;
 
     void Start()
@@ -39,23 +39,21 @@ public class PlayerStackList : ObjectID
     {
         find = stackList.FirstOrDefault((x => x.CompareTag("Basket")));
         stackCounter += value;
-        if (stackList.Count > 1 && find)
+        if (stackList.Count > 0 && find)
         {
             //find = stackList.Find(x => x.name == Basket);
             if (!tweenbool)
             {
                 tweenbool = true;
                 findIndex = stackList.FindIndex(x => x.CompareTag("Basket"));
-                stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash).OnComplete((() =>
-                {
-                    stackList.RemoveAt(findIndex);
-                    
-                    tweenbool = false;
-                }));
+                //find = stackList.Find((x => x.CompareTag("Basket")));
+                
+                stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash)
+                     .OnComplete((() =>stackList.RemoveAt(findIndex)))
+                        .OnUpdate((() => tweenbool = false));
+                stackCounter -= value;
             }
-            stackCounter -= value;
-            // stackList[stackCounter].DOJump(dropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash);
-            // stackList.RemoveAt(stackCounter);
+            
             // stackCounter -= value;
         }
     }

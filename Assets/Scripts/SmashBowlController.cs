@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SmashBowlController : MonoBehaviour
 {
+    [SerializeField] private BarrelArea barrelArea;
     [SerializeField] private Animator grapeSmashGirl;
     [SerializeField] private int grapeNeeded = 4;
     [SerializeField] private float workTime = 5f;
@@ -32,13 +33,21 @@ public class SmashBowlController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (barrelArea.barrelAreaMax)
+        {
+            working = true;
+        }
+        else
+        {
+            working = false;
+        }
+        
         if (grapeCounter == grapeNeeded)
         {
             working = true;
             if (!once)
             {
                 StartCoroutine(SmashWorking());
-                grapeSmashGirl.SetBool("working", true);
                 once = true;
             }
         }
@@ -46,6 +55,7 @@ public class SmashBowlController : MonoBehaviour
 
     IEnumerator SmashWorking()
     {
+        grapeSmashGirl.SetBool("working", true);
         yield return new WaitForSeconds(workTime);
         grapeSmashGirl.SetBool("working", false);
         working = false;

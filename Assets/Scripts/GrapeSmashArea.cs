@@ -13,6 +13,7 @@ public class GrapeSmashArea : ObjectID
     //private SmashBowlController _smashBowlController;
 
     private bool _find;
+    private bool waiterr =false;
 
     private void OnTriggerStay(Collider other)
     {
@@ -26,16 +27,24 @@ public class GrapeSmashArea : ObjectID
        
         if (_otherId.Type == ObjectType.Player && _find)
         {
-            for (int i = 0; i < grapeSmashPoint.Count; i++)
+            for (var i = 0; i < grapeSmashPoint.Count; i++)
             {
-                if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working)
+                if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working && !waiterr)
                 {
+                    waiterr = true;
                     GameEventHandler.current.PlayerGrapeDropping(1);
                     grapeSmashPoint[i].PlayerGrapeDropping(1);
-                    break;
+                    StartCoroutine(waiter());
+                    return;
                 }
             }
         }
-        
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        waiterr = false;
+
     }
 }

@@ -16,6 +16,8 @@ public class BarrelArea : ObjectID
 
     private bool once = false;
 
+    public bool barrelAreaMax = false;
+
 
     void Start()
     {
@@ -50,7 +52,7 @@ public class BarrelArea : ObjectID
     {
         for (int i = 0; i < barrelPoint.Count; i++)
         {
-            if (barrelPoint.Count >=0)
+            if (barrelPoint.Count >=0 && !_playerGrapeStackList.grapeStackMax)
             {
                 once = true;
                 var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];
@@ -59,8 +61,8 @@ public class BarrelArea : ObjectID
                                                                     .OnComplete((() =>
                                                                     {
                                                                         once = false;
+                                                                        _playerGrapeStackList.stackList.Add(barrelPoint[barrelPoint.Count-1].transform);
                                                                         barrelPoint.RemoveAt(barrelPoint.Count - 1);
-                                                                        _playerGrapeStackList.stackList.Add(barrelPrefab.transform);
                                                                     }));
                 
                 break;
@@ -81,6 +83,14 @@ public class BarrelArea : ObjectID
     // Update is called once per frame
     void Update()
     {
+        if (barrelPoint.Count > 4)
+        {
+            barrelAreaMax = true;
+        }
+        else
+        {
+            barrelAreaMax = false;
+        }
         if (barrelPoint.Count > 1)
         {
             for (int i = 1; i < barrelPoint.Count; i++)
