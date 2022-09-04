@@ -498,6 +498,7 @@ MonoBehaviour:
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
   playerPoint: {fileID: 601345624}
   basketSpawnPoint: {fileID: 10195062}
+  upgradeArea: {fileID: 0}
 --- !u!65 &231569403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1411,6 +1412,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4466980242735434433, guid: 3e1a8f5579aff7e4093f5f7854e372fe, type: 3}
   m_PrefabInstance: {fileID: 763504644}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &817163851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 2031585181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &869091258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2610932055938540499, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
@@ -1502,6 +1514,10 @@ PrefabInstance:
       propertyPath: playerPoint
       value: 
       objectReference: {fileID: 601345624}
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 2091766090}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: basketSpawnPoint
       value: 
@@ -2079,6 +2095,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
+      propertyPath: speed
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 415279976, guid: 8beab2603eefc514189d8c19612ed387, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 564772405}
@@ -2423,6 +2443,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583258808}
   m_CullTransparentMesh: 1
+--- !u!114 &1584352524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 6538025684735899383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1611258329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3286,6 +3317,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 601345624}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 817163851}
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: _playerGrapeStackList
       value: 
       objectReference: {fileID: 966443001}
@@ -3418,6 +3453,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03650949, y: 0.019999996, z: 0.022095729}
   m_Center: {x: 0.000017385692, y: 9.937992e-13, z: 0.0010479215}
+--- !u!114 &2091766090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5549937144320752874, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+  m_PrefabInstance: {fileID: 958909573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0e9af6fa492a2409809e335efcf33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &87024357673139316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5893,6 +5939,10 @@ PrefabInstance:
       propertyPath: playerPoint
       value: 
       objectReference: {fileID: 601345624}
+    - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
+      propertyPath: upgradeArea
+      value: 
+      objectReference: {fileID: 1584352524}
     - target: {fileID: 1298706252, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
       propertyPath: _playerGrapeStackList
       value: 

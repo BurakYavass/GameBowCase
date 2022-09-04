@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -7,17 +8,18 @@ public class GrapeSpawner : MonoBehaviour
 {
     private bool once = false;
     private bool playerMax = false;
+    private bool growing = false;
     public bool active = false;
     public bool gatherable = false;
-    private bool growing = false;
     [SerializeField] private bool defaultTree;
 
     public float grapeSpawnTime = 10.0f;
     public List<GameObject> Grapes = new List<GameObject>(2);
-    [SerializeField] private GameObject basketPrefab;
     
+    [SerializeField] private GameObject basketPrefab;
     [SerializeField] private Transform playerPoint;
-    [SerializeField] private Transform basketSpawnPoint; 
+    [SerializeField] private Transform basketSpawnPoint;
+    [SerializeField] private UpgradeArea upgradeArea;
     private PlayerGrapeStackList _playerGrapeStackList;
     private ObjectID _otherId;
 
@@ -25,15 +27,20 @@ public class GrapeSpawner : MonoBehaviour
     {
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
         GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
-        GameEventHandler.current.OnObjectActive += OnActivate;
+        //GameEventHandler.current.OnObjectActive += OnActivate;
         _playerGrapeStackList = playerPoint.GetComponentInParent<PlayerGrapeStackList>();
+        if (upgradeArea)
+            upgradeArea.Activator += OnActivate;
     }
 
     private void OnDestroy()
     {
         GameEventHandler.current.PlayerGrapeStackMax -= GatherableChanger;
         GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
-        GameEventHandler.current.OnObjectActive -= OnActivate;
+        //GameEventHandler.current.OnObjectActive -= OnActivate;
+        if (upgradeArea)
+            upgradeArea.Activator -= OnActivate;
+        
     }
 
     private void OnActivate()
