@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class BarrelArea : ObjectID
+public class BarrelSpawnArea : ObjectID
 {
     public List<GameObject> barrelPoint;
     [SerializeField] private GameObject barrelPrefab;

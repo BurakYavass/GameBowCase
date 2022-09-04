@@ -48,8 +48,12 @@ public class PlayerStackList : ObjectID
                 findIndex = stackList.FindIndex(x => x.CompareTag("Basket"));
                 //find = stackList.Find((x => x.CompareTag("Basket")));
                 
-                stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash)
-                     .OnComplete((() =>stackList.RemoveAt(findIndex)))
+                stackList[findIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
+                     .OnComplete((() =>
+                     {
+                         //stackList[findIndex].gameObject.SetActive(false);
+                         stackList.RemoveAt(findIndex);
+                     }))
                         .OnUpdate((() => tweenbool = false));
                 stackCounter -= value;
             }
@@ -57,8 +61,8 @@ public class PlayerStackList : ObjectID
             // stackCounter -= value;
         }
     }
-    
-    void Update()
+
+    private void Update()
     {
         if (stackList.Count >= grapeMaxStack)
         {

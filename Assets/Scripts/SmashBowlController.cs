@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SmashBowlController : MonoBehaviour
 {
-    [SerializeField] private BarrelArea barrelArea;
+    [SerializeField] private BarrelSpawnArea barrelSpawnArea;
     [SerializeField] private Animator grapeSmashGirl;
     [SerializeField] private int grapeNeeded = 4;
     [SerializeField] private float workTime = 5f;
@@ -33,7 +33,7 @@ public class SmashBowlController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (barrelArea.barrelAreaMax)
+        if (barrelSpawnArea.barrelAreaMax)
         {
             working = true;
         }
