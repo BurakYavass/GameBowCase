@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Joystick joystick;
+    private CharacterController _characterController;
 
     //private float _currentMoveMultiplier;
     
@@ -16,6 +17,11 @@ public class PlayerController : MonoBehaviour
 
     public bool walking = false;
     private bool once = false;
+
+    private void Awake()
+    {
+        _characterController = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
@@ -57,7 +63,8 @@ public class PlayerController : MonoBehaviour
         
         //var position = transform.position + transform.forward.normalized * (speed * dot * Time.fixedDeltaTime);
 
-        transform.position += movementVector.normalized * (speed * Time.deltaTime);
+        //transform.position += movementVector.normalized * (speed * Time.deltaTime);
+        _characterController.Move(movementVector.normalized * (speed * Time.deltaTime));
 
         if (inputVector.magnitude > 0)
         {
