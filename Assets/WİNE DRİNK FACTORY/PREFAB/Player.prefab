@@ -556,8 +556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  stackList: {fileID: 7045081117773183166}
-  _characterController: {fileID: 583776639}
 --- !u!114 &7045081117773183166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,11 +571,12 @@ MonoBehaviour:
   Type: 0
   stackList: []
   stackPoint: {fileID: 2600322425423916562}
-  dropPoint: {fileID: 0}
-  grapeMaxStack: 5
+  grapeDropPoint: {fileID: 0}
+  barrelDropPoint: {fileID: 0}
+  maxStack: 5
   stackSpeed: 1
-  stackHeight: 1.6
-  grapeStackMax: 0
+  stackHeight: 2.3
+  stackMax: 0
 --- !u!1 &1865036524626325409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,7 +2610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8617861601233154239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.184, z: 0.58}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1784277065439038333}

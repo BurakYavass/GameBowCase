@@ -31,6 +31,50 @@ Transform:
   m_Father: {fileID: 26847269242167775}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2568768032498362401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9089961129592117824}
+  - component: {fileID: 324365881337114909}
+  m_Layer: 0
+  m_Name: Chair (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: e676ab7aa99535447a763c9f88bf9260, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9089961129592117824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568768032498362401}
+  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
+  m_LocalPosition: {x: -0.0285, y: 0.302, z: -0.0825}
+  m_LocalScale: {x: 0.010000001, y: 0.027015533, z: 0.03295571}
+  m_Children: []
+  m_Father: {fileID: 1933765683301755264}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+--- !u!114 &324365881337114909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568768032498362401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c092d77b19dc826469a377bdf276d8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deskState: 0
 --- !u!1 &3612184666671916266
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +240,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6183139337361182315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9089350406788347656}
+  - component: {fileID: 4153477049178478359}
+  m_Layer: 0
+  m_Name: Chair (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: e676ab7aa99535447a763c9f88bf9260, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9089350406788347656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183139337361182315}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.0285, y: 0.0622, z: -0.0825}
+  m_LocalScale: {x: 0.010000001, y: 0.027015533, z: 0.03295571}
+  m_Children: []
+  m_Father: {fileID: 1933765683301755264}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &4153477049178478359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183139337361182315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c092d77b19dc826469a377bdf276d8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deskState: 0
 --- !u!1 &7557214237799382050
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +360,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933765683301755264}
-  - component: {fileID: 2760600704601988075}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -292,22 +379,11 @@ Transform:
   m_LocalScale: {x: 100, y: 30.343754, z: 37.015736}
   m_Children:
   - {fileID: 8982299603341222027}
+  - {fileID: 9089350406788347656}
+  - {fileID: 9089961129592117824}
   m_Father: {fileID: 26847269242167775}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
---- !u!114 &2760600704601988075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8150428989195965709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c092d77b19dc826469a377bdf276d8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deskState: 0
 --- !u!1001 &4308301789586987651
 PrefabInstance:
   m_ObjectHideFlags: 0
