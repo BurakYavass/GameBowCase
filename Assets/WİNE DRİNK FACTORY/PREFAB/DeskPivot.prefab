@@ -128,8 +128,8 @@ GameObject:
   m_Name: Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8982299603341222027
 Transform:
@@ -256,7 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
-  upgradeObject: 1
   activatedGameObject: {fileID: 8150428989195965709}
   deactivatedObject: {fileID: 40735298533961919}
   grapeSmashArea: {fileID: 0}
