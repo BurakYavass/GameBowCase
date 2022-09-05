@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -11,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform customerSpawnPoint;
 
-    public List<AgentAI> customerList;
+    public List<GameObject> customerList;
 
     // [SerializeField] private UiManager uiManager;
     // [SerializeField] private PlayerController playerController;
@@ -38,42 +40,27 @@ public class GameManager : MonoBehaviour
         GameEventHandler.current.ActiveEmptyDesk += AgentCreator;
         Application.targetFrameRate = 60;
         DOTween.Init();
-        customerPrefab = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
-        customerList.Add(customerPrefab.GetComponent<AgentAI>());
     }
     private void OnDestroy()
     {
         GameEventHandler.current.OnUpgradeTriggerEnter -= PlayerMoneyDecrease;
         GameEventHandler.current.ActiveEmptyDesk -= AgentCreator;
     }
-
+    
     private void AgentCreator(Vector3 emptyDesk,Vector3 bos)
     {
-        // customerPrefab = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
-        // customerList.Add(customerPrefab.GetComponent<AgentAI>());
-        for (var i = 0; i < customerList.Count; i++)
-        {
-            if (customerList.Count >0)
-            {
-                customerList[i].deskPoint = emptyDesk;
-                DeskArea.current.Desks[i].deskState = ChairCheck.DeskState.Full;
-                return;
-            }
-        }
+        var clone = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
+        customerList.Add(customerPrefab);
+        //customerPrefab.AddComponent<AgentAI>();
+        var agent = clone.GetComponent<AgentAI>();
+        agent.destinationPoint = emptyDesk;
+        agent.forward = bos;
     }
     
     private void PlayerMoneyDecrease(float value)
     {
-        // moneyTween.Play();
         playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
-        
-        // if (!once)
-        // {
-        //     once = true;
-        //     moneyTween = DOTween.To(() => playerGold, x => playerGold = x, value, UpgradeDuration).OnComplete((() => once = false));
-        //
-        // }
-            
     }
+    
 
 }

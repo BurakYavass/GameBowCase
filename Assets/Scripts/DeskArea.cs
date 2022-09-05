@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +6,7 @@ public class DeskArea : ObjectID
 {
     public static DeskArea current;
     public List<ChairCheck> Desks;
+    private bool once = false;
 
     private void Awake()
     {
@@ -16,15 +16,27 @@ public class DeskArea : ObjectID
         }
     }
     
+    
     void Update()
     {
         for (var i = 0; i < Desks.Count; i++)
         {
-            if (Desks[i].deskState == ChairCheck.DeskState.Empty)
+            if (Desks[i].deskState == ChairCheck.DeskState.Empty && !once)
             {
+                once = true;
                 GameEventHandler.current.EmptyDesk(Desks[i].transform.position, Desks[i].transform.eulerAngles);
+                Desks[i].deskState = ChairCheck.DeskState.Full;
+                StopCoroutine(Waiter());
+                StartCoroutine(Waiter());
                 return;
             }
         }
+    }
+
+    IEnumerator Waiter()
+    {
+        yield return new WaitForSeconds(10f);
+        once = false;
+        yield return null;
     }
 }
