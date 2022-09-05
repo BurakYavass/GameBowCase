@@ -6,7 +6,7 @@ using UnityEngine;
 public class FullBarrelArea : ObjectID
 {
     public List<Transform> Barrels;
-
+    [SerializeField] private GameObject barBarrel;
     [SerializeField] private PlayerStackList _playerStackList;
 
     public bool barrelsMax =false;
@@ -37,6 +37,10 @@ public class FullBarrelArea : ObjectID
     // Update is called once per frame
     void Update()
     {
+        // if (barrelCount > 0)
+        // {
+        //     barBarrel.SetActive(true);
+        // }
         if (barrelCount == 6)
         {
             barrelsMax = true;
