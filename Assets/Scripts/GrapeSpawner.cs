@@ -26,7 +26,7 @@ public class GrapeSpawner : ObjectID
     private void Start()
     {
         GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
-        GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
+        //GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
         //GameEventHandler.current.OnObjectActive += OnActivate;
         _playerGrapeStackList = playerPoint.GetComponentInParent<PlayerStackList>();
         if (upgradeArea)
@@ -36,7 +36,7 @@ public class GrapeSpawner : ObjectID
     private void OnDestroy()
     {
         GameEventHandler.current.PlayerGrapeStackMax -= GatherableChanger;
-        GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
+        //GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
         //GameEventHandler.current.OnObjectActive -= OnActivate;
         if (upgradeArea)
             upgradeArea.Activator -= OnActivate;

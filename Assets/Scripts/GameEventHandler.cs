@@ -18,6 +18,7 @@ public class GameEventHandler : MonoBehaviour
     public event Action<int> OnPlayerGrapeDropping;
 
     public event Action OnPlayerBarrelDropping;
+    
     public event Action PlayerGrapeStackMax;
 
     public event Action BarrelGenerate;

@@ -31,7 +31,6 @@ public class BarrelSpawnArea : ObjectID
     
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("ontrigger");
         if (!_otherId || !_playerGrapeStackList)
         {
             _otherId = other.GetComponent<ObjectID>();
