@@ -18,7 +18,10 @@ public class FullBarrelArea : ObjectID
 
     private void Awake()
     {
-        current = this;
+        if (current == null)
+        {
+            current = this;
+        }
     }
     
     void Start()

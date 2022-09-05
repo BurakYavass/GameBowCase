@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : ObjectID
 {
+    public static PlayerController current;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Joystick joystick;
     private CharacterController _characterController;
@@ -20,6 +21,11 @@ public class PlayerController : ObjectID
 
     private void Awake()
     {
+        if (current == null)
+        {
+            current = this;
+        }
+        
         _characterController = GetComponent<CharacterController>();
     }
 

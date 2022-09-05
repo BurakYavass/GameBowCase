@@ -1,10 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeskArea : MonoBehaviour
+public class DeskArea : ObjectID
 {
-    // Start is called before the first frame update
+    public static DeskArea current;
+    public List<GameObject> Desks;
+
+    private void Awake()
+    {
+        if (current == null)
+        {
+            current = this;
+        }
+    }
+
     void Start()
     {
         

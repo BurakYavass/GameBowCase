@@ -1,10 +1,13 @@
-using System;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager current;
+
+    [SerializeField] private GameObject customer;
+
+    [SerializeField] private Transform customerSpawnPoint;
     // [SerializeField] private UiManager uiManager;
     // [SerializeField] private PlayerController playerController;
     //
@@ -16,6 +19,14 @@ public class GameManager : MonoBehaviour
     public static readonly float UpgradeDuration = 2.0f;
     
     private Tween moneyTween;
+
+    private void Awake()
+    {
+        if (current == null)
+        {
+            current = this;
+        }
+    }
 
     void Start()
     {

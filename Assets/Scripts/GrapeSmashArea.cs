@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GrapeSmashArea : ObjectID
 {
+    public static GrapeSmashArea current;
     public List<SmashBowlController> grapeSmashPoint;
     private ObjectID _otherId;
 
@@ -14,6 +15,14 @@ public class GrapeSmashArea : ObjectID
 
     private bool _find;
     private bool waiterr =false;
+
+    private void Awake()
+    {
+        if (current == null)
+        {
+            current = this;
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {

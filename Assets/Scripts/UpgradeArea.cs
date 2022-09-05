@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class UpgradeArea : ObjectID
 {
-    private GameManager _gameManager;
     private PlayerController _otherId;
     private Tween _requireMoneyTween;
 
     public event Action Activator;
     [SerializeField] private GameObject activatedGameObject;
     [SerializeField] private GameObject deactivatedObject;
-    
-    [SerializeField] private GrapeSmashArea grapeSmashArea;
 
     [SerializeField] private Image fillImage;
     [SerializeField] private Image notEnoughImage;
@@ -29,11 +26,7 @@ public class UpgradeArea : ObjectID
     
     private bool _warningAnim = false;
     private bool _once = false;
-
-    private void Awake()
-    {
-        _gameManager = FindObjectOfType<GameManager>();
-    }
+    
 
     void Start()
     {
@@ -57,11 +50,11 @@ public class UpgradeArea : ObjectID
         if (_otherId == null)
             _otherId = other.gameObject.GetComponent<PlayerController>();
         //var gold = _gameManager.playerGold - requireMoney;
-        if(_otherId != null && _otherId.Type == ObjectType.Player && _gameManager.playerGold > 0 )
+        if(_otherId != null && _otherId.Type == ObjectType.Player && GameManager.current.playerGold > 0 )
         {
             MoneyDecrease_ObjectControl();
         }
-        else if (_otherId != null && _otherId.Type == ObjectType.Player &&_gameManager.playerGold == 0)
+        else if (_otherId != null && _otherId.Type == ObjectType.Player &&GameManager.current.playerGold == 0)
         {
             fillImage.DOPause();
             _requireMoneyTween.Pause();
@@ -116,7 +109,11 @@ public class UpgradeArea : ObjectID
                                     .OnComplete(() => {
                                         if (Type == ObjectType.GrapeSmash)
                                         {
-                                            grapeSmashArea.grapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
+                                            GrapeSmashArea.current.grapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
+                                        }
+                                        else if(Type == ObjectType.Desk)
+                                        {
+                                            DeskArea.current.Desks.Add(activatedGameObject);
                                         }
                                     });
                             }
