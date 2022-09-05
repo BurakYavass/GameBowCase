@@ -31,7 +31,7 @@ public class PlayerStackList : ObjectID
     void Start()
     {
         GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
-        GameEventHandler.current.OnPlayerBarrelDropping += PlayerBarrelDropping;
+        GameEventHandler.current.OnPlayerBarrelDropping += OnPlayerBarrelDropping;
         DOTween.Init();
         stackList.Add(stackPoint);
     }
@@ -39,9 +39,9 @@ public class PlayerStackList : ObjectID
     private void OnDestroy()
     {
         GameEventHandler.current.OnPlayerGrapeDropping -= OnPlayerGrapeDropping;
-        GameEventHandler.current.OnPlayerBarrelDropping -= PlayerBarrelDropping;
+        GameEventHandler.current.OnPlayerBarrelDropping -= OnPlayerBarrelDropping;
     }
-    private void PlayerBarrelDropping()
+    private void OnPlayerBarrelDropping()
     {
         barrelIndex = stackList.FindIndex(x => x.CompareTag("Barrel"));
         if (stackList.Count > 0 && barrelIndex >0 && !FullBarrelArea.current.barrelsMax)

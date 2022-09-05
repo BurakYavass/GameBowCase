@@ -2453,7 +2453,7 @@ Transform:
   - {fileID: 451928865}
   - {fileID: 1458579931}
   m_Father: {fileID: 5321659880782401545}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1202612407
 MonoBehaviour:
@@ -2479,7 +2479,6 @@ MonoBehaviour:
   - {fileID: 163577850}
   - {fileID: 1428153374}
   - {fileID: 451928865}
-  barBarrel: {fileID: 858627702}
   _playerStackList: {fileID: 966443001}
 --- !u!65 &1202612408
 BoxCollider:
@@ -2711,7 +2710,7 @@ Transform:
   - {fileID: 915335038}
   - {fileID: 1646561892}
   m_Father: {fileID: 5321659880782401545}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347317494
 GameObject:
@@ -3284,36 +3283,6 @@ Transform:
   - {fileID: 1420594992}
   m_Father: {fileID: 3215993119990678563}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1524975122
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1524975123}
-  m_Layer: 0
-  m_Name: WineGlass
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1524975123
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524975122}
-  m_LocalRotation: {x: 0.00000013767877, y: -0.7071068, z: -0.70710677, w: 0.00000013767878}
-  m_LocalPosition: {x: -0.045159236, y: 0.031508036, z: -0.013388864}
-  m_LocalScale: {x: 0.0012411951, y: 0.0049998118, z: 0.0036465675}
-  m_Children: []
-  m_Father: {fileID: 5321659880782401545}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583258808
 GameObject:
@@ -6001,7 +5970,6 @@ Transform:
   m_LocalScale: {x: 805.67505, y: 274.2305, z: 200.00754}
   m_Children:
   - {fileID: 4158895911370667179}
-  - {fileID: 1524975123}
   - {fileID: 1295001419}
   - {fileID: 1202612406}
   m_Father: {fileID: 3215993119990678563}

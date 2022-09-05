@@ -12,7 +12,6 @@ public class FullBarrelArea : ObjectID
     
     public List<Transform> Barrels;
     private ObjectID _otherId;
-    [SerializeField] private GameObject barBarrel;
     [SerializeField] private PlayerStackList _playerStackList;
     
     public static FullBarrelArea current;
@@ -42,7 +41,7 @@ public class FullBarrelArea : ObjectID
     // Update is called once per frame
     void Update()
     {
-        if (barBarrel)
+        if (Barrels[0].gameObject.activeInHierarchy)
         {
             barIsWorkable = true;
         }
