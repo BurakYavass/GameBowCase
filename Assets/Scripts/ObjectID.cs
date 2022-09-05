@@ -12,6 +12,7 @@ public class ObjectID : MonoBehaviour
         GrapeSmash,
         BarrelArea,
         Barrel,
+        Bar,
     }
     public ObjectType Type;
 }

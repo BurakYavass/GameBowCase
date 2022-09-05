@@ -18,8 +18,6 @@ public class GameEventHandler : MonoBehaviour
     public event Action<int> OnPlayerGrapeDropping;
 
     public event Action OnPlayerBarrelDropping;
-    
-    public event Action PlayerGrapeStackMax;
 
     public event Action BarrelGenerate;
 
@@ -32,12 +30,7 @@ public class GameEventHandler : MonoBehaviour
     {
         BarrelGenerate?.Invoke();
     }
-
-    public void GrapeStackMax()
-    {
-        PlayerGrapeStackMax?.Invoke();
-    }
-
+    
     public void PlayerGrapeDropping(int value)
     {
         OnPlayerGrapeDropping?.Invoke(value);

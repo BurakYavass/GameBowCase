@@ -51,7 +51,7 @@ public class BarrelSpawnArea : ObjectID
     {
         for (int i = 0; i < barrelPoint.Count; i++)
         {
-            if (barrelPoint.Count >=0 && !_playerGrapeStackList.grapeStackMax)
+            if (barrelPoint.Count >=0 && !_playerGrapeStackList.stackMax)
             {
                 once = true;
                 var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];

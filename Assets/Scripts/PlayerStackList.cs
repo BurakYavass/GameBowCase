@@ -14,13 +14,13 @@ public class PlayerStackList : ObjectID
     [SerializeField] private Transform barrelDropPoint;
     private int stackCounter = 0;
 
-    [SerializeField] private int grapeMaxStack = 5;
+    [SerializeField] private int maxStack = 5;
     [SerializeField] private float stackSpeed;
     [SerializeField] private float stackHeight;
 
     private bool once = false;
     private bool tweenbool = false;
-    public bool grapeStackMax = false;
+    public bool stackMax = false;
 
     private int barrelIndex;
     private int basketIndex;
@@ -44,7 +44,7 @@ public class PlayerStackList : ObjectID
     private void PlayerBarrelDropping()
     {
         barrelIndex = stackList.FindIndex(x => x.CompareTag("Barrel"));
-        if (stackList.Count > 0 && barrelIndex >0)
+        if (stackList.Count > 0 && barrelIndex >0 && !FullBarrelArea.current.barrelsMax)
         {
             if (!tweenbool)
             {
@@ -70,7 +70,7 @@ public class PlayerStackList : ObjectID
             if (!tweenbool)
             {
                 tweenbool = true;
-                stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
+                stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash)
                      .OnComplete((() =>
                      {
                          //stackList[findIndex].gameObject.SetActive(false);
@@ -84,23 +84,13 @@ public class PlayerStackList : ObjectID
 
     private void Update()
     {
-        if (stackList.Count >= grapeMaxStack)
+        if (stackList.Count >= maxStack)
         {
-            if (!once)
-            {
-                grapeStackMax = true;
-                GameEventHandler.current.GrapeStackMax();
-                once = true;
-            }
+            stackMax = true;
         }
-        else if (stackList.Count < grapeMaxStack)
+        else if (stackList.Count < maxStack)
         {
-            if (once)
-            {
-                grapeStackMax = false;
-                GameEventHandler.current.GrapeStackMax();
-                once = false;
-            }
+            stackMax = false;
         }
         
         if (stackList.Count > 1)

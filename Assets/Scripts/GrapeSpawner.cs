@@ -7,7 +7,6 @@ using UnityEngine;
 public class GrapeSpawner : ObjectID
 {
     private bool once = false;
-    private bool playerMax = false;
     private bool growing = false;
     public bool active = false;
     public bool gatherable = false;
@@ -20,22 +19,20 @@ public class GrapeSpawner : ObjectID
     [SerializeField] private Transform playerPoint;
     [SerializeField] private Transform basketSpawnPoint;
     [SerializeField] private UpgradeArea upgradeArea;
-    private PlayerStackList _playerGrapeStackList;
+    private PlayerStackList _playerStackList;
     private ObjectID _otherId;
 
     private void Start()
     {
-        GameEventHandler.current.PlayerGrapeStackMax += GatherableChanger;
         //GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
         //GameEventHandler.current.OnObjectActive += OnActivate;
-        _playerGrapeStackList = playerPoint.GetComponentInParent<PlayerStackList>();
+        _playerStackList = playerPoint.GetComponentInParent<PlayerStackList>();
         if (upgradeArea)
             upgradeArea.Activator += OnActivate;
     }
 
     private void OnDestroy()
     {
-        GameEventHandler.current.PlayerGrapeStackMax -= GatherableChanger;
         //GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
         //GameEventHandler.current.OnObjectActive -= OnActivate;
         if (upgradeArea)
@@ -64,19 +61,6 @@ public class GrapeSpawner : ObjectID
     {
         
     }
-
-    private void GatherableChanger()
-    {
-        if (playerMax)
-        {
-            playerMax = false;
-        }
-        else if(!playerMax)
-        {
-            playerMax = true;
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!active)
@@ -84,14 +68,14 @@ public class GrapeSpawner : ObjectID
         if (_otherId == null)
             _otherId = other.gameObject.GetComponent<ObjectID>();
         
-        if (_otherId.Type == ObjectType.Player && gatherable && !playerMax)
+        if (_otherId.Type == ObjectType.Player && gatherable && !_playerStackList.stackMax)
         {
             basketPrefab = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
-            var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];
+            var playerStackPoint = _playerStackList.stackList[_playerStackList.stackList.Count -1];
             basketPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
             
-            _playerGrapeStackList.stackList.Add(basketPrefab.transform);
+            _playerStackList.stackList.Add(basketPrefab.transform);
             if (!growing)
             {
                 StopCoroutine(GrapeCounter());

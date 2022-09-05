@@ -5,18 +5,23 @@ using UnityEngine;
 
 public class FullBarrelArea : ObjectID
 {
-    public List<Transform> Barrels;
-    [SerializeField] private GameObject barBarrel;
-    [SerializeField] private PlayerStackList _playerStackList;
-
     public bool barrelsMax =false;
-
-    private ObjectID _otherId;
-
+    public bool barIsWorkable =false;
     public int barrelCount;
     private int barrelCountMax = 6;
+    
+    public List<Transform> Barrels;
+    private ObjectID _otherId;
+    [SerializeField] private GameObject barBarrel;
+    [SerializeField] private PlayerStackList _playerStackList;
+    
+    public static FullBarrelArea current;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        current = this;
+    }
+    
     void Start()
     {
         _playerStackList.Dropping += PlayerBarrelDropping;
@@ -37,10 +42,14 @@ public class FullBarrelArea : ObjectID
     // Update is called once per frame
     void Update()
     {
-        // if (barrelCount > 0)
-        // {
-        //     barBarrel.SetActive(true);
-        // }
+        if (barBarrel)
+        {
+            barIsWorkable = true;
+        }
+        else
+        {
+            barIsWorkable = false;
+        }
         if (barrelCount == 6)
         {
             barrelsMax = true;
