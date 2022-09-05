@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         GameEventHandler.current.ActiveEmptyDesk -= AgentCreator;
     }
 
-    private void AgentCreator(Vector3 emptyDesk)
+    private void AgentCreator(Vector3 emptyDesk,Vector3 bos)
     {
         // customerPrefab = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
         // customerList.Add(customerPrefab.GetComponent<AgentAI>());
@@ -56,15 +56,12 @@ public class GameManager : MonoBehaviour
             if (customerList.Count >0)
             {
                 customerList[i].deskPoint = emptyDesk;
-                DeskArea.current.Desks[i].deskState = DeskCheck.DeskState.Full;
+                DeskArea.current.Desks[i].deskState = ChairCheck.DeskState.Full;
                 return;
             }
         }
     }
-
     
-
-
     private void PlayerMoneyDecrease(float value)
     {
         // moneyTween.Play();

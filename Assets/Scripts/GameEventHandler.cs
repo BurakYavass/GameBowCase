@@ -21,12 +21,12 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action BarrelGenerate;
 
-    public event Action<Vector3> ActiveEmptyDesk;
+    public event Action<Vector3,Vector3> ActiveEmptyDesk;
     
 
-    public void EmptyDesk(Vector3 desk)
+    public void EmptyDesk(Vector3 desk, Vector3 deskRotation)
     {
-        ActiveEmptyDesk?.Invoke(desk);
+        ActiveEmptyDesk?.Invoke(desk,deskRotation);
     }
 
     public void BarrelDropping()

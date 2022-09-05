@@ -6,7 +6,7 @@ using UnityEngine;
 public class DeskArea : ObjectID
 {
     public static DeskArea current;
-    public List<DeskCheck> Desks;
+    public List<ChairCheck> Desks;
 
     private void Awake()
     {
@@ -20,9 +20,9 @@ public class DeskArea : ObjectID
     {
         for (var i = 0; i < Desks.Count; i++)
         {
-            if (Desks[i].deskState == DeskCheck.DeskState.Empty)
+            if (Desks[i].deskState == ChairCheck.DeskState.Empty)
             {
-                GameEventHandler.current.EmptyDesk(Desks[i].transform.position);
+                GameEventHandler.current.EmptyDesk(Desks[i].transform.position, Desks[i].transform.eulerAngles);
                 return;
             }
         }

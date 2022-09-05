@@ -2,16 +2,22 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DeskCheck : MonoBehaviour
+public class ChairCheck : MonoBehaviour
 {
-    private bool deskEmpty = false;
     public DeskState deskState;
+
+    private void OnEnable()
+    {
+        StateChanger(DeskState.Empty);
+    }
 
     private void StateChanger(DeskState state)
     {
         deskState = state;
         switch (state)
         {
+            case DeskState.None:
+                break;
             case DeskState.Empty:
                 break;
             case DeskState.Full:
@@ -22,6 +28,7 @@ public class DeskCheck : MonoBehaviour
     }
     public enum DeskState
    {
+       None,
        Empty,
        Full,
    }
