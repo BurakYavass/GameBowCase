@@ -258,7 +258,6 @@ MonoBehaviour:
   Type: 3
   activatedGameObject: {fileID: 8150428989195965709}
   deactivatedObject: {fileID: 40735298533961919}
-  grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 6502759140382686263}
   notEnoughImage: {fileID: 4189590004030816437}
   upgradeRequire: {fileID: 5727005269314147216}
@@ -273,6 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933765683301755264}
+  - component: {fileID: 2760600704601988075}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -295,6 +295,19 @@ Transform:
   m_Father: {fileID: 26847269242167775}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!114 &2760600704601988075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150428989195965709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c092d77b19dc826469a377bdf276d8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deskState: 0
 --- !u!1001 &4308301789586987651
 PrefabInstance:
   m_ObjectHideFlags: 0

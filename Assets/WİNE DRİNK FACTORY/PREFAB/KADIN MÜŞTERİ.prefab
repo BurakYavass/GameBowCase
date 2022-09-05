@@ -580,8 +580,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2457301255610157640}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 993.97, y: 33.32, z: 179.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7261738083103740271}
@@ -594,7 +594,7 @@ Transform:
   - {fileID: 7688852936190989101}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3376432709920290583
 Animator:
   serializedVersion: 3
@@ -623,8 +623,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 2457301255610157640}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.43
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -635,7 +635,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &2590928084960120224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd25d76d73d3654392a3b5f1a04beac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deskPoint: {x: 0, y: 0, z: 0}
+  geldik: 0
 --- !u!1 &3225806392754943327
 GameObject:
   m_ObjectHideFlags: 0

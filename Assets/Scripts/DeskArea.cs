@@ -6,7 +6,7 @@ using UnityEngine;
 public class DeskArea : ObjectID
 {
     public static DeskArea current;
-    public List<GameObject> Desks;
+    public List<DeskCheck> Desks;
 
     private void Awake()
     {
@@ -15,15 +15,16 @@ public class DeskArea : ObjectID
             current = this;
         }
     }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        for (var i = 0; i < Desks.Count; i++)
+        {
+            if (Desks[i].deskState == DeskCheck.DeskState.Empty)
+            {
+                GameEventHandler.current.EmptyDesk(Desks[i].transform.position);
+                return;
+            }
+        }
     }
 }

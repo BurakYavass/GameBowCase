@@ -113,7 +113,7 @@ public class UpgradeArea : ObjectID
                                         }
                                         else if(Type == ObjectType.Desk)
                                         {
-                                            DeskArea.current.Desks.Add(activatedGameObject);
+                                            DeskArea.current.Desks.Add(activatedGameObject.GetComponent<DeskCheck>());
                                         }
                                     });
                             }

@@ -21,6 +21,14 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action BarrelGenerate;
 
+    public event Action<Vector3> ActiveEmptyDesk;
+    
+
+    public void EmptyDesk(Vector3 desk)
+    {
+        ActiveEmptyDesk?.Invoke(desk);
+    }
+
     public void BarrelDropping()
     {
         OnPlayerBarrelDropping?.Invoke();
