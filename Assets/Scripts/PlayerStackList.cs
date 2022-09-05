@@ -70,7 +70,7 @@ public class PlayerStackList : ObjectID
             if (!tweenbool)
             {
                 tweenbool = true;
-                stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .5f).SetEase(Ease.OutFlash)
+                stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                      .OnComplete((() =>
                      {
                          //stackList[findIndex].gameObject.SetActive(false);

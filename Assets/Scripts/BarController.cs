@@ -23,7 +23,7 @@ public class BarController : ObjectID
             glassPrefab = Instantiate(glassPrefab,glassSpawnPoint.position,glassPrefab.transform.rotation)as GameObject;
 
             var playerStackPoint = _playerStackList.stackList[_playerStackList.stackList.Count -1];
-            glassPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
+            glassPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.5f).SetEase(Ease.OutFlash);
             
             _playerStackList.stackList.Add(glassPrefab.transform);
         }
