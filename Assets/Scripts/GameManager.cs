@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject customerPrefab;
 
     [SerializeField] private Transform customerSpawnPoint;
+    [SerializeField] private UiManager _uiManager;
 
     public float playerGold = 100;
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
         GameEventHandler.current.ActiveEmptyDesk += AgentCreator;
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         DOTween.Init();
     }
     private void OnDestroy()
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
         //playerGold + money;
         money = Mathf.Clamp(money, 0, 10);
         playerGold  += money;
+        //_uiManager.MoneyInstant();
+        
     }
     
 }
