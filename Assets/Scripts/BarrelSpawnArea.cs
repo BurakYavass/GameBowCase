@@ -27,25 +27,7 @@ public class BarrelSpawnArea : ObjectID
     {
         GameEventHandler.current.BarrelGenerate -= CreateBarrel;
     }
-    
-    // private void OnTriggerStay(Collider other)
-    // {
-    //     if (!_otherId || !_playerGrapeStackList)
-    //     {
-    //         _otherId = other.GetComponent<ObjectID>();
-    //         _playerGrapeStackList = other.GetComponent<PlayerStackList>();
-    //     }
-    //         
-    //     if (_otherId.Type == ObjectType.Player)
-    //     {
-    //         if (!once)
-    //         {
-    //             OnCollectBarrel();
-    //         }
-    //         
-    //     }
-    // }
-    
+
     public void OnCollectBarrel()
     {
         if (!once)

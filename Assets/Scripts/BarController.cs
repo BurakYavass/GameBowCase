@@ -30,9 +30,6 @@ public class BarController : ObjectID
     {
         if (spawnCounter == spawnMax)
         {
-           // FullBarrelArea.current.BarrelSetter();
-            //spawnCounter--;
-
             FullBarrelArea.current.Barrels[0].gameObject.SetActive(false);
             spawnCounter = 0;
         }

@@ -16,11 +16,6 @@ public class PlayerCollisionHandler : ObjectID
                 PlayerStackList.current.OnPlayerWineGlassDropping(agentAI.dropPoint,agentAI);
             }
         }
-        // else if (otherId.Type == ObjectType.Grape)
-        // {
-        //     var otherObje = enter.GetComponent<GrapeSpawner>();
-        //     otherObje.PlayerGathering();
-        // }
     }
 
     private void OnTriggerStay(Collider other)

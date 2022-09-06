@@ -11,7 +11,6 @@ public class GrapeSmashArea : ObjectID
     private ObjectID _otherId;
 
     private PlayerStackList _playerStackList;
-    //private SmashBowlController _smashBowlController;
 
     private bool _find;
     private bool waiterr =false;
@@ -49,30 +48,6 @@ public class GrapeSmashArea : ObjectID
              }
          }
     }
-
-    // public void PlayerOnGrapeSmashArea()
-    // {
-    //     if (!_playerStackList)
-    //     {
-    //         _playerStackList = PlayerStackList.current;
-    //     }
-    //     _find = _playerStackList.stackList.FirstOrDefault((x => x.CompareTag("Basket")));
-    //     
-    //     if (_find)
-    //     {
-    //         for (var i = 0; i < grapeSmashPoint.Count; i++)
-    //         {
-    //             if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working && !waiterr)
-    //             {
-    //                 waiterr = true;
-    //                 //GameEventHandler.current.PlayerGrapeDropping(1);
-    //                 grapeSmashPoint[i].PlayerGrapeDropping(1);
-    //                 StartCoroutine(Waiter());
-    //                 return;
-    //             }
-    //         }
-    //     }
-    // }
 
     private IEnumerator Waiter()
     {

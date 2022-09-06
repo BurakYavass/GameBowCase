@@ -15,10 +15,6 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action OnUpgradeTriggerExit;
 
-    public event Action<int> OnPlayerGrapeDropping;
-
-    public event Action OnPlayerBarrelDropping;
-
     public event Action BarrelGenerate;
 
     public event Action<Transform,Vector3> ActiveEmptyDesk;
@@ -29,20 +25,11 @@ public class GameEventHandler : MonoBehaviour
         ActiveEmptyDesk?.Invoke(desk,deskRotation);
     }
 
-    public void BarrelDropping()
-    {
-        OnPlayerBarrelDropping?.Invoke();
-    }
-
     public void BarrelGenerator()
     {
         BarrelGenerate?.Invoke();
     }
     
-    public void PlayerGrapeDropping(int value)
-    {
-        OnPlayerGrapeDropping?.Invoke(value);
-    }
 
     public void UpgradeTriggerEnter(float value)
     {

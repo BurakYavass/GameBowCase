@@ -38,7 +38,6 @@ public class FullBarrelArea : ObjectID
         Barrels[0].gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (barrelCount > 0 )
@@ -63,9 +62,4 @@ public class FullBarrelArea : ObjectID
         }
     }
 
-    // public void BarrelSetter()
-    // {
-    //     Barrels[barrelCount].gameObject.SetActive(false);
-    //     barrelCount--;
-    // }
 }

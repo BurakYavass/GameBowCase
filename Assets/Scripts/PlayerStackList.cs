@@ -38,17 +38,10 @@ public class PlayerStackList : ObjectID
 
     void Start()
     {
-        //GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
-        //GameEventHandler.current.OnPlayerBarrelDropping += OnPlayerBarrelDropping;
         DOTween.Init();
         stackList.Add(stackPoint.gameObject);
     }
     
-    private void OnDestroy()
-    {
-       // GameEventHandler.current.OnPlayerGrapeDropping -= OnPlayerGrapeDropping;
-        //GameEventHandler.current.OnPlayerBarrelDropping -= OnPlayerBarrelDropping;
-    }
     public void OnPlayerBarrelDropping()
     {
         barrelIndex = stackList.FindLastIndex(x => x.name == "Barrel(Clone)");
