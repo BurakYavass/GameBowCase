@@ -11,13 +11,15 @@ public class AgentAI : ObjectID
     private Camera camera;
     public Transform destinationPoint;
     public Vector3 forward;
+    private Vector3 desiredPosition;
     public Transform dropPoint;
 
     public bool arriveDestination = false;
     public bool waitingServe;
     public bool agentLeaving = false;
+    private bool _finished = false;
     public int wine = 0;
-    private Vector3 desiredPosition;
+    
 
     void Start()
     {
@@ -25,11 +27,20 @@ public class AgentAI : ObjectID
         AgentControl();
         desiredPosition = destinationPoint.position;
     }
-    
+
+    private void OnDestroy()
+    {
+        StopCoroutine(KillingHimself());
+    }
+
     void Update()
     {
-        AgentControl();
-        _agent.destination = desiredPosition;
+        if (!_finished)
+        {
+            _agent.destination = desiredPosition;
+            AgentControl();
+        }
+        
         if (Math.Abs(transform.position.x - destinationPoint.position.x) < 0.2f)
         {
             arriveDestination = true;
@@ -37,6 +48,7 @@ public class AgentAI : ObjectID
             _agent.transform.rotation = Quaternion.Euler(forward);
         }
     }
+    
 
     private void AgentControl()
     {
@@ -87,8 +99,10 @@ public class AgentAI : ObjectID
     private IEnumerator KillingHimself()
     {
         desiredPosition = new Vector3(39.0f, 2.0f, -14.0f);
-        if (_agent.destination == desiredPosition)
+
+        if (Math.Abs(transform.position.x - desiredPosition.x) < 0.5f)
         {
+            _finished = true;
             Destroy(this.gameObject);
         }
         else

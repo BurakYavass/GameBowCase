@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 4459610064814746198}
   - component: {fileID: 1803016526955821444}
   m_Layer: 0
-  m_Name: "KADIN M\xDC\u015ETER\u0130"
+  m_Name: Customer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -629,7 +629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 9
-  _uiGameObject: {fileID: 0}
   _animator: {fileID: 3376432709920290583}
   _agent: {fileID: 4459610064814746198}
   destinationPoint: {fileID: 0}
@@ -649,7 +648,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.43
-  m_Speed: 5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -660,7 +659,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 3
+  m_ObstacleAvoidanceType: 4
 --- !u!136 &1803016526955821444
 CapsuleCollider:
   m_ObjectHideFlags: 0
