@@ -67,10 +67,10 @@ public class FullBarrelArea : ObjectID
         if (_otherId == null || !_playerStackList)
         {
             _otherId = other.gameObject.GetComponent<ObjectID>();
-            _playerStackList = other.gameObject.GetComponent<PlayerStackList>();
+            //_playerStackList = other.gameObject.GetComponent<PlayerStackList>();
         }
             
-        if (_otherId.Type == ObjectType.Player && !barrelsMax)
+        if (_otherId.Type == ObjectType.Player && !PlayerStackList.current.stackMax)
         {
             GameEventHandler.current.BarrelDropping();
         }

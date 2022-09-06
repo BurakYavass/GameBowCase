@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,12 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform customerSpawnPoint;
 
     public List<GameObject> customerList;
-
-    // [SerializeField] private UiManager uiManager;
-    // [SerializeField] private PlayerController playerController;
-    //
-    // [Header("Desk Upgrade Area List")]
-    // public List<UpgradeArea> DeskUpgrades = new List<UpgradeArea>(7);
 
     public float playerGold = 100;
 
@@ -50,8 +41,7 @@ public class GameManager : MonoBehaviour
     private void AgentCreator(Vector3 emptyDesk,Vector3 bos)
     {
         var clone = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
-        customerList.Add(customerPrefab);
-        //customerPrefab.AddComponent<AgentAI>();
+        customerList.Add(clone);
         var agent = clone.GetComponent<AgentAI>();
         agent.destinationPoint = emptyDesk;
         agent.forward = bos;
@@ -62,5 +52,4 @@ public class GameManager : MonoBehaviour
         playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
     }
     
-
 }

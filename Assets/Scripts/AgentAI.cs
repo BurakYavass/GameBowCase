@@ -1,34 +1,26 @@
 using System;
-using Cinemachine;
-using TMPro;
-using ToonyColorsPro.ShaderGenerator;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AgentAI : MonoBehaviour
+public class AgentAI : ObjectID
 {
     [SerializeField] private GameObject _uiGameObject;
-    [SerializeField] private Animation _animation;
-    private CinemachineVirtualCamera camera;
-    private NavMeshAgent _agent;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private NavMeshAgent _agent;
+    private Camera camera;
     public Vector3 destinationPoint;
     public Vector3 forward;
+    public Transform dropPoint;
 
     public bool arriveDestination = false;
+    public bool waitingServe;
+
     void Start()
     {
-        _animation = GetComponent<Animation>();
-        camera = FindObjectOfType<CinemachineVirtualCamera>();
-        _agent = GetComponent<NavMeshAgent>();
-        GameEventHandler.current.ActiveEmptyDesk += FixRotationAndPosition;
+        camera = Camera.main;
         AnimationAndUIControl();
     }
-
-    private void FixRotationAndPosition(Vector3 deskposition,Vector3 rotation)
-    {
-        //destinationPoint = deskposition;
-        //forward = rotation;
-    }
+    
     void Update()
     {
         AnimationAndUIControl();
@@ -37,7 +29,12 @@ public class AgentAI : MonoBehaviour
         {
             arriveDestination = true;
             _agent.updateRotation = false;
+            waitingServe = true;
             _agent.transform.rotation = Quaternion.Euler(forward);
+        }
+        else
+        {
+            waitingServe = false;
         }
     }
 
@@ -45,20 +42,17 @@ public class AgentAI : MonoBehaviour
     {
         if (arriveDestination)
         {
-            //_animation.clip = _animation.GetClip("SittingWomen");
-            _animation["SittingWomen"].wrapMode = WrapMode.Once;
-            _animation.Play();
-            //_animation.SetBool("Sitting", true);
+            _animator.SetBool("Walking",false);
+            _animator.SetBool("Sitting",true);
             _uiGameObject.SetActive(true);
-            _uiGameObject.transform.LookAt(transform.position + camera.transform.rotation * Vector3.back,
+            _uiGameObject.transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward,
                                                     camera.transform.rotation * Vector3.up);
         }
         else
         {
-            _animation.Play("WalkingWomen");
             _uiGameObject.SetActive(false);
-            //_animation.SetBool("Walking",true);
-            //_animation.SetBool("Sitting",false);
+            _animator.SetBool("Walking",true);
+            _animator.SetBool("Sitting",false);
         }
     }
 }
