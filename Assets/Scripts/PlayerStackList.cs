@@ -74,6 +74,7 @@ public class PlayerStackList : ObjectID
                 stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                     .OnComplete((() =>
                     {
+                        stackList[basketIndex].transform.DOKill();
                         Destroy(stackList[basketIndex]);
                         stackList.RemoveAt(basketIndex);
                         tweenbool = false;
@@ -93,11 +94,35 @@ public class PlayerStackList : ObjectID
                 stackList[wineIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                     .OnComplete((() =>
                     {
+                        stackList[wineIndex].transform.DOKill();
                         agent.StateChange();
                         Destroy(stackList[wineIndex],1.0f);
                         stackList.RemoveAt(wineIndex);
                         tweenbool = false;
                     }));
+            }
+        }
+    }
+
+    public void OnPlayerDustBin(Vector3 binPos)
+    {
+        if (!tweenbool)
+        {
+            tweenbool = true;
+            for (int i = 1; i < stackList.Count; i++)
+            {
+                if (stackList.Count >1)
+                {
+                    stackList[i].transform.DOJump(binPos, 7, 1, 0.3f).SetEase(Ease.OutFlash)
+                        .OnComplete((() =>
+                        {
+                            stackList[i].transform.DOKill();
+                            Destroy(stackList[i]);
+                            stackList.RemoveAt(i);
+                            tweenbool = false;
+                        }));
+                    return;
+                }
             }
         }
     }

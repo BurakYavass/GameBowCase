@@ -15,6 +15,7 @@ public class ObjectID : MonoBehaviour
         Bar,
         Customer,
         BarrelSpawnArea,
+        DustBin,
     }
     public ObjectType Type;
 }

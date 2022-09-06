@@ -43,6 +43,15 @@ public class PlayerCollisionHandler : ObjectID
                 bar.PlayerOnBar(1);
             }
         }
-        
+        else if (_otherId.Type == ObjectType.DustBin)
+        {
+            if (PlayerStackList.current.stackList.Count>1)
+            {
+                var dustBinPos = other.gameObject.transform.position;
+                PlayerStackList.current.OnPlayerDustBin(dustBinPos);
+            }
+        }
     }
+        
 }
+

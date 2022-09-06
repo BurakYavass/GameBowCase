@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AgentAI : ObjectID
 {
-    //[SerializeField] private GameObject _uiGameObject;
+    [SerializeField] private GameObject _uiGameObject;
     [SerializeField] private Animator _animator;
     [SerializeField] private NavMeshAgent _agent;
     private Camera camera;
@@ -23,7 +23,6 @@ public class AgentAI : ObjectID
 
     void Start()
     {
-        camera = Camera.main;
         AgentControl();
         desiredPosition = destinationPoint.position;
     }
@@ -54,12 +53,12 @@ public class AgentAI : ObjectID
     {
         if (arriveDestination && wine == 0)
         {
+            
             waitingServe = true;
             _animator.SetBool("Walking",false);
             _animator.SetBool("Sitting",true);
-            //_uiGameObject.SetActive(true);
-            //_uiGameObject.transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward,
-                                                    //camera.transform.rotation * Vector3.up);
+            _uiGameObject.SetActive(true);
+            _uiGameObject.transform.LookAt(Camera.main.transform);
         }
         else
         {
@@ -87,6 +86,7 @@ public class AgentAI : ObjectID
 
     private IEnumerator Drink()
     {
+        _uiGameObject.SetActive(false);
         yield return new WaitForSeconds(10.0f);
         _animator.SetBool("GetUp",true);
         agentLeaving = true;
