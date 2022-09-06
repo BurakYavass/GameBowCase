@@ -3796,6 +3796,8 @@ GameObject:
   - component: {fileID: 1583258809}
   - component: {fileID: 1583258811}
   - component: {fileID: 1583258810}
+  - component: {fileID: 6829034750662484272}
+  - component: {fileID: 2107807973237070978}
   m_Layer: 5
   m_Name: GoldImage
   m_TagString: Untagged
@@ -4036,7 +4038,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 165703887}
-  CloneImage: {fileID: 1583258808}
+  CloneImage: {fileID: 2551320957619460440, guid: 9bd987414d0c51641bf8fdad7d98e71e, type: 3}
+  targetPos: {fileID: 1583258809}
+  cam: {fileID: 0}
 --- !u!1001 &1627374534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5947,6 +5951,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2107807973237070978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583258808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b04654d79236449b3a73251c3ece7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2178433721367691563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
@@ -7541,6 +7557,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5296506005857730207}
   m_Mesh: {fileID: 7004783832934855251, guid: a8dd1fa2aed035e46839ee311b83eadf, type: 3}
+--- !u!61 &6829034750662484272
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583258808}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 150, y: 70}
+  m_EdgeRadius: 0
 --- !u!1 &6839382070646212016
 GameObject:
   m_ObjectHideFlags: 0

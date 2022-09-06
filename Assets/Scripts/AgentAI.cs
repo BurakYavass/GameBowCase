@@ -80,14 +80,13 @@ public class AgentAI : ObjectID
     public void StateChange()
     {
         wine += 1;
-        GameManager.current.PlayerMoneyIncrease(10);
+        GameManager.current.PlayerMoneyIncrease(10,transform.position);
         StopCoroutine(Drink());
         StartCoroutine(Drink());
     }
 
     private IEnumerator Drink()
     {
-        //_uiGameObject.SetActive(false);
         yield return new WaitForSeconds(10.0f);
         _animator.SetBool("GetUp",true);
         agentLeaving = true;

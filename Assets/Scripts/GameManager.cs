@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
         GameEventHandler.current.ActiveEmptyDesk += AgentCreator;
-        //Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         DOTween.Init();
     }
     private void OnDestroy()
@@ -49,15 +49,15 @@ public class GameManager : MonoBehaviour
     private void PlayerMoneyDecrease(float value)
     {
         playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
+        
     }
 
-    public void PlayerMoneyIncrease(float money)
+    public void PlayerMoneyIncrease(float money,Vector3 customerPos)
     {
         //playerGold + money;
         money = Mathf.Clamp(money, 0, 10);
         playerGold  += money;
-        //_uiManager.MoneyInstant();
-        
+        _uiManager.MoneyInstant(customerPos);
     }
     
 }
