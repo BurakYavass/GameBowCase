@@ -13,6 +13,7 @@ public class ObjectID : MonoBehaviour
         BarrelArea,
         Barrel,
         Bar,
+        Customer,
     }
     public ObjectType Type;
 }
