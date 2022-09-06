@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,10 +42,20 @@ public class FullBarrelArea : ObjectID
     // Update is called once per frame
     void Update()
     {
-        if (barrelCount >0 )
+        if (barrelCount > 0 )
         {
             Barrels[0].gameObject.SetActive(true);
+            Barrels[Barrels.Count - 1].gameObject.SetActive(false);
+            if (barrelCount == 7)
+            {
+                barrelsMax = true;
+            }
+            else
+            {
+                barrelsMax = false;
+            }
         }
+        
         if (Barrels[0].gameObject.activeInHierarchy)
         {
             barIsWorkable = true;
@@ -56,27 +64,21 @@ public class FullBarrelArea : ObjectID
         {
             barIsWorkable = false;
         }
-        if (barrelCount == 6)
-        {
-            barrelsMax = true;
-        }
-        else
-        {
-            barrelsMax = false;
-        }
+        
+        
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (_otherId == null || !_playerStackList)
-        {
-            _otherId = other.gameObject.GetComponent<ObjectID>();
-            //_playerStackList = other.gameObject.GetComponent<PlayerStackList>();
-        }
-            
-        if (_otherId.Type == ObjectType.Player && !PlayerStackList.current.stackMax)
-        {
-            GameEventHandler.current.BarrelDropping();
-        }
-    }
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (_otherId == null || !_playerStackList)
+    //     {
+    //         _otherId = other.gameObject.GetComponent<ObjectID>();
+    //         //_playerStackList = other.gameObject.GetComponent<PlayerStackList>();
+    //     }
+    //         
+    //     if (_otherId.Type == ObjectType.Player && !PlayerStackList.current.stackMax)
+    //     {
+    //         GameEventHandler.current.BarrelDropping();
+    //     }
+    // }
 }

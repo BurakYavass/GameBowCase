@@ -44,10 +44,17 @@ public class GameManager : MonoBehaviour
         agent.destinationPoint = emptyDesk.transform;
         agent.forward = bos;
     }
-    
+
     private void PlayerMoneyDecrease(float value)
     {
         playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
+    }
+
+    public void PlayerMoneyIncrease(float money)
+    {
+        //playerGold + money;
+        money = Mathf.Clamp(money, 0, 10);
+        playerGold  += money;
     }
     
 }

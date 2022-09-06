@@ -65,26 +65,26 @@ public class AgentAI : ObjectID
         }
     }
 
-    public void StateChange(bool value)
+    public void StateChange()
     {
         wine += 1;
+        GameManager.current.PlayerMoneyIncrease(10);
         StopCoroutine(Drink());
         StartCoroutine(Drink());
     }
 
-    IEnumerator Drink()
+    private IEnumerator Drink()
     {
         _uiGameObject.SetActive(false);
         yield return new WaitForSeconds(10.0f);
         _animator.SetBool("GetUp",true);
-        DeskArea.current.DeskStateChange(destinationPoint.name);
         agentLeaving = true;
         arriveDestination = false;
-        GameManager.current.playerGold = +10.0f;
+        DeskArea.current.DeskStateChange(destinationPoint.name);
         yield return null;
     }
 
-    IEnumerator KillingHimself()
+    private IEnumerator KillingHimself()
     {
         desiredPosition = new Vector3(39.0f, 2.0f, -14.0f);
         if (_agent.destination == desiredPosition)

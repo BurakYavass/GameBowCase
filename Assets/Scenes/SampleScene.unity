@@ -7450,12 +7450,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3815c6490a28b4b43987d2323085e299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 6
+  Type: 10
   barrelPoint: []
   barrelPrefab: {fileID: 6134900935148547611, guid: c3cc364323d26564e8302139e006025a, type: 3}
   barrelSpawnPoint: {fileID: 508303964}
   stackDistance: 3
-  _playerGrapeStackList: {fileID: 0}
   barrelAreaMax: 0
 --- !u!65 &7191825286679177170
 BoxCollider:

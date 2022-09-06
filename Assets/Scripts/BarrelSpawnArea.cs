@@ -10,7 +10,7 @@ public class BarrelSpawnArea : ObjectID
     [SerializeField] private float stackDistance;
 
     private ObjectID _otherId;
-    [SerializeField] private PlayerStackList _playerGrapeStackList;
+    private PlayerStackList _playerGrapeStackList;
 
     private bool once = false;
 
@@ -20,6 +20,7 @@ public class BarrelSpawnArea : ObjectID
     void Start()
     {
         GameEventHandler.current.BarrelGenerate += CreateBarrel;
+        _playerGrapeStackList = PlayerStackList.current;
     }
 
     private void OnDestroy()
@@ -27,42 +28,45 @@ public class BarrelSpawnArea : ObjectID
         GameEventHandler.current.BarrelGenerate -= CreateBarrel;
     }
     
-    private void OnTriggerStay(Collider other)
-    {
-        if (!_otherId || !_playerGrapeStackList)
-        {
-            _otherId = other.GetComponent<ObjectID>();
-            _playerGrapeStackList = other.GetComponent<PlayerStackList>();
-        }
-            
-        if (_otherId.Type == ObjectType.Player)
-        {
-            if (!once)
-            {
-                OnCollectBarrel();
-            }
-            
-        }
-    }
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (!_otherId || !_playerGrapeStackList)
+    //     {
+    //         _otherId = other.GetComponent<ObjectID>();
+    //         _playerGrapeStackList = other.GetComponent<PlayerStackList>();
+    //     }
+    //         
+    //     if (_otherId.Type == ObjectType.Player)
+    //     {
+    //         if (!once)
+    //         {
+    //             OnCollectBarrel();
+    //         }
+    //         
+    //     }
+    // }
     
-    private void OnCollectBarrel()
+    public void OnCollectBarrel()
     {
-        for (int i = 0; i < barrelPoint.Count; i++)
+        if (!once)
         {
-            if (barrelPoint.Count >=0 && !_playerGrapeStackList.stackMax)
+            for (int i = 0; i < barrelPoint.Count; i++)
             {
-                once = true;
-                var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];
-                barrelPoint[barrelPoint.Count - 1].transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f)
-                                                                .SetEase(Ease.OutFlash)
-                                                                    .OnComplete((() =>
-                                                                    {
-                                                                        once = false;
-                                                                        _playerGrapeStackList.stackList.Add(barrelPoint[barrelPoint.Count-1]);
-                                                                        barrelPoint.RemoveAt(barrelPoint.Count - 1);
-                                                                    }));
+                if (barrelPoint.Count >0 && !_playerGrapeStackList.stackMax)
+                {
+                    once = true;
+                    var playerStackPoint = _playerGrapeStackList.stackList[_playerGrapeStackList.stackList.Count -1];
+                    barrelPoint[barrelPoint.Count - 1].transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f)
+                        .SetEase(Ease.OutFlash)
+                        .OnComplete((() =>
+                        {
+                            once = false;
+                            _playerGrapeStackList.stackList.Add(barrelPoint[barrelPoint.Count-1]);
+                            barrelPoint.RemoveAt(barrelPoint.Count - 1);
+                        }));
                 
-                break;
+                    break;
+                }
             }
         }
     }
@@ -80,7 +84,7 @@ public class BarrelSpawnArea : ObjectID
     // Update is called once per frame
     void Update()
     {
-        if (barrelPoint.Count > 4)
+        if (barrelPoint.Count == 5)
         {
             barrelAreaMax = true;
         }

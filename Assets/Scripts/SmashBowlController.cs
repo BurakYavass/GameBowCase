@@ -53,7 +53,7 @@ public class SmashBowlController : MonoBehaviour
         }
     }
 
-    IEnumerator SmashWorking()
+    private IEnumerator SmashWorking()
     {
         grapeSmashGirl.SetBool("working", true);
         yield return new WaitForSeconds(workTime);

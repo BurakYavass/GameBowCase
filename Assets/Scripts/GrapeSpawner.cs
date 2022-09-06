@@ -21,20 +21,17 @@ public class GrapeSpawner : ObjectID
     [SerializeField] private UpgradeArea upgradeArea;
     private PlayerStackList _playerStackList;
     private ObjectID _otherId;
+    private bool spawnable;
 
     private void Start()
     {
-        //GameEventHandler.current.OnPlayerGrapeDropping += RemoveClone;
-        //GameEventHandler.current.OnObjectActive += OnActivate;
-        _playerStackList = playerPoint.GetComponentInParent<PlayerStackList>();
+        _playerStackList = PlayerStackList.current;
         if (upgradeArea)
             upgradeArea.Activator += OnActivate;
     }
 
     private void OnDestroy()
     {
-        //GameEventHandler.current.OnPlayerGrapeDropping -= RemoveClone;
-        //GameEventHandler.current.OnObjectActive -= OnActivate;
         if (upgradeArea)
             upgradeArea.Activator -= OnActivate;
         
@@ -56,20 +53,21 @@ public class GrapeSpawner : ObjectID
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void PlayerGathering()
     {
         if (!active)
-            return;
-        if (_otherId == null)
-            _otherId = other.gameObject.GetComponent<ObjectID>();
-        
-        if (_otherId.Type == ObjectType.Player && gatherable && !_playerStackList.stackMax)
         {
+            return;
+        }
+        if (gatherable && !_playerStackList.stackMax && !spawnable)
+        {
+            spawnable = true;
             var basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
-
             var playerStackPoint = _playerStackList.stackList[_playerStackList.stackList.Count -1];
-            basket.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
             
+            basket.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash)
+                                    .OnComplete((() => spawnable = false));
             _playerStackList.stackList.Add(basket);
             if (!growing)
             {
@@ -84,9 +82,9 @@ public class GrapeSpawner : ObjectID
             gatherable = false;
         }
     }
-    
 
-    IEnumerator GrapeCounter()
+
+    private IEnumerator GrapeCounter()
     {
         growing = true;
         yield return new WaitForSeconds(grapeSpawnTime);

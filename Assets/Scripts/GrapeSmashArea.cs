@@ -29,31 +29,56 @@ public class GrapeSmashArea : ObjectID
         if (!_otherId || !_playerStackList)
         {
             _otherId = other.gameObject.GetComponent<ObjectID>();
-            _playerStackList = other.gameObject.GetComponent<PlayerStackList>();
+            _playerStackList = PlayerStackList.current;
         }
-
+    
         _find = _playerStackList.stackList.FirstOrDefault((x => x.CompareTag("Basket")));
        
-        if (_otherId.Type == ObjectType.Player && _find)
-        {
-            for (var i = 0; i < grapeSmashPoint.Count; i++)
-            {
-                if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working && !waiterr)
-                {
-                    waiterr = true;
-                    GameEventHandler.current.PlayerGrapeDropping(1);
-                    grapeSmashPoint[i].PlayerGrapeDropping(1);
-                    StartCoroutine(waiter());
-                    return;
-                }
-            }
-        }
+         if (_otherId.Type == ObjectType.Player && _find)
+         {
+             for (var i = 0; i < grapeSmashPoint.Count; i++)
+             {
+                 if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working && !waiterr)
+                 {
+                     waiterr = true;
+                     _playerStackList.OnPlayerGrapeDropping();
+                     grapeSmashPoint[i].PlayerGrapeDropping(1);
+                     StartCoroutine(Waiter());
+                     return;
+                 }
+             }
+         }
     }
 
-    IEnumerator waiter()
+    // public void PlayerOnGrapeSmashArea()
+    // {
+    //     if (!_playerStackList)
+    //     {
+    //         _playerStackList = PlayerStackList.current;
+    //     }
+    //     _find = _playerStackList.stackList.FirstOrDefault((x => x.CompareTag("Basket")));
+    //     
+    //     if (_find)
+    //     {
+    //         for (var i = 0; i < grapeSmashPoint.Count; i++)
+    //         {
+    //             if (grapeSmashPoint[i].active && !grapeSmashPoint[i].working && !waiterr)
+    //             {
+    //                 waiterr = true;
+    //                 //GameEventHandler.current.PlayerGrapeDropping(1);
+    //                 grapeSmashPoint[i].PlayerGrapeDropping(1);
+    //                 StartCoroutine(Waiter());
+    //                 return;
+    //             }
+    //         }
+    //     }
+    // }
+
+    private IEnumerator Waiter()
     {
         yield return new WaitForSeconds(0.3f);
         waiterr = false;
+        yield return null;
 
     }
 }

@@ -23,9 +23,8 @@ public class DeskArea : ObjectID
         {
             if (Desks[i].deskState == ChairCheck.DeskState.Empty && !once )
             {
-                once = true;
                 GameEventHandler.current.EmptyDesk(Desks[i].transform, Desks[i].transform.eulerAngles);
-                Desks[i].deskState = ChairCheck.DeskState.Full;
+                Desks[i].StateChanger(ChairCheck.DeskState.Full);
                 StopCoroutine(Waiter());
                 StartCoroutine(Waiter());
                 return;
@@ -37,7 +36,7 @@ public class DeskArea : ObjectID
     {
         for (var i = 0; i < Desks.Count; i++)
         {
-            if (Desks[i].deskState == ChairCheck.DeskState.Full)
+            if (Desks[i].deskState == ChairCheck.DeskState.Full && once)
             {
                 var findIndex = Desks.FindIndex(x => x.name == emptyDesk);
                 Desks[findIndex].deskState = ChairCheck.DeskState.Empty;
@@ -46,7 +45,7 @@ public class DeskArea : ObjectID
         }
     }
 
-    IEnumerator Waiter()
+    private IEnumerator Waiter()
     {
         yield return new WaitForSeconds(10f);
         once = false;

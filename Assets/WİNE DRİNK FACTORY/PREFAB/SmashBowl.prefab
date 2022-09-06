@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f451944ef3165a4198e04af025db43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrelArea: {fileID: 0}
+  barrelSpawnArea: {fileID: 0}
   grapeSmashGirl: {fileID: 776577104435549147}
-  grapeNeeded: 4
+  grapeNeeded: 2
   workTime: 20
   grapeCounter: 0
   active: 0

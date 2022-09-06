@@ -3,23 +3,51 @@ using UnityEngine;
 
 public class PlayerCollisionHandler : ObjectID
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider enter)
     {
-        var otherId = other.gameObject.GetComponent<ObjectID>();
+        var otherId = enter.gameObject.GetComponent<ObjectID>();
         
         if (otherId.Type == ObjectType.Customer)
         {
             var wineIndex = PlayerStackList.current.stackList.FindLastIndex(x => x.name == "WineGlass(Clone)");
-            var agentAI = other.GetComponent<AgentAI>();
+            var agentAI = enter.GetComponent<AgentAI>();
             if (agentAI.waitingServe && wineIndex>0)
             {
                 PlayerStackList.current.OnPlayerWineGlassDropping(agentAI.dropPoint,agentAI);
             }
         }
+        // else if (otherId.Type == ObjectType.Grape)
+        // {
+        //     var otherObje = enter.GetComponent<GrapeSpawner>();
+        //     otherObje.PlayerGathering();
+        // }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        //var otherId = other.gameObject.GetComponent<ObjectID>();
+        var _otherId = other.gameObject.GetComponent<ObjectID>();
+        if (_otherId.Type == ObjectType.Grape)
+        {
+            var grapeSpawner = other.GetComponent<GrapeSpawner>();
+            grapeSpawner.PlayerGathering();
+        }
+        else if (_otherId.Type == ObjectType.BarrelSpawnArea)
+        {
+            var barrelSpawnArea= other.GetComponent<BarrelSpawnArea>();
+            barrelSpawnArea.OnCollectBarrel();
+        }
+        else if (_otherId.Type == ObjectType.BarrelArea)
+        {
+            PlayerStackList.current.OnPlayerBarrelDropping();
+        }
+        else if (_otherId.Type == ObjectType.Bar)
+        {
+            var bar = other.GetComponent<BarController>();
+            if (!PlayerStackList.current.stackMax)
+            {
+                bar.PlayerOnBar(1);
+            }
+        }
+        
     }
 }

@@ -49,7 +49,6 @@ public class UpgradeArea : ObjectID
     {
         if (_otherId == null)
             _otherId = other.gameObject.GetComponent<PlayerController>();
-        //var gold = _gameManager.playerGold - requireMoney;
         if(_otherId != null && _otherId.Type == ObjectType.Player && GameManager.current.playerGold > 0 )
         {
             MoneyDecrease_ObjectControl();

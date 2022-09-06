@@ -11,7 +11,7 @@ public class ChairCheck : MonoBehaviour
         StateChanger(DeskState.Empty);
     }
 
-    private void StateChanger(DeskState state)
+    public void StateChanger(DeskState state)
     {
         deskState = state;
         switch (state)

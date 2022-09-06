@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -40,22 +38,20 @@ public class PlayerStackList : ObjectID
 
     void Start()
     {
-        GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
-        GameEventHandler.current.OnPlayerBarrelDropping += OnPlayerBarrelDropping;
+        //GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
+        //GameEventHandler.current.OnPlayerBarrelDropping += OnPlayerBarrelDropping;
         DOTween.Init();
         stackList.Add(stackPoint.gameObject);
     }
     
     private void OnDestroy()
     {
-        GameEventHandler.current.OnPlayerGrapeDropping -= OnPlayerGrapeDropping;
-        GameEventHandler.current.OnPlayerBarrelDropping -= OnPlayerBarrelDropping;
+       // GameEventHandler.current.OnPlayerGrapeDropping -= OnPlayerGrapeDropping;
+        //GameEventHandler.current.OnPlayerBarrelDropping -= OnPlayerBarrelDropping;
     }
-    private void OnPlayerBarrelDropping()
+    public void OnPlayerBarrelDropping()
     {
         barrelIndex = stackList.FindLastIndex(x => x.name == "Barrel(Clone)");
-        //barrelIndex = stackList.LastOrDefault(x => x.gameObject.name == "Barrel(Clone)");
-        Debug.Log(barrelIndex);
         if (stackList.Count > 0 && barrelIndex>0 && !FullBarrelArea.current.barrelsMax)
         {
             if (!tweenbool)
@@ -74,7 +70,7 @@ public class PlayerStackList : ObjectID
         }
     }
 
-    private void OnPlayerGrapeDropping(int value)
+    public void OnPlayerGrapeDropping()
     {
         basketIndex = stackList.FindLastIndex(x => x.name == "Basket(Clone)");
         if (stackList.Count > 0 && basketIndex > 0)
@@ -102,9 +98,9 @@ public class PlayerStackList : ObjectID
             {
                 tweenbool = true;
                 stackList[wineIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
-                    .OnUpdate((() => agent.StateChange(false)))
                     .OnComplete((() =>
                     {
+                        agent.StateChange();
                         Destroy(stackList[wineIndex],1.0f);
                         stackList.RemoveAt(wineIndex);
                         tweenbool = false;

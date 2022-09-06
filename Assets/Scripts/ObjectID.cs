@@ -14,6 +14,7 @@ public class ObjectID : MonoBehaviour
         Barrel,
         Bar,
         Customer,
+        BarrelSpawnArea,
     }
     public ObjectType Type;
 }
