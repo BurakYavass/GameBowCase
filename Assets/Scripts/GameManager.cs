@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform customerSpawnPoint;
 
-    //public List<GameObject> customerList;
-
     public float playerGold = 100;
 
     public static readonly float UpgradeDuration = 2.0f;
@@ -38,12 +36,12 @@ public class GameManager : MonoBehaviour
         GameEventHandler.current.ActiveEmptyDesk -= AgentCreator;
     }
     
-    private void AgentCreator(Vector3 emptyDesk,Vector3 bos)
+    private void AgentCreator(Transform emptyDesk,Vector3 bos)
     {
         var clone = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
         //customerList.Add(clone);
         var agent = clone.GetComponent<AgentAI>();
-        agent.destinationPoint = emptyDesk;
+        agent.destinationPoint = emptyDesk.transform;
         agent.forward = bos;
     }
     

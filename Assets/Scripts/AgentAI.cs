@@ -8,10 +8,8 @@ public class AgentAI : ObjectID
     [SerializeField] private GameObject _uiGameObject;
     [SerializeField] private Animator _animator;
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private Transform killPoint;
     private Camera camera;
-    private Vector3 firstPoint;
-    public Vector3 destinationPoint;
+    public Transform destinationPoint;
     public Vector3 forward;
     public Transform dropPoint;
 
@@ -19,19 +17,20 @@ public class AgentAI : ObjectID
     public bool waitingServe;
     public bool agentLeaving = false;
     public int wine = 0;
+    private Vector3 desiredPosition;
 
     void Start()
     {
         camera = Camera.main;
-        firstPoint = transform.position;
         AgentControl();
+        desiredPosition = destinationPoint.position;
     }
     
     void Update()
     {
         AgentControl();
-        _agent.destination = destinationPoint;
-        if (Math.Abs(transform.position.x - destinationPoint.x) < 0.2f)
+        _agent.destination = desiredPosition;
+        if (Math.Abs(transform.position.x - destinationPoint.position.x) < 0.2f)
         {
             arriveDestination = true;
             _agent.updateRotation = false;
@@ -41,7 +40,7 @@ public class AgentAI : ObjectID
 
     private void AgentControl()
     {
-        if (arriveDestination)
+        if (arriveDestination && wine == 0)
         {
             waitingServe = true;
             _animator.SetBool("Walking",false);
@@ -59,11 +58,8 @@ public class AgentAI : ObjectID
 
         if (agentLeaving)
         {
-            destinationPoint = firstPoint;
-            _uiGameObject.SetActive(false);
             _agent.updateRotation = true;
             waitingServe = false;
-            _animator.SetBool("GetUp",true);
             _animator.SetBool("Walking",true);
             StartCoroutine(KillingHimself());
         }
@@ -72,25 +68,35 @@ public class AgentAI : ObjectID
     public void StateChange(bool value)
     {
         wine += 1;
-        agentLeaving = true;
         StopCoroutine(Drink());
         StartCoroutine(Drink());
     }
 
     IEnumerator Drink()
     {
-        yield return new WaitForSeconds(5.0f);
-        //DeskArea.current.DeskStateChange();
+        _uiGameObject.SetActive(false);
+        yield return new WaitForSeconds(10.0f);
+        _animator.SetBool("GetUp",true);
+        DeskArea.current.DeskStateChange(destinationPoint.name);
         agentLeaving = true;
         arriveDestination = false;
-        GameManager.current.playerGold += 10.0f;
+        GameManager.current.playerGold = +10.0f;
         yield return null;
     }
 
     IEnumerator KillingHimself()
     {
-        yield return new WaitForSeconds(10.0f);
-        Destroy(this.gameObject);
-        yield return null;
+        desiredPosition = new Vector3(39.0f, 2.0f, -14.0f);
+        if (_agent.destination == desiredPosition)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            yield return new WaitForSeconds(10.0f);
+            Destroy(this.gameObject);
+            yield return null;
+        }
+        
     }
 }

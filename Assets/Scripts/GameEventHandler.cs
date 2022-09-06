@@ -21,10 +21,10 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action BarrelGenerate;
 
-    public event Action<Vector3,Vector3> ActiveEmptyDesk;
+    public event Action<Transform,Vector3> ActiveEmptyDesk;
     
 
-    public void EmptyDesk(Vector3 desk, Vector3 deskRotation)
+    public void EmptyDesk(Transform desk, Vector3 deskRotation)
     {
         ActiveEmptyDesk?.Invoke(desk,deskRotation);
     }

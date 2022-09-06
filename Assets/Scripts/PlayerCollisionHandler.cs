@@ -9,8 +9,9 @@ public class PlayerCollisionHandler : ObjectID
         
         if (otherId.Type == ObjectType.Customer)
         {
+            var wineIndex = PlayerStackList.current.stackList.FindLastIndex(x => x.name == "WineGlass(Clone)");
             var agentAI = other.GetComponent<AgentAI>();
-            if (agentAI.waitingServe)
+            if (agentAI.waitingServe && wineIndex>0)
             {
                 PlayerStackList.current.OnPlayerWineGlassDropping(agentAI.dropPoint,agentAI);
             }

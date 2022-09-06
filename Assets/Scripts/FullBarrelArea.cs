@@ -44,6 +44,10 @@ public class FullBarrelArea : ObjectID
     // Update is called once per frame
     void Update()
     {
+        if (barrelCount >0 )
+        {
+            Barrels[0].gameObject.SetActive(true);
+        }
         if (Barrels[0].gameObject.activeInHierarchy)
         {
             barIsWorkable = true;

@@ -13,7 +13,7 @@ public class PlayerStackList : ObjectID
     [SerializeField] private Transform stackPoint;
     [SerializeField] private Transform grapeDropPoint;
     [SerializeField] private Transform barrelDropPoint;
-    private int stackCounter = 0;
+    //private int stackCounter = 0;
 
     [SerializeField] private int maxStack = 5;
     [SerializeField] private float stackSpeed;
@@ -54,7 +54,9 @@ public class PlayerStackList : ObjectID
     private void OnPlayerBarrelDropping()
     {
         barrelIndex = stackList.FindLastIndex(x => x.name == "Barrel(Clone)");
-        if (stackList.Count > 0 && barrelIndex >0 && !FullBarrelArea.current.barrelsMax)
+        //barrelIndex = stackList.LastOrDefault(x => x.gameObject.name == "Barrel(Clone)");
+        Debug.Log(barrelIndex);
+        if (stackList.Count > 0 && barrelIndex>0 && !FullBarrelArea.current.barrelsMax)
         {
             if (!tweenbool)
             {
@@ -74,7 +76,6 @@ public class PlayerStackList : ObjectID
 
     private void OnPlayerGrapeDropping(int value)
     {
-        //basketIndex = stackList.FindLastIndex(x => x.CompareTag("Basket(Clone)"));
         basketIndex = stackList.FindLastIndex(x => x.name == "Basket(Clone)");
         if (stackList.Count > 0 && basketIndex > 0)
         {
@@ -82,12 +83,12 @@ public class PlayerStackList : ObjectID
             {
                 tweenbool = true;
                 stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
-                     .OnComplete((() =>
-                     {
-                         Destroy(stackList[basketIndex]);
-                         stackList.RemoveAt(basketIndex);
-                     }))
-                        .OnUpdate((() => tweenbool = false));
+                    .OnComplete((() =>
+                    {
+                        Destroy(stackList[basketIndex]);
+                        stackList.RemoveAt(basketIndex);
+                        tweenbool = false;
+                    }));
             }
         }
     }
@@ -101,13 +102,13 @@ public class PlayerStackList : ObjectID
             {
                 tweenbool = true;
                 stackList[wineIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
+                    .OnUpdate((() => agent.StateChange(false)))
                     .OnComplete((() =>
                     {
                         Destroy(stackList[wineIndex],1.0f);
-                        agent.StateChange(false);
                         stackList.RemoveAt(wineIndex);
-                    }))
-                    .OnUpdate((() => tweenbool = false));
+                        tweenbool = false;
+                    }));
             }
         }
     }
