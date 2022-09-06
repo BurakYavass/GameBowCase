@@ -9,7 +9,7 @@ public class PlayerStackList : ObjectID
 {
     public static PlayerStackList current;
     public event Action<int> Dropping;
-    public List<Transform> stackList = new List<Transform>();
+    public List<GameObject> stackList = new List<GameObject>();
     [SerializeField] private Transform stackPoint;
     [SerializeField] private Transform grapeDropPoint;
     [SerializeField] private Transform barrelDropPoint;
@@ -43,7 +43,7 @@ public class PlayerStackList : ObjectID
         GameEventHandler.current.OnPlayerGrapeDropping += OnPlayerGrapeDropping;
         GameEventHandler.current.OnPlayerBarrelDropping += OnPlayerBarrelDropping;
         DOTween.Init();
-        stackList.Add(stackPoint);
+        stackList.Add(stackPoint.gameObject);
     }
     
     private void OnDestroy()
@@ -53,7 +53,7 @@ public class PlayerStackList : ObjectID
     }
     private void OnPlayerBarrelDropping()
     {
-        barrelIndex = stackList.FindLastIndex(x => x.CompareTag("Barrel"));
+        barrelIndex = stackList.FindLastIndex(x => x.name == "Barrel(Clone)");
         if (stackList.Count > 0 && barrelIndex >0 && !FullBarrelArea.current.barrelsMax)
         {
             if (!tweenbool)
@@ -62,8 +62,8 @@ public class PlayerStackList : ObjectID
                 stackList[barrelIndex].transform.DOJump(barrelDropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                     .OnComplete((() =>
                     {
-                        //tackList[barrelIndex].gameObject.SetActive(false);
-                        //Destroy(stackList[barrelIndex].gameObject,1.0f);
+                        //stackList[barrelIndex]SetActive(false);
+                        Destroy(stackList[barrelIndex]);
                         stackList.RemoveAt(barrelIndex);
                         Dropping?.Invoke(1);
                         tweenbool = false;
@@ -74,7 +74,8 @@ public class PlayerStackList : ObjectID
 
     private void OnPlayerGrapeDropping(int value)
     {
-        basketIndex = stackList.FindLastIndex(x => x.CompareTag("Basket"));
+        //basketIndex = stackList.FindLastIndex(x => x.CompareTag("Basket(Clone)"));
+        basketIndex = stackList.FindLastIndex(x => x.name == "Basket(Clone)");
         stackCounter += value;
         if (stackList.Count > 0 && basketIndex > 0)
         {
@@ -84,8 +85,7 @@ public class PlayerStackList : ObjectID
                 stackList[basketIndex].transform.DOJump(grapeDropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                      .OnComplete((() =>
                      {
-                         //stackList[basketIndex].gameObject.SetActive(false);
-                         //Destroy(stackList[basketIndex].gameObject,1.0f);
+                         Destroy(stackList[basketIndex]);
                          stackList.RemoveAt(basketIndex);
                      }))
                         .OnUpdate((() => tweenbool = false));
@@ -94,10 +94,10 @@ public class PlayerStackList : ObjectID
         }
     }
 
-    public void OnPlayerWineGlassDropping(Transform dropPoint)
+    public void OnPlayerWineGlassDropping(Transform dropPoint,AgentAI agent)
     {
-        wineIndex = stackList.FindLastIndex(x => x.CompareTag("Wine"));
-        if (stackList.Count > 0 && wineIndex > 0)
+        wineIndex = stackList.FindLastIndex(x => x.name == "WineGlass(Clone)");
+        if (stackList.Count > 0 && wineIndex > 0 && agent.wine == 0)
         {
             if (!tweenbool)
             {
@@ -105,8 +105,8 @@ public class PlayerStackList : ObjectID
                 stackList[wineIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                     .OnComplete((() =>
                     {
-                        //stackList[wineIndex].gameObject.SetActive(false);
-                        //Destroy(stackList[wineIndex],1.0f);
+                        Destroy(stackList[wineIndex]);
+                        agent.StateChange(false);
                         stackList.RemoveAt(wineIndex);
                     }))
                     .OnUpdate((() => tweenbool = false));

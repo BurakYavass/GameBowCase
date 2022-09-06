@@ -21,7 +21,7 @@ public class DeskArea : ObjectID
     {
         for (var i = 0; i < Desks.Count; i++)
         {
-            if (Desks[i].deskState == ChairCheck.DeskState.Empty && !once)
+            if (Desks[i].deskState == ChairCheck.DeskState.Empty && !once )
             {
                 once = true;
                 GameEventHandler.current.EmptyDesk(Desks[i].transform.position, Desks[i].transform.eulerAngles);

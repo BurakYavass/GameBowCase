@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform customerSpawnPoint;
 
-    public List<GameObject> customerList;
+    //public List<GameObject> customerList;
 
     public float playerGold = 100;
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     private void AgentCreator(Vector3 emptyDesk,Vector3 bos)
     {
         var clone = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
-        customerList.Add(clone);
+        //customerList.Add(clone);
         var agent = clone.GetComponent<AgentAI>();
         agent.destinationPoint = emptyDesk;
         agent.forward = bos;

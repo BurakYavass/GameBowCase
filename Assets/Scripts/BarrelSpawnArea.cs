@@ -58,7 +58,7 @@ public class BarrelSpawnArea : ObjectID
                                                                     .OnComplete((() =>
                                                                     {
                                                                         once = false;
-                                                                        _playerGrapeStackList.stackList.Add(barrelPoint[barrelPoint.Count-1].transform);
+                                                                        _playerGrapeStackList.stackList.Add(barrelPoint[barrelPoint.Count-1]);
                                                                         barrelPoint.RemoveAt(barrelPoint.Count - 1);
                                                                     }));
                 
@@ -71,9 +71,9 @@ public class BarrelSpawnArea : ObjectID
     {
         if (barrelPoint.Count < 5)
         {
-            barrelPrefab = Instantiate(barrelPrefab,barrelSpawnPoint.position,barrelSpawnPoint.transform.rotation)as GameObject;
+            var barrel = Instantiate(barrelPrefab,barrelSpawnPoint.position,barrelSpawnPoint.transform.rotation)as GameObject;
         
-            barrelPoint.Add(barrelPrefab);
+            barrelPoint.Add(barrel);
         }
     }
 

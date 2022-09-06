@@ -20,12 +20,12 @@ public class BarController : ObjectID
             
         if (_otherId.Type == ObjectType.Player && FullBarrelArea.current.barIsWorkable && !_playerStackList.stackMax)
         {
-            glassPrefab = Instantiate(glassPrefab,glassSpawnPoint.position,glassPrefab.transform.rotation)as GameObject;
+            var glass = Instantiate(glassPrefab,glassSpawnPoint.position,glassPrefab.transform.rotation)as GameObject;
 
             var playerStackPoint = _playerStackList.stackList[_playerStackList.stackList.Count -1];
             glassPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.5f).SetEase(Ease.OutFlash);
             
-            _playerStackList.stackList.Add(glassPrefab.transform);
+            _playerStackList.stackList.Add(glass);
         }
     }
 }

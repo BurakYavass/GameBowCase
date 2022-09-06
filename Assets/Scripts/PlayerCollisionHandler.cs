@@ -7,11 +7,18 @@ public class PlayerCollisionHandler : ObjectID
     {
         var otherId = other.gameObject.GetComponent<ObjectID>();
         
-
         if (otherId.Type == ObjectType.Customer)
         {
-            var drop = other.GetComponent<AgentAI>().dropPoint;
-            PlayerStackList.current.OnPlayerWineGlassDropping(drop);
+            var agentAI = other.GetComponent<AgentAI>();
+            if (agentAI.waitingServe)
+            {
+                PlayerStackList.current.OnPlayerWineGlassDropping(agentAI.dropPoint,agentAI);
+            }
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //var otherId = other.gameObject.GetComponent<ObjectID>();
     }
 }
