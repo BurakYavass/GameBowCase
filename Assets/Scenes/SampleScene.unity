@@ -6761,6 +6761,7 @@ MonoBehaviour:
   _playerStackList: {fileID: 966443001}
   glassPrefab: {fileID: 1244917747374796648, guid: ad532584fbba85d489dfca003a61d26f, type: 3}
   glassSpawnPoint: {fileID: 1347317495}
+  spawnCounter: 0
 --- !u!1 &5398178986302555608
 GameObject:
   m_ObjectHideFlags: 0
@@ -7065,6 +7066,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7191825286679177169}
     - target: {fileID: 3494428201775219850, guid: 0cdfceb79d717834895066d2acc02038, type: 3}
+      propertyPath: grapeNeeded
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494428201775219850, guid: 0cdfceb79d717834895066d2acc02038, type: 3}
       propertyPath: barrelSpawnArea
       value: 
       objectReference: {fileID: 7191825286679177169}
@@ -7120,6 +7125,10 @@ PrefabInstance:
       propertyPath: barrelArea
       value: 
       objectReference: {fileID: 7191825286679177169}
+    - target: {fileID: 3755073927655026712, guid: 0cdfceb79d717834895066d2acc02038, type: 3}
+      propertyPath: grapeNeeded
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3755073927655026712, guid: 0cdfceb79d717834895066d2acc02038, type: 3}
       propertyPath: barrelSpawnArea
       value: 

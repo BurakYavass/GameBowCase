@@ -5,7 +5,7 @@ public class FullBarrelArea : ObjectID
 {
     public bool barrelsMax =false;
     public bool barIsWorkable =false;
-    public int barrelCount;
+    public int barrelCount = 1;
     private int barrelCountMax = 6;
     
     public List<Transform> Barrels;
@@ -34,9 +34,8 @@ public class FullBarrelArea : ObjectID
 
     private void PlayerBarrelDropping(int value)
     {
-        //barrelCount = value;
         barrelCount = Mathf.Clamp(barrelCount + value, 0, barrelCountMax);
-        Barrels[barrelCount-1].gameObject.SetActive(true);
+        Barrels[0].gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -44,8 +43,6 @@ public class FullBarrelArea : ObjectID
     {
         if (barrelCount > 0 )
         {
-            Barrels[0].gameObject.SetActive(true);
-            Barrels[Barrels.Count - 1].gameObject.SetActive(false);
             if (barrelCount == 7)
             {
                 barrelsMax = true;
@@ -64,21 +61,11 @@ public class FullBarrelArea : ObjectID
         {
             barIsWorkable = false;
         }
-        
-        
     }
 
-    // private void OnTriggerStay(Collider other)
+    // public void BarrelSetter()
     // {
-    //     if (_otherId == null || !_playerStackList)
-    //     {
-    //         _otherId = other.gameObject.GetComponent<ObjectID>();
-    //         //_playerStackList = other.gameObject.GetComponent<PlayerStackList>();
-    //     }
-    //         
-    //     if (_otherId.Type == ObjectType.Player && !PlayerStackList.current.stackMax)
-    //     {
-    //         GameEventHandler.current.BarrelDropping();
-    //     }
+    //     Barrels[barrelCount].gameObject.SetActive(false);
+    //     barrelCount--;
     // }
 }

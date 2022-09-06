@@ -28,10 +28,13 @@ public class BarController : ObjectID
 
     private void Update()
     {
-        if (spawnCounter == 4)
+        if (spawnCounter == spawnMax)
         {
-            FullBarrelArea.current.barrelCount = -1;
+           // FullBarrelArea.current.BarrelSetter();
+            //spawnCounter--;
+
             FullBarrelArea.current.Barrels[0].gameObject.SetActive(false);
+            spawnCounter = 0;
         }
     }
 }
