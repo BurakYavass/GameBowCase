@@ -1046,7 +1046,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerPrefab: {fileID: 2457301255610157640, guid: f62eceb106a1d4e4883c40ca572c78fd, type: 3}
   customerSpawnPoint: {fileID: 1900335446}
-  customerList: []
   playerGold: 500
 --- !u!4 &501006716
 Transform:

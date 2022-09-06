@@ -33,6 +33,22 @@ public class DeskArea : ObjectID
         }
     }
 
+    public void DeskStateChange(Transform emtyDesk)
+    {
+        for (var i = 0; i < Desks.Count; i++)
+        {
+            if (Desks[i].deskState == ChairCheck.DeskState.Full && !once )
+            {
+                once = true;
+                GameEventHandler.current.EmptyDesk(Desks[i].transform.position, Desks[i].transform.eulerAngles);
+                Desks[i].deskState = ChairCheck.DeskState.Full;
+                StopCoroutine(Waiter());
+                StartCoroutine(Waiter());
+                return;
+            }
+        }
+    }
+
     IEnumerator Waiter()
     {
         yield return new WaitForSeconds(10f);

@@ -56,11 +56,6 @@ public class GrapeSpawner : ObjectID
             }
         }
     }
-
-    private void RemoveClone(int obj)
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (!active)
@@ -73,7 +68,7 @@ public class GrapeSpawner : ObjectID
             var basket = Instantiate(basketPrefab,basketSpawnPoint.position,basketSpawnPoint.rotation)as GameObject;
 
             var playerStackPoint = _playerStackList.stackList[_playerStackList.stackList.Count -1];
-            basketPrefab.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
+            basket.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.25f).SetEase(Ease.OutFlash);
             
             _playerStackList.stackList.Add(basket);
             if (!growing)

@@ -76,7 +76,6 @@ public class PlayerStackList : ObjectID
     {
         //basketIndex = stackList.FindLastIndex(x => x.CompareTag("Basket(Clone)"));
         basketIndex = stackList.FindLastIndex(x => x.name == "Basket(Clone)");
-        stackCounter += value;
         if (stackList.Count > 0 && basketIndex > 0)
         {
             if (!tweenbool)
@@ -89,7 +88,6 @@ public class PlayerStackList : ObjectID
                          stackList.RemoveAt(basketIndex);
                      }))
                         .OnUpdate((() => tweenbool = false));
-                stackCounter -= value;
             }
         }
     }
@@ -105,7 +103,7 @@ public class PlayerStackList : ObjectID
                 stackList[wineIndex].transform.DOJump(dropPoint.transform.position, 7, 1, .3f).SetEase(Ease.OutFlash)
                     .OnComplete((() =>
                     {
-                        Destroy(stackList[wineIndex]);
+                        Destroy(stackList[wineIndex],1.0f);
                         agent.StateChange(false);
                         stackList.RemoveAt(wineIndex);
                     }))

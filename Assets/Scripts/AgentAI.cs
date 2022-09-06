@@ -31,7 +31,7 @@ public class AgentAI : ObjectID
     {
         AgentControl();
         _agent.destination = destinationPoint;
-        if (Math.Abs(transform.position.x - destinationPoint.x) < 0.5f)
+        if (Math.Abs(transform.position.x - destinationPoint.x) < 0.2f)
         {
             arriveDestination = true;
             _agent.updateRotation = false;
@@ -60,6 +60,9 @@ public class AgentAI : ObjectID
         if (agentLeaving)
         {
             destinationPoint = firstPoint;
+            _uiGameObject.SetActive(false);
+            _agent.updateRotation = true;
+            waitingServe = false;
             _animator.SetBool("GetUp",true);
             _animator.SetBool("Walking",true);
             StartCoroutine(KillingHimself());
@@ -69,8 +72,7 @@ public class AgentAI : ObjectID
     public void StateChange(bool value)
     {
         wine += 1;
-        waitingServe = value;
-        _uiGameObject.SetActive(false);
+        agentLeaving = true;
         StopCoroutine(Drink());
         StartCoroutine(Drink());
     }
@@ -78,9 +80,9 @@ public class AgentAI : ObjectID
     IEnumerator Drink()
     {
         yield return new WaitForSeconds(5.0f);
+        //DeskArea.current.DeskStateChange();
         agentLeaving = true;
         arriveDestination = false;
-        agentLeaving = true;
         GameManager.current.playerGold += 10.0f;
         yield return null;
     }

@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 11.46}
-  m_SizeDelta: {x: 7.6, y: 8.05}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1387414755
 CanvasRenderer:
@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2055181096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 0, y: 3.56}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2055181099
 Canvas:
@@ -867,11 +867,14 @@ MonoBehaviour:
   _uiGameObject: {fileID: 2055181095}
   _animator: {fileID: 3376432709920290583}
   _agent: {fileID: 4459610064814746198}
+  killPoint: {fileID: 0}
   destinationPoint: {x: 0, y: 0, z: 0}
   forward: {x: 0, y: 0, z: 0}
   dropPoint: {fileID: 3109449444698374006}
   arriveDestination: 0
   waitingServe: 0
+  agentLeaving: 0
+  wine: 0
 --- !u!195 &4459610064814746198
 NavMeshAgent:
   m_ObjectHideFlags: 0
