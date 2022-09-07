@@ -5,17 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager current;
+
+   // public List<GameObject> customers;
+    // [SerializeField] private GameObject customerPrefab;
+    //[SerializeField] private Transform customerSpawnPoint;
     [SerializeField] private UiManager _uiManager;
-    private Tween moneyTween;
 
     public float playerGold = 100;
-    
+
     public static float playerSpeed = 12.0f;
-    
+
     public static int playerMaxStack = 5;
 
     public static readonly float UpgradeDuration = 2.0f;
     
+    private Tween moneyTween;
     public bool speedMax;
     public bool stackMax;
 
@@ -32,13 +36,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
+        //GameEventHandler.current.ActiveEmptyDesk += CustomerCreator;
         Application.targetFrameRate = 60;
         DOTween.Init();
     }
     private void OnDestroy()
     {
         GameEventHandler.current.OnUpgradeTriggerEnter -= PlayerMoneyDecrease;
+        //GameEventHandler.current.ActiveEmptyDesk -= CustomerCreator;
     }
+    
+    // private void CustomerCreator(Transform emptyDesk,Vector3 bos)
+    // {
+    //     var clone = Instantiate(customers[Random.Range(0,1)],customerSpawnPoint.position,customerSpawnPoint.transform.rotation)as GameObject;
+    //     var agent = clone.GetComponent<AgentAI>();
+    //     agent.destinationPoint = emptyDesk.transform;
+    //     agent.forward = bos;
+    // }
 
     private void PlayerMoneyDecrease(float value)
     {

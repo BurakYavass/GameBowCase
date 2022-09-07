@@ -9,15 +9,18 @@ public class CustomerCreator : MonoBehaviour
     void Start()
     {
         GameEventHandler.current.ActiveEmptyDesk += CustomerGenerate;
+        
     }
 
     private void OnDestroy()
     {
         GameEventHandler.current.ActiveEmptyDesk -= CustomerGenerate;
+       
     }
     
     private void CustomerGenerate(Transform bosmasa,Vector3 deneme)
     {
+        int randnum = Random.Range(0, 1);
         var clone = Instantiate(customers[Random.Range(0,customers.Count)],customerSpawnPoint.position,customerSpawnPoint.transform.rotation)as GameObject;
         var agent = clone.GetComponent<AgentAI>();
         agent.destinationPoint = bosmasa.transform;
