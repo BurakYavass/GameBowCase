@@ -51,6 +51,10 @@ public class PlayerCollisionHandler : ObjectID
                 PlayerStackList.current.OnPlayerDustBin(dustBinPos);
             }
         }
+        else if (_otherId.Type == ObjectType.PlayerUpgrade)
+        {
+            
+        }
     }
         
 }

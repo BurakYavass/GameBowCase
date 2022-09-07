@@ -13,9 +13,18 @@ public class GameManager : MonoBehaviour
 
     public float playerGold = 100;
 
+    public static float playerSpeed = 12.0f;
+
+    public static int playerMaxStack = 5;
+
     public static readonly float UpgradeDuration = 2.0f;
     
     private Tween moneyTween;
+    public bool speedMax;
+    public bool stackMax;
+
+    private int speedCounter;
+    private int stackCounter;
 
     private void Awake()
     {
@@ -58,6 +67,36 @@ public class GameManager : MonoBehaviour
         money = Mathf.Clamp(money, 0, 10);
         playerGold  += money;
         _uiManager.MoneyInstant(customerPos);
+    }
+
+    public void PlayerSpeedIncrease()
+    {
+        if (speedCounter <6 && playerGold >=100)
+        {
+            speedCounter += 1;
+            float mines = 100.0f;
+            playerGold = Mathf.Clamp(playerGold - mines, 0, 5000);
+            playerSpeed += 1.0f;
+        }
+        else if(stackCounter==6)
+        {
+            speedMax = true;
+        }
+    }
+
+    public void PlayerStackIncrease()
+    {
+        if (stackCounter < 10 && playerGold >=100)
+        {
+            stackCounter += 1;
+            float mines = 100.0f;
+            playerGold = Mathf.Clamp(playerGold - mines, 0, 5000);
+            playerMaxStack += 1;
+        }
+        else if(stackCounter==10)
+        {
+            stackMax = true;
+        }
     }
     
 }

@@ -13,7 +13,7 @@ public class PlayerStackList : ObjectID
     [SerializeField] private Transform barrelDropPoint;
     //private int stackCounter = 0;
 
-    [SerializeField] private int maxStack = 5;
+    private int maxStack;
     [SerializeField] private float stackSpeed;
     [SerializeField] private float stackHeight;
 
@@ -116,6 +116,7 @@ public class PlayerStackList : ObjectID
                     stackList[i].transform.DOJump(binPos, 7, 1, 0.3f).SetEase(Ease.OutFlash)
                         .OnComplete((() =>
                         {
+                            DustBin.current.FillImage(0.3f);
                             stackList[i].transform.DOKill();
                             Destroy(stackList[i]);
                             stackList.RemoveAt(i);
@@ -129,6 +130,7 @@ public class PlayerStackList : ObjectID
 
     private void Update()
     {
+        maxStack = GameManager.playerMaxStack;
         if (stackList.Count >= maxStack)
         {
             stackMax = true;
@@ -153,4 +155,5 @@ public class PlayerStackList : ObjectID
             }
         }
     }
+    
 }

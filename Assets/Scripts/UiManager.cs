@@ -3,6 +3,7 @@ using System.Net.Mime;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
@@ -12,9 +13,16 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject CloneImage;
     [SerializeField] private Transform targetPos;
     [SerializeField] private Camera cam;
+    [SerializeField] private GameObject UpgradePanel;
+    [SerializeField] private TextMeshProUGUI speedMax;
+    [SerializeField] private TextMeshProUGUI stackMax;
 
     private void Start()
     {
+        if (current== null)
+        {
+            current = this;
+        }
         if (cam == null)
         {
             cam= Camera.main;
@@ -24,6 +32,16 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         goldText.text = GameManager.current.playerGold.ToString("0");
+
+        if (GameManager.current.speedMax)
+        {
+            speedMax.text = "Max";
+        }
+
+        if (GameManager.current.stackMax)
+        {
+            stackMax.text = "Max";
+        }
     }
 
     public void MoneyInstant(Vector3 customerPos)
@@ -40,5 +58,17 @@ public class UiManager : MonoBehaviour
             coin.transform.DOKill();
             Destroy(coin);
         }));
+    }
+
+    public void UiActivator()
+    {
+        UpgradePanel.SetActive(true);
+        UpgradePanel.transform.DOMoveY(960, 1f);
+    }
+
+    public void UiDeactivator()
+    {
+        UpgradePanel.transform.DOMoveY(0, 1f)
+            .OnComplete((() => UpgradePanel.SetActive(false)));
     }
 }

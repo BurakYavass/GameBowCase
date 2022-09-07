@@ -8,17 +8,14 @@ public class PlayerController : ObjectID
     public static PlayerController current;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Joystick joystick;
+    [SerializeField] private RectTransform handle;
     private CharacterController _characterController;
 
-    //private float _currentMoveMultiplier;
-    
-    [SerializeField]public float speed = 2f;
     [SerializeField]private float turnSpeed;
-    //[SerializeField]private float _acceleration;
 
     public bool walking = false;
     private bool once = false;
-
+    
     private void Awake()
     {
         if (current == null)
@@ -31,7 +28,15 @@ public class PlayerController : ObjectID
 
     void Update()
     {
-        Movement();
+        if (joystick.isActiveAndEnabled)
+        {
+            Movement();
+        }
+        else
+        {
+            walking = false;
+            handle.anchoredPosition = Vector2.zero;
+        }
     }
 
     private void Movement()
@@ -63,6 +68,7 @@ public class PlayerController : ObjectID
 
         var movementVector = inputVector.x * cameraRightHorizontal + inputVector.z * cameraForwardHorizontal;
 
+        var speed = GameManager.playerSpeed;
         //var dot = Mathf.Clamp(Vector3.Dot(transform.forward, inputVector),0,1);
 
         //_currentMoveMultiplier = Mathf.Lerp(_currentMoveMultiplier, dot, _acceleration * Time.fixedDeltaTime);

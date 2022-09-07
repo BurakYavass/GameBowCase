@@ -16,9 +16,12 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void Update()
     {
+        var blend = GameManager.playerSpeed;
+        playerAnimator.SetFloat("Blend", blend/10);
         if (playerController.walking)
         {
             playerAnimator.SetBool("walking", true);
+            
             playerAnimator.SetBool("Idle",false);
             if (_stackList.stackList.Count > 1 )
             {
