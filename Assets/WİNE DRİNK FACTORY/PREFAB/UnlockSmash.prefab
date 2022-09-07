@@ -93,7 +93,6 @@ MonoBehaviour:
   Type: 5
   activatedGameObject: {fileID: 3334680207727516279}
   deactivatedObject: {fileID: 4535458097504215291}
-  grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 4817122501581890782}
   notEnoughImage: {fileID: 2505059612579043420}
   upgradeRequire: {fileID: 6313417119731665785}

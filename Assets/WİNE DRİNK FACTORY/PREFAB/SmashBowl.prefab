@@ -51,7 +51,7 @@ MonoBehaviour:
   FillImage: {fileID: 6237698768044299860}
   FillImageCanvas: {fileID: 6237698768329253497}
   workTime: 20
-  grapeNeeded: 2
+  grapeNeeded: 3
   grapeCounter: 0
   active: 0
   working: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19179268, g: 0.9716981, b: 0, a: 1}
+  m_Color: {r: 0.24313726, g: 0.7921569, b: 0.2627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
