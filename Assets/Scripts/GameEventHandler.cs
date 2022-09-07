@@ -9,7 +9,10 @@ public class GameEventHandler : MonoBehaviour
 
     private void Awake()
     {
-        current = this;
+        if (current == null)
+        {
+            current = this;
+        }
     }
     public event Action<float> OnUpgradeTriggerEnter;
 

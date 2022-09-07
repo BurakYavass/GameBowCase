@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager current;
 
-    [SerializeField] private GameObject customerPrefab;
-
-    [SerializeField] private Transform customerSpawnPoint;
+   // public List<GameObject> customers;
+    // [SerializeField] private GameObject customerPrefab;
+    //[SerializeField] private Transform customerSpawnPoint;
     [SerializeField] private UiManager _uiManager;
 
     public float playerGold = 100;
@@ -36,29 +36,27 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
-        GameEventHandler.current.ActiveEmptyDesk += AgentCreator;
+        //GameEventHandler.current.ActiveEmptyDesk += CustomerCreator;
         Application.targetFrameRate = 60;
         DOTween.Init();
     }
     private void OnDestroy()
     {
         GameEventHandler.current.OnUpgradeTriggerEnter -= PlayerMoneyDecrease;
-        GameEventHandler.current.ActiveEmptyDesk -= AgentCreator;
+        //GameEventHandler.current.ActiveEmptyDesk -= CustomerCreator;
     }
     
-    private void AgentCreator(Transform emptyDesk,Vector3 bos)
-    {
-        var clone = Instantiate(customerPrefab,customerSpawnPoint.position,customerPrefab.transform.rotation)as GameObject;
-        //customerList.Add(clone);
-        var agent = clone.GetComponent<AgentAI>();
-        agent.destinationPoint = emptyDesk.transform;
-        agent.forward = bos;
-    }
+    // private void CustomerCreator(Transform emptyDesk,Vector3 bos)
+    // {
+    //     var clone = Instantiate(customers[Random.Range(0,1)],customerSpawnPoint.position,customerSpawnPoint.transform.rotation)as GameObject;
+    //     var agent = clone.GetComponent<AgentAI>();
+    //     agent.destinationPoint = emptyDesk.transform;
+    //     agent.forward = bos;
+    // }
 
     private void PlayerMoneyDecrease(float value)
     {
         playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
-        
     }
 
     public void PlayerMoneyIncrease(float money,Vector3 customerPos)
@@ -71,7 +69,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayerSpeedIncrease()
     {
-        
         if (speedCounter <6 && playerGold >=100)
         {
             _uiManager.SpendMoney();
