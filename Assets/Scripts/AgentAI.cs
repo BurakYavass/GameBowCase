@@ -70,10 +70,7 @@ public class AgentAI : ObjectID
         }
         else if(wine != 0)
         {
-            if (once)
-            {
-                once = false;
-            }
+            WaiterController.current.AgentAIDelete(this);
             waitingServe = false;
             _animator.SetBool("Walking",true);
             _animator.SetBool("Sitting",false);

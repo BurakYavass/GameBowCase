@@ -67,6 +67,12 @@ public class WaiterController : ObjectID
 
     private void AgentControl()
     {
+        if (customerPoint.Count == 0 || !_customer)
+        {
+            onWork = false;
+            walking = false;
+            WaitingCustomerCheck();
+        }
         if (_customer && _customer.waitingServe && waiterStackList.stackList.Count >1 )
         {
             _waitingWine = false;
@@ -77,24 +83,25 @@ public class WaiterController : ObjectID
             
             waiterAgent.isStopped = false;
             var customerPos = _customer.transform.position;
-            waiterAgent.SetDestination(customerPos + Vector3.right);
+            waiterAgent.SetDestination(customerPos );
             waiterAgent.updateRotation = true;
             var dist = Vector3.Distance(transform.position, customerPos);
             
             if (dist < 7)
             {
+                waiterAgent.isStopped = true;
                 walking = false;
-                if (_customer.waitingServe)
+                if (!_customer.waitingServe)
                 {
-                    waiterStackList.ServeGlass(_customer.dropPoint,_customer);
-                    waiterAgent.isStopped = true;
-                    serving = true;
-                    StartCoroutine(WaitServe());
+                    _customer = null;
+                    onWork = false;
+                    WaitingCustomerCheck();
                 }
                 else
                 {
-                    WaitingCustomerCheck();
-                    _customer = null;
+                    waiterStackList.ServeGlass(_customer.dropPoint,_customer);
+                    serving = true;
+                    StartCoroutine(WaitServe());
                 }
             }
         }
@@ -110,7 +117,7 @@ public class WaiterController : ObjectID
             }
             
             var dist = Vector3.Distance(transform.position, barPoint.position);
-            if (dist < 3)
+            if (dist < 4)
             {
                 walking = false;
                 _waitingWine = true;
@@ -120,15 +127,22 @@ public class WaiterController : ObjectID
                 waiterAgent.transform.rotation = Quaternion.Euler(barPoint.forward);
             }
         }
-        else if (!_customer && waiterStackList.stackList.Count > 1)
+        else if (!_customer || waiterStackList.stackList.Count > 1)
         {
             onWork = false;
             WaitingCustomerCheck();
+            waiterAgent.destination = barPoint.position;
             waiterAgent.isStopped = true;
             waiterAgent.updateRotation = true;
             _waitingWine = false;
             serving = false;
         }
+    }
+
+    public void AgentAIDelete(AgentAI customer)
+    {
+        customerPoint.Remove(customer);
+        _customer = null;
     }
 
     private void AnimationControl()
