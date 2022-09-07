@@ -17,6 +17,7 @@ public class ObjectID : MonoBehaviour
         BarrelSpawnArea,
         DustBin,
         PlayerUpgrade,
+        Waiter,
     }
     public ObjectType Type;
 }

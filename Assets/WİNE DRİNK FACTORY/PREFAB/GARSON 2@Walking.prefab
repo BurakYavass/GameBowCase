@@ -31,6 +31,36 @@ Transform:
   m_Father: {fileID: 4307695238779351961}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 58.645325, y: 2.9282959, z: 7.9372845}
+--- !u!1 &405873086659512988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 405873086659512991}
+  m_Layer: 0
+  m_Name: StackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &405873086659512991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405873086659512988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.544, z: 0.444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8088574099746380456}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &783937901783503172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,6 +1712,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8088574099746380456}
   - component: {fileID: 8631951555306962241}
+  - component: {fileID: 98147128}
+  - component: {fileID: 98147129}
+  - component: {fileID: 98147130}
+  - component: {fileID: 98147133}
   m_Layer: 0
   m_Name: GARSON 2@Walking
   m_TagString: Untagged
@@ -1697,7 +1731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8866378089559392274}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 972, y: 33.12, z: 201.4}
+  m_LocalPosition: {x: 5.23, y: 0.49, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4456107126329072437}
@@ -1708,6 +1742,7 @@ Transform:
   - {fileID: 1308781796379006519}
   - {fileID: 8279299751993215593}
   - {fileID: 4328013690696677948}
+  - {fileID: 405873086659512991}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -1721,7 +1756,7 @@ Animator:
   m_GameObject: {fileID: 8866378089559392274}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8a6bdd8379e365149ae1be4272ebabc2, type: 2}
+  m_Controller: {fileID: 9100000, guid: fb24efb43e261df46ad08fa4ab887ba3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1730,3 +1765,73 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &98147128
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866378089559392274}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.43
+  m_Speed: 7
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &98147129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866378089559392274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a858c60964c18db4eb2c00459b917ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackList:
+  - {fileID: 405873086659512988}
+--- !u!114 &98147130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866378089559392274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28c64349290d6144a441713b919b610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 13
+  waitorAnimator: {fileID: 8631951555306962241}
+  _waiterStackList: {fileID: 98147129}
+  _waiterAgent: {fileID: 98147128}
+  barPoint: {fileID: 0}
+  CustomerPoint: []
+  onWork: 0
+  serving: 0
+--- !u!136 &98147133
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866378089559392274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.55
+  m_Height: 2.7756402
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4011325, z: 0}

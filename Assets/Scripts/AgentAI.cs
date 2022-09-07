@@ -18,6 +18,7 @@ public class AgentAI : ObjectID
     public bool waitingServe;
     public bool agentLeaving = false;
     private bool _finished = false;
+    private bool once = false;
     public int wine = 0;
     
 
@@ -43,6 +44,7 @@ public class AgentAI : ObjectID
         if (Math.Abs(transform.position.x - destinationPoint.position.x) < 0.2f)
         {
             arriveDestination = true;
+            _agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
             _agent.updateRotation = false;
             _agent.transform.rotation = Quaternion.Euler(forward);
         }
@@ -53,10 +55,14 @@ public class AgentAI : ObjectID
     {
         if (arriveDestination && wine == 0)
         {
-            
             waitingServe = true;
             _animator.SetBool("Walking",false);
             _animator.SetBool("Sitting",true);
+            if (!once)
+            {
+                once = true;
+                StartCoroutine(ServeWaiting());
+            }
             _uiGameObject.SetActive(true);
             _uiGameObject.transform.LookAt(Camera.main.transform.forward);
         }
@@ -82,6 +88,13 @@ public class AgentAI : ObjectID
         GameManager.current.PlayerMoneyIncrease(10,transform.position);
         StopCoroutine(Drink());
         StartCoroutine(Drink());
+    }
+
+    private IEnumerator ServeWaiting()
+    {
+        GameEventHandler.current.WaitingServe(transform);
+        yield return new WaitForSeconds(10.0f);
+        yield return null;
     }
 
     private IEnumerator Drink()

@@ -21,6 +21,13 @@ public class GameEventHandler : MonoBehaviour
     public event Action BarrelGenerate;
 
     public event Action<Transform,Vector3> ActiveEmptyDesk;
+
+    public event Action<Transform> CustomerServeWaiting;
+
+    public void WaitingServe(Transform customerPos)
+    {
+        CustomerServeWaiting?.Invoke(customerPos);
+    }
     
 
     public void EmptyDesk(Transform desk, Vector3 deskRotation)
