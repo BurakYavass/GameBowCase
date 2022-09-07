@@ -1,9 +1,6 @@
-using System;
-using System.Net.Mime;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
@@ -16,13 +13,21 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject UpgradePanel;
     [SerializeField] private TextMeshProUGUI speedMax;
     [SerializeField] private TextMeshProUGUI stackMax;
+    [SerializeField] private TextMeshProUGUI BarmenHire;
+    [SerializeField] private TextMeshProUGUI WaiterHire;
+    [SerializeField] private Button waiterButton;
+    [SerializeField] private Button barmenButton;
 
-    private void Start()
+    private void Awake()
     {
         if (current== null)
         {
             current = this;
         }
+    }
+
+    private void Start()
+    {
         if (cam == null)
         {
             cam= Camera.main;
@@ -41,6 +46,22 @@ public class UiManager : MonoBehaviour
         if (GameManager.current.stackMax)
         {
             stackMax.text = "Max";
+        }
+
+        if (GameManager.current.barmenActive)
+        {
+            BarmenHire.text = "Hired";
+            //Button button = BarmenHire.GetComponentInParent<Button>();
+            //button.interactable = false;
+        }
+
+        if (GameManager.current.waiterActive)
+        {
+            WaiterHire.text = "Hired";
+            //Button button = WaiterHire.GetComponentInParent<Button>();
+            //button.enabled = false;
+            waiterButton.enabled = false;
+
         }
     }
 
