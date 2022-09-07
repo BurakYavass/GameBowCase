@@ -10,7 +10,6 @@ public class PlayerUpgradeArea : ObjectID
     public static PlayerUpgradeArea current;
     [SerializeField] private Image fillImage;
     [SerializeField] private Image fillImage2;
-    private bool tweenBool = false;
 
     private void Awake()
     {
@@ -24,8 +23,8 @@ public class PlayerUpgradeArea : ObjectID
     {
         if (other.CompareTag("Player"))
         {
-            //fillImage.DOFillAmount(1, .5f);
-            //fillImage2.DOFillAmount(1, .5f);
+            fillImage.DOFillAmount(1, .5f);
+            fillImage2.DOFillAmount(1, .5f);
             UiManager.current.UiActivator();
         }
         

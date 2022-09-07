@@ -66,13 +66,15 @@ public class GameManager : MonoBehaviour
         //playerGold + money;
         money = Mathf.Clamp(money, 0, 10);
         playerGold  += money;
-        _uiManager.MoneyInstant(customerPos);
+        _uiManager.EarningMoney(customerPos);
     }
 
     public void PlayerSpeedIncrease()
     {
+        
         if (speedCounter <6 && playerGold >=100)
         {
+            _uiManager.SpendMoney();
             speedCounter += 1;
             float mines = 100.0f;
             playerGold = Mathf.Clamp(playerGold - mines, 0, 5000);
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
     {
         if (stackCounter < 10 && playerGold >=100)
         {
+            _uiManager.SpendMoney();
             stackCounter += 1;
             float mines = 100.0f;
             playerGold = Mathf.Clamp(playerGold - mines, 0, 5000);

@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SmashBowlController : MonoBehaviour
 {
     [SerializeField] private BarrelSpawnArea barrelSpawnArea;
     [SerializeField] private Animator grapeSmashGirl;
-    [SerializeField] private int grapeNeeded = 4;
+    [SerializeField] private Image FillImage;
+    [SerializeField] private GameObject FillImageCanvas;
     [SerializeField] private float workTime = 5f;
+    [SerializeField] private int grapeNeeded = 2;
     [SerializeField] private int grapeCounter = 0;
     
     public bool active = false;
     public bool working = false;
     private bool once = false;
     
-    
-    
-    // Start is called before the first frame update
     void Start()
     {
         if (gameObject.activeInHierarchy)
@@ -27,10 +27,11 @@ public class SmashBowlController : MonoBehaviour
 
     public void PlayerGrapeDropping(int value)
     {
+        FillImageCanvas.SetActive(true);
         grapeCounter = Mathf.Clamp(grapeCounter + value, 0, grapeNeeded);
+        FillImage.fillAmount += 1.0f/  grapeNeeded;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (barrelSpawnArea.barrelAreaMax)
@@ -55,6 +56,8 @@ public class SmashBowlController : MonoBehaviour
 
     private IEnumerator SmashWorking()
     {
+        FillImageCanvas.SetActive(false);
+        FillImage.fillAmount = 0;
         grapeSmashGirl.SetBool("working", true);
         yield return new WaitForSeconds(workTime);
         grapeSmashGirl.SetBool("working", false);
