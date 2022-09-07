@@ -1,25 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class WaiterController : ObjectID
 {
     public static WaiterController current;
+    [SerializeField] private bool onWork = false;
     [SerializeField] private Animator waitorAnimator;
-    [SerializeField] private WaiterStackList _waiterStackList;
-    [SerializeField] private NavMeshAgent _waiterAgent;
+    [SerializeField] private WaiterStackList waiterStackList;
+    [SerializeField] private NavMeshAgent waiterAgent;
     [SerializeField] private Transform barPoint;
-    public List<Transform> CustomerPoint;
+    private AgentAI _customer;
+    public List<AgentAI> customerPoint = new List<AgentAI>();
 
+    public bool serving = false;
     private bool walking = false;
-
-    private Transform customer;
-
-    [SerializeField] private bool onWork =false;
-    [SerializeField] private bool serving = false;
-    private bool waitingWine = false;
+    private bool _waitingWine = false;
+    private bool _once = false;
 
 
     private void Awake()
@@ -39,11 +39,10 @@ public class WaiterController : ObjectID
     {
         GameEventHandler.current.CustomerServeWaiting -= OnCustomerServeWaiting;
     }
-
-    private void OnCustomerServeWaiting(Transform customerTransform)
+    
+    private void OnCustomerServeWaiting(AgentAI customerObje)
     {
-        //customer = customerTransform;
-        CustomerPoint.Add(customerTransform);
+        customerPoint.Add(customerObje);
     }
     
     void Update()
@@ -51,18 +50,16 @@ public class WaiterController : ObjectID
         AnimationControl();
 
         AgentControl();
-
-        WaitingCustomerCheck();
     }
 
     private void WaitingCustomerCheck()
     {
-        for (int i = 0; i < CustomerPoint.Count; i++)
+        for (int i = 0; i < customerPoint.Count; i++)
         {
-            if (!onWork && _waiterStackList.stackList.Count > 1)
+            if (!onWork && waiterStackList.stackList.Count > 1)
             {
                 onWork = true;
-                customer = CustomerPoint[i].transform;
+                _customer = customerPoint[i];
                 return;
             }
         }
@@ -70,29 +67,44 @@ public class WaiterController : ObjectID
 
     private void AgentControl()
     {
-        if (customer && _waiterStackList.stackList.Count >1)
+        if (_customer && _customer.waitingServe && waiterStackList.stackList.Count >1 )
         {
-            waitingWine = false;
+            _waitingWine = false;
             if (!serving)
             {
                 walking = true;
             }
-            _waiterAgent.destination= customer.forward + Vector3.right;
-            _waiterAgent.updateRotation = true;
-            var dist = Vector3.Distance(transform.position, customer.position);
+            
+            waiterAgent.isStopped = false;
+            var customerPos = _customer.transform.position;
+            waiterAgent.SetDestination(customerPos + Vector3.right);
+            waiterAgent.updateRotation = true;
+            var dist = Vector3.Distance(transform.position, customerPos);
+            
             if (dist < 7)
             {
                 walking = false;
-                _waiterAgent.isStopped = true;
-                serving = true;
-                // StartCoroutine
+                if (_customer.waitingServe)
+                {
+                    waiterStackList.ServeGlass(_customer.dropPoint,_customer);
+                    waiterAgent.isStopped = true;
+                    serving = true;
+                    StartCoroutine(WaitServe());
+                }
+                else
+                {
+                    WaitingCustomerCheck();
+                    _customer = null;
+                }
             }
         }
-        else if(_waiterStackList.stackList.Count < 2)
+        else if(waiterStackList.stackList.Count < 2)
         {
             serving = false;
-            _waiterAgent.destination = barPoint.position;
-            if (!waitingWine)
+            waiterAgent.isStopped = false;
+            waiterAgent.destination = barPoint.position;
+            waiterAgent.updateRotation = true;
+            if (!_waitingWine)
             {
                 walking = true;
             }
@@ -101,21 +113,23 @@ public class WaiterController : ObjectID
             if (dist < 3)
             {
                 walking = false;
-                waitingWine = true;
-                _waiterAgent.isStopped = true;
+                _waitingWine = true;
+                waiterAgent.isStopped = true;
                 BarController.current.WaiterOnBar(1);
-                _waiterAgent.updateRotation = false;
-                _waiterAgent.transform.rotation = Quaternion.Euler(barPoint.forward);
+                waiterAgent.updateRotation = false;
+                waiterAgent.transform.rotation = Quaternion.Euler(barPoint.forward);
             }
         }
-        else if (!customer && _waiterStackList.stackList.Count > 1)
+        else if (!_customer && waiterStackList.stackList.Count > 1)
         {
-            _waiterAgent.updateRotation = true;
-            waitingWine = false;
+            onWork = false;
+            WaitingCustomerCheck();
+            waiterAgent.isStopped = true;
+            waiterAgent.updateRotation = true;
+            _waitingWine = false;
             serving = false;
         }
     }
-    
 
     private void AnimationControl()
     {
@@ -124,7 +138,7 @@ public class WaiterController : ObjectID
             waitorAnimator.SetBool("walking", true);
 
             waitorAnimator.SetBool("Idle", false);
-            if (_waiterStackList.stackList.Count > 1)
+            if (waiterStackList.stackList.Count > 1)
             {
                 waitorAnimator.SetBool("Idle", false);
                 waitorAnimator.SetBool("carry", true);
@@ -140,7 +154,7 @@ public class WaiterController : ObjectID
         {
             waitorAnimator.SetBool("walking", false);
             waitorAnimator.SetBool("Idle", true);
-            if (_waiterStackList.stackList.Count > 1)
+            if (waiterStackList.stackList.Count > 1)
             {
                 waitorAnimator.SetBool("carryidle", true);
                 waitorAnimator.SetBool("Idle", false);
@@ -152,5 +166,16 @@ public class WaiterController : ObjectID
                 waitorAnimator.SetBool("carryidle", false);
             }
         }
+    }
+
+    private IEnumerator WaitServe()
+    {
+        yield return new WaitForSeconds(1.0f);
+        customerPoint.Remove(_customer);
+        _customer = null;
+        yield return new WaitForSeconds(3.0f);
+        onWork = false;
+        WaitingCustomerCheck();
+        yield return null;
     }
 }

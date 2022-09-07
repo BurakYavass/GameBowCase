@@ -43,7 +43,7 @@ public class BarController : ObjectID
     {
         if (FullBarrelArea.current.barIsWorkable && spawnCounter <5 && !spawnable)
         {
-            spawnCounter++;
+            //spawnCounter++;
             spawnable = true;
             spawnCounter = Mathf.Clamp(spawnCounter+spawn, 0, spawnMax);
             var glass = Instantiate(glassPrefab,glassSpawnPoint.position,glassPrefab.transform.rotation)as GameObject;

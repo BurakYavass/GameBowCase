@@ -22,11 +22,11 @@ public class GameEventHandler : MonoBehaviour
 
     public event Action<Transform,Vector3> ActiveEmptyDesk;
 
-    public event Action<Transform> CustomerServeWaiting;
+    public event Action<AgentAI> CustomerServeWaiting;
 
-    public void WaitingServe(Transform customerPos)
+    public void WaitingServe(AgentAI customerAI)
     {
-        CustomerServeWaiting?.Invoke(customerPos);
+        CustomerServeWaiting?.Invoke(customerAI);
     }
     
 

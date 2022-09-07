@@ -1254,6 +1254,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4466980242735434433, guid: 3e1a8f5579aff7e4093f5f7854e372fe, type: 3}
   m_PrefabInstance: {fileID: 336068338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &365143390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 98147129, guid: 1ab57d0b654e6ee43af1047b1093b1f1, type: 3}
+  m_PrefabInstance: {fileID: 405873088349965209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a858c60964c18db4eb2c00459b917ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &365143391 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 98147128, guid: 1ab57d0b654e6ee43af1047b1093b1f1, type: 3}
+  m_PrefabInstance: {fileID: 405873088349965209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &388033450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2864080209761254775, guid: 465af70938726e547949bf59390e6a64, type: 3}
@@ -7472,6 +7488,14 @@ PrefabInstance:
       propertyPath: barPoint
       value: 
       objectReference: {fileID: 867421012}
+    - target: {fileID: 98147130, guid: 1ab57d0b654e6ee43af1047b1093b1f1, type: 3}
+      propertyPath: waiterAgent
+      value: 
+      objectReference: {fileID: 365143391}
+    - target: {fileID: 98147130, guid: 1ab57d0b654e6ee43af1047b1093b1f1, type: 3}
+      propertyPath: waiterStackList
+      value: 
+      objectReference: {fileID: 365143390}
     - target: {fileID: 8088574099746380456, guid: 1ab57d0b654e6ee43af1047b1093b1f1, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -10931,6 +10955,14 @@ PrefabInstance:
     - target: {fileID: 883182522581640054, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
       propertyPath: m_Name
       value: SmashBowl
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340885534464189046, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
+      propertyPath: workTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340885534464189046, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
+      propertyPath: grapeNeeded
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2340885534464189046, guid: 095ce46aa85ccbc489d96bd1060bd20f, type: 3}
       propertyPath: barrelSpawnArea

@@ -62,12 +62,18 @@ public class AgentAI : ObjectID
             {
                 once = true;
                 StartCoroutine(ServeWaiting());
+                GameEventHandler.current.WaitingServe(this);
             }
+            
             _uiGameObject.SetActive(true);
             _uiGameObject.transform.LookAt(Camera.main.transform.forward);
         }
-        else
+        else if(wine != 0)
         {
+            if (once)
+            {
+                once = false;
+            }
             waitingServe = false;
             _animator.SetBool("Walking",true);
             _animator.SetBool("Sitting",false);
@@ -92,7 +98,7 @@ public class AgentAI : ObjectID
 
     private IEnumerator ServeWaiting()
     {
-        GameEventHandler.current.WaitingServe(transform);
+        
         yield return new WaitForSeconds(10.0f);
         yield return null;
     }
