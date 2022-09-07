@@ -58,7 +58,7 @@ public class AgentAI : ObjectID
             _animator.SetBool("Walking",false);
             _animator.SetBool("Sitting",true);
             _uiGameObject.SetActive(true);
-            _uiGameObject.transform.LookAt(Camera.main.transform);
+            _uiGameObject.transform.LookAt(Camera.main.transform.forward);
         }
         else
         {

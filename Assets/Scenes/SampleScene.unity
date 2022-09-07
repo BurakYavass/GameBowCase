@@ -3995,11 +3995,11 @@ RectTransform:
   m_Father: {fileID: 1612595554}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -900}
-  m_SizeDelta: {x: 1080, y: 1920}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -960}
+  m_SizeDelta: {x: 1080, y: 960}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1241952249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,11 +4447,11 @@ RectTransform:
   m_Father: {fileID: 1241952248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 687.4}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1342581682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5488,7 +5488,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1612595554
 RectTransform:
@@ -10890,6 +10890,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3215993119990678563}
     m_Modifications:
+    - target: {fileID: 660847578, guid: 0cdfceb79d717834895066d2acc02038, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 682122714445593486, guid: 0cdfceb79d717834895066d2acc02038, type: 3}
       propertyPath: m_Name
       value: GRAPE_SMASH_TRIGGER_AREA

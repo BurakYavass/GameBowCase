@@ -63,12 +63,12 @@ public class UiManager : MonoBehaviour
     public void UiActivator()
     {
         UpgradePanel.SetActive(true);
-        UpgradePanel.transform.DOMoveY(960, 1f);
+        UpgradePanel.transform.DOMoveY(0, 1f);
     }
 
     public void UiDeactivator()
     {
-        UpgradePanel.transform.DOMoveY(0, 1f)
+        UpgradePanel.transform.DOMoveY(-960, 1f)
             .OnComplete((() => UpgradePanel.SetActive(false)));
     }
 }
