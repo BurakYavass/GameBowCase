@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,8 @@ public class SmashBowlController : MonoBehaviour
         FillImageCanvas.SetActive(true);
         grapeCounter = Mathf.Clamp(grapeCounter + value, 0, grapeNeeded);
         FillImage.fillAmount += 1.0f/  grapeNeeded;
+        transform.DOKill();
+        transform.DOPunchScale(Vector3.down, 0.3f).SetEase(Ease.InBounce);
     }
     
     void Update()
