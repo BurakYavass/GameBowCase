@@ -8,7 +8,7 @@ public class AgentAI : ObjectID
     [SerializeField] private GameObject _uiGameObject;
     [SerializeField] private Animator _animator;
     [SerializeField] private NavMeshAgent _agent;
-    private Camera camera;
+    private Camera _camera;
     public Transform destinationPoint;
     public Vector3 forward;
     private Vector3 desiredPosition;

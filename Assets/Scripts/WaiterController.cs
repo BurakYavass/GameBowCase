@@ -19,9 +19,7 @@ public class WaiterController : ObjectID
     public bool serving = false;
     private bool walking = false;
     private bool _waitingWine = false;
-    private bool _once = false;
-
-
+    
     private void Awake()
     {
         if (current == null)
