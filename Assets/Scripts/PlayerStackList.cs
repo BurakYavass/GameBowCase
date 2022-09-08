@@ -11,16 +11,12 @@ public class PlayerStackList : ObjectID
     [SerializeField] private Transform stackPoint;
     [SerializeField] private Transform grapeDropPoint;
     [SerializeField] private Transform barrelDropPoint;
-    //private int stackCounter = 0;
-
-    private int maxStack;
-    [SerializeField] private float stackSpeed;
     [SerializeField] private float stackHeight;
-
-    //private bool once = false;
+    
     private bool tweenbool = false;
     public bool stackMax = false;
 
+    private int maxStack;
     private int barrelIndex;
     private int basketIndex;
     private int wineIndex;
@@ -146,8 +142,6 @@ public class PlayerStackList : ObjectID
             {
                 var downGameObject = stackList[i-1].transform;
                 var currentObject = stackList[i].transform;
-                // var xPosition = Mathf.Lerp(currentBasket.transform.position.x, downGameObject.transform.position.x,
-                //     stackSpeed);
                 currentObject.rotation = currentObject.rotation;
                 currentObject.transform.position = new Vector3(downGameObject.position.x,
                     downGameObject.position.y + stackHeight, downGameObject.position.z);

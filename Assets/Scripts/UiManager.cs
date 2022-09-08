@@ -51,15 +51,12 @@ public class UiManager : MonoBehaviour
         if (GameManager.current.barmenActive)
         {
             BarmenHire.text = "Hired";
-            //Button button = BarmenHire.GetComponentInParent<Button>();
-            //button.interactable = false;
+            barmenButton.enabled = false;
         }
 
         if (GameManager.current.waiterActive)
         {
             WaiterHire.text = "Hired";
-            //Button button = WaiterHire.GetComponentInParent<Button>();
-            //button.enabled = false;
             waiterButton.enabled = false;
 
         }

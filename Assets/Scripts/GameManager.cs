@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayerMoneyIncrease(float money,Vector3 customerPos)
     {
-        //playerGold + money;
         money = Mathf.Clamp(money, 0, 10);
         playerGold  += money;
         _uiManager.EarningMoney(customerPos);

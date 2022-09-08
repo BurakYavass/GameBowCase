@@ -40,7 +40,15 @@ public class PlayerCollisionHandler : ObjectID
             var bar = other.GetComponent<BarController>();
             if (!PlayerStackList.current.stackMax)
             {
-                bar.PlayerOnBar(1);
+                if (GameManager.current.barmenActive)
+                {
+                    BarmenController.current.PlayerOnBar(1);
+                }
+                else
+                {
+                    bar.PlayerOnBar(1);
+                }
+                
             }
         }
         else if (_otherId.Type == ObjectType.DustBin)

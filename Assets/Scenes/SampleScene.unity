@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waiter: {fileID: 1592804569}
-  barmen: {fileID: 0}
+  barmen: {fileID: 1193055159}
   playerGold: 500
   speedMax: 0
   stackMax: 0
@@ -3246,7 +3246,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867421011}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.198143, y: 2.6446548, z: 4.974943}
@@ -4037,6 +4037,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042572424}
   m_CullTransparentMesh: 1
+--- !u!1 &1070682911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070682912}
+  m_Layer: 0
+  m_Name: WineSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070682912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070682911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.446, z: 0.792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1193055163}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1082626390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549937144320752875, guid: fea80f59d45abbf4d98ec864b8318c42, type: 3}
@@ -4212,7 +4242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984300232900546206, guid: 90f53a947f1742947b0f44ee3ee2f88d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.25
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 1984300232900546206, guid: 90f53a947f1742947b0f44ee3ee2f88d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4343,6 +4373,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13861fd56eda0014bbf9b84fce7da0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  _animator: {fileID: 1193055162}
+  glassPrefab: {fileID: 1244917747374796648, guid: ad532584fbba85d489dfca003a61d26f, type: 3}
+  glassSpawnPoint: {fileID: 1070682912}
+  FillImage: {fileID: 247526330}
+  spawnCounter: 0
 --- !u!111 &1193055161
 Animation:
   m_ObjectHideFlags: 0
@@ -4358,6 +4394,16 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!95 &1193055162 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2018492178266745203, guid: 90f53a947f1742947b0f44ee3ee2f88d, type: 3}
+  m_PrefabInstance: {fileID: 1173768810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1193055163 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1984300232900546206, guid: 90f53a947f1742947b0f44ee3ee2f88d, type: 3}
+  m_PrefabInstance: {fileID: 1173768810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1202612405
 GameObject:
   m_ObjectHideFlags: 0
@@ -13656,7 +13702,6 @@ MonoBehaviour:
   stackPoint: {fileID: 2600322426741535484}
   grapeDropPoint: {fileID: 1289681304}
   barrelDropPoint: {fileID: 1491758334032792124}
-  stackSpeed: 1
   stackHeight: 2.3
   stackMax: 0
 --- !u!4 &7045258510315706228

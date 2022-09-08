@@ -122,7 +122,14 @@ public class WaiterController : ObjectID
                 walking = false;
                 _waitingWine = true;
                 waiterAgent.isStopped = true;
-                BarController.current.WaiterOnBar(1);
+                if (GameManager.current.barmenActive)
+                {
+                    BarmenController.current.WaiterOnBar(1);
+                }
+                else
+                {
+                    BarController.current.WaiterOnBar(1);
+                }
                 waiterAgent.updateRotation = false;
                 waiterAgent.transform.rotation = Quaternion.Euler(barPoint.forward);
             }
