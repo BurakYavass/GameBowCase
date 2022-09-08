@@ -49,11 +49,11 @@ public class UpgradeArea : ObjectID
     {
         if (_otherId == null)
             _otherId = other.gameObject.GetComponent<PlayerController>();
-        if(_otherId != null && _otherId.Type == ObjectType.Player && GameManager.current.playerGold > 0 )
+        if(_otherId != null && _otherId.Type == ObjectType.Player && Save_Load.current.PlayerGold > 0 )
         {
             MoneyDecrease_ObjectControl();
         }
-        else if (_otherId != null && _otherId.Type == ObjectType.Player &&GameManager.current.playerGold == 0)
+        else if (_otherId != null && _otherId.Type == ObjectType.Player && Save_Load.current.PlayerGold == 0)
         {
             fillImage.DOPause();
             _requireMoneyTween.Pause();

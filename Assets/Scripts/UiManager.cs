@@ -37,7 +37,7 @@ public class UiManager : MonoBehaviour
 
     void Update()
     {
-        goldText.text = GameManager.current.playerGold.ToString("0");
+        goldText.text = Save_Load.current.PlayerGold.ToString("0");
 
         if (GameManager.current.speedMax)
         {

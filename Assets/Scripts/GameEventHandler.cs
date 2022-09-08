@@ -29,7 +29,6 @@ public class GameEventHandler : MonoBehaviour
         CustomerServeWaiting?.Invoke(customerAI);
     }
     
-
     public void EmptyDesk(Transform desk, Vector3 deskRotation)
     {
         ActiveEmptyDesk?.Invoke(desk,deskRotation);

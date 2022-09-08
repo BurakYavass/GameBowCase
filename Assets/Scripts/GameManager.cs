@@ -5,14 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager current;
+    [SerializeField] private Save_Load _saveLoad;
     private UiManager _uiManager;
     [SerializeField] private GameObject waiter;
     [SerializeField] private GameObject barmen;
     public List<AgentAI> customerPoint = new List<AgentAI>();
 
-    public float playerGold = 100;
-
-    public static float playerSpeed = 12.0f;
+    public float playerGold = 500;
+    
+    public static float playerSpeed = 14.0f;
 
     public static int playerMaxStack = 5;
 
@@ -41,9 +42,13 @@ public class GameManager : MonoBehaviour
         {
             _uiManager= UiManager.current;
         }
+
+        _saveLoad.PlayerGold = PlayerPrefs.GetFloat("playerGold", 500);
+        
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
         GameEventHandler.current.CustomerServeWaiting += OnCustomerServeWaiting;
         Application.targetFrameRate = 60;
+        
         DOTween.Init();
     }
     private void OnDestroy()
@@ -59,12 +64,12 @@ public class GameManager : MonoBehaviour
     
     private void PlayerMoneyDecrease(float value)
     {
-        playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
+        _saveLoad.PlayerGold = Mathf.Clamp(_saveLoad.PlayerGold-value, 0, 5000);
     }
 
     public void PlayerMoneyIncrease(float money,Vector3 customerPos , AgentAI customer)
     {
-        playerGold = Mathf.Clamp(playerGold + money, 0, 5000);
+        _saveLoad.PlayerGold = Mathf.Clamp(_saveLoad.PlayerGold + money, 0, 5000);
         _uiManager.goldText.transform.DOShakeScale(0.3f, Vector3.up,1);
         _uiManager.EarningMoney(customerPos);
         customerPoint.Remove(customer);
@@ -72,11 +77,11 @@ public class GameManager : MonoBehaviour
 
     public void PlayerSpeedIncrease()
     {
-        if (speedCounter <6 && playerGold >=100)
+        if (speedCounter <6 && _saveLoad.PlayerGold >=100)
         {
             _uiManager.SpendMoney();
             speedCounter += 1;
-            playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
+            _saveLoad.PlayerGold = Mathf.Clamp(_saveLoad.PlayerGold - 100.0f, 0, 5000);
             PlayerAnimationHandler.current.ParticlePlay();
             playerSpeed += 1.0f;
         }
@@ -88,11 +93,11 @@ public class GameManager : MonoBehaviour
 
     public void PlayerStackIncrease()
     {
-        if (stackCounter < 10 && playerGold >=100)
+        if (stackCounter < 10 && _saveLoad.PlayerGold >=100)
         {
             _uiManager.SpendMoney();
             stackCounter += 1;
-            playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
+            _saveLoad.PlayerGold = Mathf.Clamp(_saveLoad.PlayerGold - 100.0f, 0, 5000);
             PlayerAnimationHandler.current.ParticlePlay();
             playerMaxStack += 1;
         }
@@ -104,10 +109,10 @@ public class GameManager : MonoBehaviour
 
     public void BarmenHire()
     {
-        if (playerGold>=100)
+        if (_saveLoad.PlayerGold>=100)
         {
             _uiManager.SpendMoney();
-            playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
+            _saveLoad.PlayerGold = Mathf.Clamp(_saveLoad.PlayerGold - 100.0f, 0, 5000);
             barmenActive = true;
             barmen.SetActive(true);
             waiterUnlock = true;
@@ -116,10 +121,10 @@ public class GameManager : MonoBehaviour
 
     public void WaiterHire()
     {
-        if (playerGold>=100 && barmenActive)
+        if (_saveLoad.PlayerGold>=100 && barmenActive)
         {
             _uiManager.SpendMoney();
-            playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
+            _saveLoad.PlayerGold = Mathf.Clamp(_saveLoad.PlayerGold - 100.0f, 0, 5000);
             waiterActive = true;
             waiter.SetActive(true);
         }
