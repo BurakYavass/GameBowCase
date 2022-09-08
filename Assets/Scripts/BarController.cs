@@ -33,7 +33,7 @@ public class BarController : ObjectID
                 .OnComplete((() =>
                         {
                             var _glass = Instantiate(glassPrefab, glassSpawnPoint.position, glassPrefab.transform.rotation) as GameObject;
-                            _glass.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.5f)
+                            _glass.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.3f)
                                 .SetEase(Ease.OutFlash)
                                 .OnComplete((() =>
                                 {
@@ -59,7 +59,7 @@ public class BarController : ObjectID
                 .OnComplete((() =>
                 {
                     var _glass = Instantiate(glassPrefab, glassSpawnPoint.position, glassPrefab.transform.rotation) as GameObject;
-                    _glass.transform.DOJump(waiterStackPoint.transform.position, 5, 1, 0.5f).SetEase(Ease.OutFlash)
+                    _glass.transform.DOJump(waiterStackPoint.transform.position, 5, 1, 0.3f).SetEase(Ease.OutFlash)
                         .OnComplete((() =>
                         {
                             WaiterStackList.current.stackList.Add(_glass);

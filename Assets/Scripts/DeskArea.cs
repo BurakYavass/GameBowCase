@@ -44,7 +44,6 @@ public class DeskArea : ObjectID
                 var findIndex = Desks.FindIndex(x => x.name == emptyDesk);
                 Desks[findIndex].deskState = ChairCheck.DeskState.Empty;
                 StartCoroutine(DeskEmpty());
-                return;
             }
         }
     }
