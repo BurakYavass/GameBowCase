@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 98147130}
   - component: {fileID: 98147133}
   m_Layer: 0
-  m_Name: GARSON 2@Walking
+  m_Name: Waiter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

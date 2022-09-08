@@ -91,7 +91,7 @@ public class AgentAI : ObjectID
     public void StateChange()
     {
         wine += 1;
-        GameManager.current.PlayerMoneyIncrease(10,transform.position);
+        
         StopCoroutine(Drink());
         StartCoroutine(Drink());
     }
@@ -105,6 +105,7 @@ public class AgentAI : ObjectID
 
     private IEnumerator Drink()
     {
+        GameManager.current.PlayerMoneyIncrease(10,transform.position);
         _uiGameObject.SetActive(false);
         yield return new WaitForSeconds(10.0f);
         _animator.SetBool("GetUp",true);

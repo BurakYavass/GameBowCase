@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1070682911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070682912}
+  m_Layer: 0
+  m_Name: WineSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070682912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070682911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.446, z: 0.792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1984300232900546206}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &66648555295759862
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,13 +567,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1984300232900546206}
   - component: {fileID: 2018492178266745203}
+  - component: {fileID: 1193055160}
   m_Layer: 0
-  m_Name: "BARMEN VERME AN\u0130MASYONU "
+  m_Name: Barmen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1984300232900546206
 Transform:
   m_ObjectHideFlags: 0
@@ -564,6 +595,7 @@ Transform:
   - {fileID: 2259608233551561706}
   - {fileID: 3881264984520786333}
   - {fileID: 746156948904157685}
+  - {fileID: 1070682912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -586,6 +618,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1193055160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207657534051275812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13861fd56eda0014bbf9b84fce7da0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  _animator: {fileID: 2018492178266745203}
+  glassPrefab: {fileID: 1244917747374796648, guid: ad532584fbba85d489dfca003a61d26f, type: 3}
+  glassSpawnPoint: {fileID: 1070682912}
+  FillImage: {fileID: 0}
+  spawnCounter: 0
 --- !u!1 &1239272718312670332
 GameObject:
   m_ObjectHideFlags: 0

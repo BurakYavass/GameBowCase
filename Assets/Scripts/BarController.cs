@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class BarController : ObjectID
 {
     public static BarController current;
-    private ObjectID _otherId;
     [SerializeField] private GameObject glassPrefab;
     [SerializeField] private Transform glassSpawnPoint;
     [SerializeField] private Image FillImage;
     public int spawnCounter = 0;
     private bool spawnable = false;
     private int spawnMax = 4;
-
+    
     private void Awake()
     {
         if (current == null)
@@ -26,28 +25,25 @@ public class BarController : ObjectID
     {
         if (FullBarrelArea.current.barIsWorkable && spawnCounter <5 && !spawnable)
         {
-            Debug.Log("BarControl");
+            FillImage.DOPlay();
             spawnable = true;
             spawnCounter = Mathf.Clamp(spawnCounter + spawn, 0, spawnMax);
             var playerStackPoint = PlayerStackList.current.stackList[PlayerStackList.current.stackList.Count -1];
             FillImage.DOFillAmount(1,0.5f)
                 .OnComplete((() =>
                         {
-                            var glass = Instantiate(glassPrefab, glassSpawnPoint.position, glassPrefab.transform.rotation) as GameObject;
-                            glass.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.5f)
+                            var _glass = Instantiate(glassPrefab, glassSpawnPoint.position, glassPrefab.transform.rotation) as GameObject;
+                            _glass.transform.DOJump(playerStackPoint.transform.position, 5, 1, 0.5f)
                                 .SetEase(Ease.OutFlash)
                                 .OnComplete((() =>
                                 {
-                                    PlayerStackList.current.stackList.Add(glass);
+                                    PlayerStackList.current.stackList.Add(_glass);
                                     FillImage.fillAmount = 0;
-                                    glass.transform.DOKill();
+                                    _glass.transform.DOKill();
                                     spawnable = false;
                                 }));
-                            
                         }
                ));
-            
-            
         }
     }
 
@@ -55,26 +51,26 @@ public class BarController : ObjectID
     {
         if (FullBarrelArea.current.barIsWorkable && spawnCounter <5 && !spawnable)
         {
+            FillImage.DOPlay();
             spawnable = true;
             spawnCounter = Mathf.Clamp(spawnCounter+spawn, 0, spawnMax);
             var waiterStackPoint = WaiterStackList.current.stackList[WaiterStackList.current.stackList.Count -1];
             FillImage.DOFillAmount(1,0.5f)
                 .OnComplete((() =>
                 {
-                    var glass = Instantiate(glassPrefab, glassSpawnPoint.position, glassPrefab.transform.rotation) as GameObject;
-                    glass.transform.DOJump(waiterStackPoint.transform.position, 5, 1, 0.5f).SetEase(Ease.OutFlash)
+                    var _glass = Instantiate(glassPrefab, glassSpawnPoint.position, glassPrefab.transform.rotation) as GameObject;
+                    _glass.transform.DOJump(waiterStackPoint.transform.position, 5, 1, 0.5f).SetEase(Ease.OutFlash)
                         .OnComplete((() =>
                         {
-                            WaiterStackList.current.stackList.Add(glass);
+                            WaiterStackList.current.stackList.Add(_glass);
                             FillImage.fillAmount = 0;
-                            glass.transform.DOKill();
+                            _glass.transform.DOKill();
                             spawnable = false;
                         }));
                     
                 }));
         }
     }
-    
 
     private void Update()
     {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     public static UiManager current;
-    [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] public TextMeshProUGUI goldText;
     [SerializeField] private GameObject CloneImage;
     [SerializeField] private Transform targetPos;
     [SerializeField] private Camera cam;
@@ -69,11 +70,13 @@ public class UiManager : MonoBehaviour
         var coin = Instantiate(CloneImage, customerWorldPos, targetPos.rotation,targetPos.parent);
 
         coin.transform.DOScale(Vector3.one, .3f);
-        coin.transform.DOMove(instantiatePos,.5f).OnComplete((() =>
+        coin.transform.DOMove(instantiatePos, .3f).OnComplete((() =>
         {
             coin.transform.DOKill();
             Destroy(coin);
+
         }));
+
     }
     
     public void SpendMoney()

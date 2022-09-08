@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayerMoneyIncrease(float money,Vector3 customerPos)
     {
-        money = Mathf.Clamp(money, 0, 10);
-        playerGold  += money;
+        playerGold = Mathf.Clamp(playerGold + money, 0, 5000);
+        _uiManager.goldText.transform.DOShakeScale(0.3f, Vector3.up,1);
         _uiManager.EarningMoney(customerPos);
     }
 
@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
             _uiManager.SpendMoney();
             playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
             barmenActive = true;
+            barmen.SetActive(true);
         }
     }
 

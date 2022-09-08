@@ -13,10 +13,9 @@ public class GrapeSpawner : ObjectID
     [SerializeField] private bool defaultTree;
 
     public float grapeSpawnTime = 10.0f;
-    public List<GameObject> Grapes = new List<GameObject>(2);
+    public List<Grape> Grapes = new List<Grape>(2);
     
     [SerializeField] private GameObject basketPrefab;
-    [SerializeField] private Transform playerPoint;
     [SerializeField] private Transform basketSpawnPoint;
     [SerializeField] private UpgradeArea upgradeArea;
     private PlayerStackList _playerStackList;
@@ -77,7 +76,7 @@ public class GrapeSpawner : ObjectID
             
             foreach (var grape in Grapes)
             {
-                grape.SetActive(false);
+                grape.gameObject.SetActive(false);
             }
             gatherable = false;
         }
@@ -90,7 +89,8 @@ public class GrapeSpawner : ObjectID
         yield return new WaitForSeconds(grapeSpawnTime);
         foreach (var vaGrape in Grapes)
         {
-            vaGrape.SetActive(true);
+            vaGrape.gameObject.SetActive(true);
+            vaGrape.ParticlePlay();
             vaGrape.transform.DOShakeScale(0.5f).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(0.2f);
         }

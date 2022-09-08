@@ -27,7 +27,6 @@ public class BarmenController : ObjectID
     {
         if (FullBarrelArea.current.barIsWorkable && spawnCounter <5 && !spawnable)
         {
-            Debug.Log("Barmen");
             spawnable = true;
             spawnCounter = Mathf.Clamp(spawnCounter + spawn, 0, spawnMax);
             var playerStackPoint = PlayerStackList.current.stackList[PlayerStackList.current.stackList.Count -1];
@@ -54,7 +53,6 @@ public class BarmenController : ObjectID
     {
         if (FullBarrelArea.current.barIsWorkable && spawnCounter <5 && !spawnable)
         {
-            //spawnCounter++;
             spawnable = true;
             spawnCounter = Mathf.Clamp(spawnCounter+spawn, 0, spawnMax);
             var waiterStackPoint = WaiterStackList.current.stackList[WaiterStackList.current.stackList.Count -1];
@@ -74,7 +72,7 @@ public class BarmenController : ObjectID
                 }));
         }
     }
-    
+
     void Update()
     {
         if (spawnCounter == spawnMax)

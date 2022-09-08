@@ -176,7 +176,6 @@ MonoBehaviour:
   Type: 1
   activatedGameObject: {fileID: 5729864250572040985}
   deactivatedObject: {fileID: 6538025683818945671}
-  grapeSmashArea: {fileID: 0}
   fillImage: {fileID: 3238386337779841338}
   notEnoughImage: {fileID: 5542548101870355896}
   upgradeRequire: {fileID: 4158255361623971485}
@@ -200,10 +199,9 @@ MonoBehaviour:
   defaultTree: 0
   grapeSpawnTime: 10
   Grapes:
-  - {fileID: 7696926952344354799}
-  - {fileID: 8228577968040124481}
+  - {fileID: 3017796370260064426}
+  - {fileID: 2309770971607628122}
   basketPrefab: {fileID: 9037746880120402931, guid: 593674fd848889b4d82e0af78151d9dc, type: 3}
-  playerPoint: {fileID: 0}
   basketSpawnPoint: {fileID: 1193631081}
   upgradeArea: {fileID: 5549937144320752874}
 --- !u!1 &6538025683818945671
@@ -250,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 180644539052062201, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2610932055938540499, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
       propertyPath: m_RootOrder
@@ -333,16 +331,28 @@ Animation:
   m_CorrespondingSourceObject: {fileID: 7600568774791754014, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
   m_PrefabInstance: {fileID: 5549937145415835360}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7696926952344354799 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2870389615500255503, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
+--- !u!114 &3017796370260064426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7269948491102807626, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
   m_PrefabInstance: {fileID: 5549937145415835360}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8228577968040124481 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4554439384662982305, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c106f8db7b312824d96dee8627ab9d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2309770971607628122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7856707790242310074, guid: 9b56100d91fcf5645bdb2d9cc719fba1, type: 3}
   m_PrefabInstance: {fileID: 5549937145415835360}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c106f8db7b312824d96dee8627ab9d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5549937146169941902
 PrefabInstance:
   m_ObjectHideFlags: 0

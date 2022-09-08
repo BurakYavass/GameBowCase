@@ -8,6 +8,7 @@ public class SmashBowlController : MonoBehaviour
 {
     [SerializeField] private BarrelSpawnArea barrelSpawnArea;
     [SerializeField] private Animator grapeSmashGirl;
+    [SerializeField] private ParticleSystem smashParticle;
     [SerializeField] private Image FillImage;
     [SerializeField] private GameObject FillImageCanvas;
     [SerializeField] private float workTime = 5f;
@@ -62,8 +63,10 @@ public class SmashBowlController : MonoBehaviour
         FillImageCanvas.SetActive(false);
         FillImage.fillAmount = 0;
         grapeSmashGirl.SetBool("working", true);
+        smashParticle.Play();
         yield return new WaitForSeconds(workTime);
         grapeSmashGirl.SetBool("working", false);
+        smashParticle.Stop();
         working = false;
         once = false;
         grapeCounter = 0;
