@@ -54,12 +54,21 @@ public class UiManager : MonoBehaviour
             BarmenHire.text = "Hired";
             barmenButton.enabled = false;
         }
-
-        if (GameManager.current.waiterActive)
+        
+        if(GameManager.current.waiterUnlock)
         {
-            WaiterHire.text = "Hired";
+            WaiterHire.text = "$100";
+            waiterButton.enabled = true;
+            if (GameManager.current.waiterActive)
+            {
+                WaiterHire.text = "Hired";
+                waiterButton.enabled = false;
+            }
+        }
+        else
+        {
             waiterButton.enabled = false;
-
+            WaiterHire.text = "Lock";
         }
     }
 

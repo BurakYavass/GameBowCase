@@ -6,21 +6,20 @@ using UnityEngine;
 
 public class GrapeSpawner : ObjectID
 {
+    [SerializeField] private List<Grape> Grapes = new List<Grape>(2);
     private bool once = false;
     private bool growing = false;
+    private bool spawnable;
     public bool active = false;
     public bool gatherable = false;
     [SerializeField] private bool defaultTree;
-
-    public float grapeSpawnTime = 10.0f;
-    public List<Grape> Grapes = new List<Grape>(2);
-    
+    [SerializeField] private float grapeSpawnTime = 10.0f;
     [SerializeField] private GameObject basketPrefab;
     [SerializeField] private Transform basketSpawnPoint;
     [SerializeField] private UpgradeArea upgradeArea;
     private PlayerStackList _playerStackList;
     private ObjectID _otherId;
-    private bool spawnable;
+   
 
     private void Start()
     {

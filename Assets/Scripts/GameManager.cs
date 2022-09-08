@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool stackMax;
     public bool waiterActive = false;
     public bool barmenActive = false;
+    public bool waiterUnlock = false;
 
     private int speedCounter;
     private int stackCounter;
@@ -100,12 +101,13 @@ public class GameManager : MonoBehaviour
             playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
             barmenActive = true;
             barmen.SetActive(true);
+            waiterUnlock = true;
         }
     }
 
     public void WaiterHire()
     {
-        if (playerGold>=100)
+        if (playerGold>=100 && barmenActive)
         {
             _uiManager.SpendMoney();
             playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
