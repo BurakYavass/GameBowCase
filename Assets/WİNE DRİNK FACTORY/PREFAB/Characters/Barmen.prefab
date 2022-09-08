@@ -567,7 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984300232900546206}
   - component: {fileID: 2018492178266745203}
-  - component: {fileID: 1193055160}
+  - component: {fileID: 2422124143737704331}
   m_Layer: 0
   m_Name: Barmen
   m_TagString: Untagged
@@ -618,7 +618,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1193055160
+--- !u!114 &2422124143737704331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -631,6 +631,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  FullGlass:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _animator: {fileID: 2018492178266745203}
   glassPrefab: {fileID: 1244917747374796648, guid: ad532584fbba85d489dfca003a61d26f, type: 3}
   glassSpawnPoint: {fileID: 1070682912}

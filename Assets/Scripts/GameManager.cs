@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private UiManager _uiManager;
     [SerializeField] private GameObject waiter;
     [SerializeField] private GameObject barmen;
+    public List<AgentAI> customerPoint = new List<AgentAI>();
 
     public float playerGold = 100;
 
@@ -41,24 +42,32 @@ public class GameManager : MonoBehaviour
             _uiManager= UiManager.current;
         }
         GameEventHandler.current.OnUpgradeTriggerEnter += PlayerMoneyDecrease;
+        GameEventHandler.current.CustomerServeWaiting += OnCustomerServeWaiting;
         Application.targetFrameRate = 60;
         DOTween.Init();
     }
     private void OnDestroy()
     {
         GameEventHandler.current.OnUpgradeTriggerEnter -= PlayerMoneyDecrease;
+        GameEventHandler.current.CustomerServeWaiting -= OnCustomerServeWaiting;
     }
 
+    private void OnCustomerServeWaiting(AgentAI customerObje)
+    {
+        customerPoint.Add(customerObje);
+    }
+    
     private void PlayerMoneyDecrease(float value)
     {
         playerGold = Mathf.Clamp(playerGold-value, 0, 5000);
     }
 
-    public void PlayerMoneyIncrease(float money,Vector3 customerPos)
+    public void PlayerMoneyIncrease(float money,Vector3 customerPos , AgentAI customer)
     {
         playerGold = Mathf.Clamp(playerGold + money, 0, 5000);
         _uiManager.goldText.transform.DOShakeScale(0.3f, Vector3.up,1);
         _uiManager.EarningMoney(customerPos);
+        customerPoint.Remove(customer);
     }
 
     public void PlayerSpeedIncrease()

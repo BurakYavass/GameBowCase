@@ -63,7 +63,7 @@ public class FullBarrelArea : ObjectID
         }
     }
 
-    public void BarrelControl(int value)
+    public void BarrelControl()
     {
         Barrels[barrelCount-1].gameObject.SetActive(false);
         barrelCount--;

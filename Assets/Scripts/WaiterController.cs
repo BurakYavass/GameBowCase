@@ -14,7 +14,7 @@ public class WaiterController : ObjectID
     [SerializeField] private NavMeshAgent waiterAgent;
     [SerializeField] private Transform barPoint;
     private AgentAI _customer;
-    public List<AgentAI> customerPoint = new List<AgentAI>();
+    public List<AgentAI> customerPoint;
 
     public bool serving = false;
     private bool walking = false;
@@ -30,18 +30,9 @@ public class WaiterController : ObjectID
     
     void Start()
     {
-        GameEventHandler.current.CustomerServeWaiting += OnCustomerServeWaiting;
-    }
-
-    private void OnDestroy()
-    {
-        GameEventHandler.current.CustomerServeWaiting -= OnCustomerServeWaiting;
+        customerPoint = GameManager.current.customerPoint;
     }
     
-    private void OnCustomerServeWaiting(AgentAI customerObje)
-    {
-        customerPoint.Add(customerObje);
-    }
     
     void Update()
     {

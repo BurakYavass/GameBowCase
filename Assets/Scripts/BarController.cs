@@ -76,7 +76,7 @@ public class BarController : ObjectID
     {
         if (spawnCounter == spawnMax)
         {
-            FullBarrelArea.current.BarrelControl(1);
+            FullBarrelArea.current.BarrelControl();
             FullBarrelArea.current.Barrels[0].gameObject.SetActive(false);
             spawnCounter = 0;
         }
