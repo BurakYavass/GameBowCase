@@ -2,10 +2,20 @@ using System;
 using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
-{ 
+{
+    public static PlayerAnimationHandler current;
     private Animator playerAnimator;
     private PlayerController playerController;
     private PlayerStackList _stackList;
+    [SerializeField] private ParticleSystem upgradeParticle;
+
+    private void Awake()
+    {
+        if (current == null)
+        {
+            current = this;
+        }
+    }
 
     private void Start()
     {
@@ -51,5 +61,10 @@ public class PlayerAnimationHandler : MonoBehaviour
                 playerAnimator.SetBool("carryidle",false);
             }
         }
+    }
+
+    public void ParticlePlay()
+    {
+        upgradeParticle.Play();
     }
 }

@@ -1466,6 +1466,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274505473}
   m_CullTransparentMesh: 1
+--- !u!198 &278159801 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7160057966641972665, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
+  m_PrefabInstance: {fileID: 1560580020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &304220475
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,6 +5283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bbf5c278efd1e4191b127f52e90221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeParticle: {fileID: 278159801}
 --- !u!1 &1342581680
 GameObject:
   m_ObjectHideFlags: 0
@@ -6197,37 +6203,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7032484733561338027, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7032616972817355565, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
       propertyPath: m_Name
       value: player-upgrade
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160057966641972665, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160057966641972665, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: InitialModule.startSize.maxCurve.m_PreInfinity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160404817246771469, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160522899814679267, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160522899814679267, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160522899814679267, guid: 3099be0bc382fe84b82a977a22735144, type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3099be0bc382fe84b82a977a22735144, type: 3}

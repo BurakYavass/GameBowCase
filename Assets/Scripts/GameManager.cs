@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
             _uiManager.SpendMoney();
             speedCounter += 1;
             playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
+            PlayerAnimationHandler.current.ParticlePlay();
             playerSpeed += 1.0f;
         }
         else if(stackCounter==6)
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
             _uiManager.SpendMoney();
             stackCounter += 1;
             playerGold = Mathf.Clamp(playerGold - 100.0f, 0, 5000);
+            PlayerAnimationHandler.current.ParticlePlay();
             playerMaxStack += 1;
         }
         else if(stackCounter==10)
