@@ -1804,6 +1804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259a552c88871d14aa0a9f9f117cf2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _grapeSmashArea: {fileID: 6910671397887582767}
+  deger: 0
 --- !u!1 &508303963
 GameObject:
   m_ObjectHideFlags: 0
@@ -5820,6 +5822,17 @@ Transform:
   m_Father: {fileID: 3215993119990678563}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433614056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 178708940467903351, guid: 465af70938726e547949bf59390e6a64, type: 3}
+  m_PrefabInstance: {fileID: 539267376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f451944ef3165a4198e04af025db43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1445373148
 GameObject:
   m_ObjectHideFlags: 0
@@ -6198,6 +6211,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3334680207727516279, guid: 465af70938726e547949bf59390e6a64, type: 3}
   m_PrefabInstance: {fileID: 1785199481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1542018740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 178708940467903351, guid: 465af70938726e547949bf59390e6a64, type: 3}
+  m_PrefabInstance: {fileID: 1785199481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542018738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f451944ef3165a4198e04af025db43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1556143670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8095,6 +8119,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821063705}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1870285010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 178708940467903351, guid: 465af70938726e547949bf59390e6a64, type: 3}
+  m_PrefabInstance: {fileID: 6986935669762847436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f451944ef3165a4198e04af025db43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1888177575
 GameObject:
   m_ObjectHideFlags: 0
@@ -13946,6 +13981,9 @@ MonoBehaviour:
   Type: 2
   grapeSmashPoint:
   - {fileID: 582412799}
+  - {fileID: 1870285010}
+  - {fileID: 1433614056}
+  - {fileID: 1542018740}
 --- !u!23 &6964293715096932667
 MeshRenderer:
   m_ObjectHideFlags: 0
