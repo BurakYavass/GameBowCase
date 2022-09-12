@@ -23,8 +23,6 @@ public class GameEventHandler : MonoBehaviour
     public event Action<Transform,Vector3> ActiveEmptyDesk;
 
     public event Action<AgentAI> CustomerServeWaiting;
-    
-    public event Action<int> SaveItem; 
 
     public void WaitingServe(AgentAI customerAI)
     {
@@ -50,10 +48,5 @@ public class GameEventHandler : MonoBehaviour
     public void UpgradeTriggerExit()
     {
         OnUpgradeTriggerExit?.Invoke();
-    }
-
-    public void SavedItem(int item)
-    {
-        SaveItem?.Invoke(item);
     }
 }

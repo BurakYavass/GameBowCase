@@ -23,19 +23,6 @@ public class GrapeSmashArea : ObjectID
         }
     }
 
-    public void UnlockItem(int deger)
-    {
-        for (int i = 1; i <= deger; i++)
-        {
-            if (deger <= grapeSmashPoint.Count)
-            {
-                grapeSmashPoint[i].active = true;
-                grapeSmashPoint[i].gameObject.SetActive(true);
-                return;
-            }
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (!_otherId || !_playerStackList)
@@ -61,18 +48,6 @@ public class GrapeSmashArea : ObjectID
              }
          }
     }
-
-    // private void Update()
-    // {
-    //     for (int i = 1; i < grapeSmashPoint.Count; i++)
-    //     {
-    //         if (grapeSmashPoint[i].active)
-    //         {
-    //             GameEventHandler.current.SavedItem(i);
-    //             return;
-    //         }
-    //     }
-    // }
 
     private IEnumerator Waiter()
     {

@@ -19,13 +19,13 @@ public class SmashBowlController : MonoBehaviour
     public bool working = false;
     private bool once = false;
     
-    // void Start()
-    // {
-    //     if (gameObject.activeInHierarchy)
-    //     {
-    //         active = true;
-    //     }
-    // }
+    void Start()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            active = true;
+        }
+    }
 
     public void PlayerGrapeDropping(int value)
     {

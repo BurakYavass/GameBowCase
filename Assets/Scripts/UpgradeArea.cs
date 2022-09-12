@@ -96,6 +96,7 @@ public class UpgradeArea : ObjectID
                             deactivatedObject.transform.DOScale(new Vector3(0, 0, 0), 0.5f)
                                 .OnComplete((() =>deactivatedObject.SetActive(false) ));
                             activatedGameObject.SetActive(true);
+                            //GameEventHandler.current.ObjectActivator();
                             Activator?.Invoke();
                             if (objectAnimation != null)
                             {
@@ -107,7 +108,7 @@ public class UpgradeArea : ObjectID
                                     .OnComplete(() => {
                                         if (Type == ObjectType.GrapeSmash)
                                         {
-                                            GameEventHandler.current.SavedItem(1);
+                                            GrapeSmashArea.current.grapeSmashPoint.Add(activatedGameObject.GetComponent<SmashBowlController>());
                                         }
                                         else if(Type == ObjectType.Desk)
                                         {
